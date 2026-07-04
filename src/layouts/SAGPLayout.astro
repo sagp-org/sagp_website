@@ -13,16 +13,16 @@ const { title = "Society for Ancient Greek Philosophy" } = Astro.props;
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/">
-      <img src="/assets/sagp-logo.png" alt="SAGP" />
+    <a class="brand" href={import.meta.env.BASE_URL}>
+      <img src={`${import.meta.env.BASE_URL}assets/sagp-logo.png`} alt="SAGP" />
     </a>
 
     <nav>
-      <a href="/">Home</a>
-      <a href="/who-we-are/">Who We Are</a>
-      <a href="/events/">Events</a>
-      <a href="/membership/">Membership</a>
-      <a href="/contact/">Contact</a>
+      <a href={import.meta.env.BASE_URL}>Home</a>
+      <a href={`${import.meta.env.BASE_URL}who-we-are/`}>Who We Are</a>
+      <a href={`${import.meta.env.BASE_URL}events/`}>Events</a>
+      <a href={`${import.meta.env.BASE_URL}membership/`}>Membership</a>
+      <a href={`${import.meta.env.BASE_URL}contact/`}>Contact</a>
     </nav>
   </header>
 
