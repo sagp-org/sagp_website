@@ -1,20 +1,16 @@
 ---
+import PageHero from "../../components/PageHero.astro";
 import SAGPLayout from "../../layouts/SAGPLayout.astro";
 ---
 
 <SAGPLayout title="Membership | Society for Ancient Greek Philosophy">
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker">Membership</div>
-    <h1>Join a worldwide conversation about Ancient Greek philosophy.</h1>
-    <p class="lede">
-      SAGP membership is open to scholars and students of Ancient Greek
-      philosophy and supports the Society’s conferences, lectures, mentoring,
-      and international scholarly community.
-    </p>
-  </div>
-</section>
+<PageHero
+  kicker="Membership"
+  title="Join a worldwide conversation about Ancient Greek philosophy."
+  subtitle="SAGP membership is open to scholars and students of Ancient Greek philosophy and supports the Society’s conferences, lectures, mentoring, and international scholarly community."
+  image="/assets/images/delphi_treasury.jpg"
+/>
 
 <section class="section two-col">
   <div>

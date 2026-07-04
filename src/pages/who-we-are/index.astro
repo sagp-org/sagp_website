@@ -1,20 +1,16 @@
 ---
 import SAGPLayout from "../../layouts/SAGPLayout.astro";
+import PageHero from "../../components/PageHero.astro";
 ---
 
 <SAGPLayout title="Who We Are | Society for Ancient Greek Philosophy">
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker">Who We Are</div>
-    <h1>A conversation about Ancient Greek philosophy since 1953.</h1>
-    <p class="lede">
-      The Society for Ancient Greek Philosophy is an international community of
-      scholars and students devoted to rigorous inquiry, scholarly exchange, and
-      the continuing life of Ancient Greek philosophy.
-    </p>
-  </div>
-</section>
+<PageHero
+  kicker="Who We Are"
+  title="A conversation about Ancient Greek philosophy since 1953."
+  subtitle="The Society for Ancient Greek Philosophy is an international community of scholars and students devoted to rigorous inquiry, scholarly exchange, and the continuing life of Ancient Greek philosophy."
+  image="/assets/images/delphi_treasury.jpg"
+/>
 
 <section class="section two-col">
   <div>

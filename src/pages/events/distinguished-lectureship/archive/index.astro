@@ -1,19 +1,16 @@
 ---
+import PageHero from "../../../../components/PageHero.astro";
 import SAGPLayout from "../../../../layouts/SAGPLayout.astro";
 ---
 
 <SAGPLayout title="Distinguished Lectureship Archive | SAGP">
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker">Lectureship Archive</div>
-    <h1>Honoring distinguished scholarship.</h1>
-    <p class="lede">
-      The Distinguished Lectureship archive records scholars honored by SAGP for
-      substantial contributions to Ancient Greek philosophy.
-    </p>
-  </div>
-</section>
+<PageHero
+  kicker="Lectureship Archive"
+  title="Honoring distinguished scholarship."
+  subtitle="The Distinguished Lectureship archive records scholars honored by SAGP for substantial contributions to Ancient Greek philosophy."
+  image="/assets/images/parthenon_night.jpg"
+/>
 
 <section class="section">
   <h2>Recent lectures</h2>

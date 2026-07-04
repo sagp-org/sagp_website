@@ -1,20 +1,16 @@
 ---
+import PageHero from "../../components/PageHero.astro";
 import SAGPLayout from "../../layouts/SAGPLayout.astro";
 ---
 
 <SAGPLayout title="Contact | Society for Ancient Greek Philosophy">
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker">Contact</div>
-    <h1>The conversation continues here.</h1>
-    <p class="lede">
-      Whether you are interested in joining the Society, attending an event,
-      presenting your work, or learning more about SAGP, we would be glad to
-      hear from you.
-    </p>
-  </div>
-</section>
+<PageHero
+  kicker="Contact"
+  title="The conversation continues here."
+  subtitle="Whether you are interested in joining the Society, attending an event, presenting your work, or learning more about SAGP, we would be glad to hear from you."
+  image="/assets/images/parthenon_night.jpg"
+/>
 
 <section class="section two-col">
   <div>

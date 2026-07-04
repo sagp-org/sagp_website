@@ -1,19 +1,16 @@
 ---
+import PageHero from "../../../../components/PageHero.astro";
 import SAGPLayout from "../../../../layouts/SAGPLayout.astro";
 ---
 
 <SAGPLayout title="Past Conferences & Archives | SAGP">
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker">Conference Archive</div>
-    <h1>Decades of scholarly conversation.</h1>
-    <p class="lede">
-      Since 1953, SAGP conferences and newsletters have preserved a record of
-      research, dialogue, and community in Ancient Greek philosophy.
-    </p>
-  </div>
-</section>
+<PageHero
+  kicker="Conference Archive"
+  title="Decades of scholarly conversation."
+  subtitle="Since 1953, SAGP conferences and newsletters have preserved a record of research, dialogue, and community in Ancient Greek philosophy."
+  image="/assets/images/parthenon_night.jpg"
+/>
 
 <section class="section two-col">
   <div>

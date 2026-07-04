@@ -1,20 +1,16 @@
 ---
+import PageHero from "../../../components/PageHero.astro";
 import SAGPLayout from "../../../layouts/SAGPLayout.astro";
 ---
 
 <SAGPLayout title="Works in Progress | SAGP">
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker">Works in Progress</div>
-    <h1>Every polished argument begins as a developing idea.</h1>
-    <p class="lede">
-      The SAGP Works in Progress Series provides a setting for scholars to
-      present research in development and receive thoughtful feedback from a
-      community of colleagues.
-    </p>
-  </div>
-</section>
+<PageHero
+  kicker="Works in Progress"
+  title="Every polished argument begins as a developing idea."
+  subtitle="The SAGP Works in Progress Series provides a setting for scholars to present research in development and receive thoughtful feedback from a community of colleagues."
+  image="/assets/images/parthenon_night.jpg"
+/>
 
 <section class="section two-col">
   <div>

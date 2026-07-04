@@ -1,20 +1,16 @@
 ---
+import PageHero from "../../../components/PageHero.astro";
 import SAGPLayout from "../../../layouts/SAGPLayout.astro";
 ---
 
 <SAGPLayout title="Annual Conference | Society for Ancient Greek Philosophy">
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker">Annual Conference</div>
-    <h1>The Society’s annual gathering of scholars.</h1>
-    <p class="lede">
-      Each year, SAGP brings scholars together for carefully curated sessions
-      devoted to original research, rigorous discussion, and the continuing
-      study of Ancient Greek philosophy.
-    </p>
-  </div>
-</section>
+<PageHero
+  kicker="Annual Conference"
+  title="The Society’s annual gathering of scholars."
+  subtitle="Each year, SAGP brings scholars together for carefully curated sessions devoted to original research, rigorous discussion, and the continuing study of Ancient Greek philosophy."
+  image="/assets/images/parthenon_night.jpg"
+/>
 
 <section class="section two-col">
   <div>

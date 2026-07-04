@@ -1,18 +1,16 @@
 ---
+import PageHero from "../../../../components/PageHero.astro";
 import SAGPLayout from "../../../../layouts/SAGPLayout.astro";
 ---
 
 <SAGPLayout title="Annual Conference 2024 | SAGP">
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker">Annual Conference 2024</div>
-    <h1>Pre-Socratics, Plato, Aristotle, and the Stoics.</h1>
-    <p class="lede">
-      November 16–17, 2024 · via Zoom · All times listed in Pacific Standard Time.
-    </p>
-  </div>
-</section>
+<PageHero
+  kicker="Annual Conference 2024"
+  title="Pre-Socratics, Plato, Aristotle, and the Stoics."
+  subtitle="November 16–17, 2024 · via Zoom · All times listed in Pacific Standard Time."
+  image="/assets/images/parthenon_night.jpg"
+/>
 
 <section class="section two-col">
   <div>

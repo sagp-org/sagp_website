@@ -11,8 +11,9 @@ const base = import.meta.env.BASE_URL;
 
 <section class="page-hero">
   <img src={`${base}${image}`} alt="" />
+
   <div class="page-hero-overlay">
-    {kicker && <p class="kicker">{kicker}</p>}
+    {kicker && <div class="kicker">{kicker}</div>}
     <h1>{title}</h1>
     {subtitle && <p>{subtitle}</p>}
   </div>
