@@ -1,0 +1,19 @@
+---
+const {
+  title,
+  subtitle,
+  kicker = "",
+  image = "/assets/images/parthenon_night.jpg",
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="page-hero">
+  <img src={`${base}${image}`} alt="" />
+  <div class="page-hero-overlay">
+    {kicker && <p class="kicker">{kicker}</p>}
+    <h1>{title}</h1>
+    {subtitle && <p>{subtitle}</p>}
+  </div>
+</section>
