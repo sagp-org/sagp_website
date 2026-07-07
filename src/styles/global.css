@@ -664,3 +664,72 @@ h3 {
   height: 26px;
 }
 
+
+/* Interior page polish */
+
+.section h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section h2 .icon {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(111, 103, 54, 0.10);
+}
+
+.section h2 .icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.section .button {
+  margin-top: 8px;
+}
+
+.callout {
+  border-radius: 4px;
+}
+
+
+/* Reusable section headings */
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.section-heading > .icon {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(111, 103, 54, 0.10);
+}
+
+.section-heading > .icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+}
+
+.section-heading .kicker {
+  margin: 0 0 6px;
+}
+
+/* Keep main navigation visible while scrolling */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
