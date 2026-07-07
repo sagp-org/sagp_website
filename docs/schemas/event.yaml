@@ -1,0 +1,73 @@
+# ============================================================================
+# SAGP Event Schema
+#
+# This document describes the conceptual structure of an Event.
+#
+# It is illustrative rather than prescriptive and is intended to accompany
+# the Ontology. Individual event instances should conform to this structure.
+# ============================================================================
+
+event:
+
+  id:
+  title:
+  subtitle:
+
+  type:
+
+  status:
+
+  description:
+
+  dates:
+    start:
+    end:
+    timezone:
+
+  location:
+    mode:
+    venue:
+    city:
+    region:
+    country:
+
+  links:
+    registration:
+    program:
+    livestream:
+
+  sessions:
+
+    - id:
+
+      title:
+
+      date:
+
+      start_time:
+
+      end_time:
+
+      moderator:
+
+        name:
+
+        institution:
+
+      presentations:
+
+        - id:
+
+          title:
+
+          type:
+
+          presenters:
+
+            - name:
+
+              institution:
+
+          abstract:
+
+          materials:
