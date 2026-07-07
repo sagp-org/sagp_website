@@ -1,0 +1,22 @@
+# SAGP Governance Schema
+#
+# Governance objects describe persistent institutional knowledge.
+
+governance:
+  id:
+  title:
+  type:
+  status:
+
+  effective_date:
+  supersedes:
+
+  summary:
+
+  document:
+    path:
+    format:
+
+  sections:
+    - title:
+      text:

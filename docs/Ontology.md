@@ -1,161 +1,263 @@
-# SAGP Ontology
+# SAGP Knowledge Platform Ontology
 
 ## Purpose
 
-The ontology defines the conceptual structure of the Society's scholarly life.
+The ontology defines the concepts that exist within the Society for Ancient
+Greek Philosophy and the relationships among them.
 
-It describes what exists within the digital platform without prescribing how
-those concepts are implemented in software.
+Unlike the implementation, the ontology is independent of Astro, YAML,
+JavaScript, or any particular software framework.
+
+It answers one question:
+
+> **What does the Society know?**
 
 ---
 
-# Core Hierarchy
+# Top-Level Knowledge Domains
 
+~~~text
 Society
+│
+├── Events
+│
+├── Calls
+│
+├── Governance
+│
+├── Membership
+│
+├── People
+│
+├── Organizations
+│
+└── Publications
+~~~
 
-→ Events
-
-→ Sessions
-
-→ Presentations
-
-→ People
+These domains represent distinct categories of institutional knowledge.
 
 ---
 
-# Society
+# Events
 
-The Society is the highest-level entity.
+Events are scheduled scholarly activities organized or sponsored by the Society.
 
-It encompasses membership, governance, history, publications, and scholarly
-activities.
-
----
-
-# Event
-
-An Event represents a scholarly gathering.
-
-Examples include:
+Current event types include:
 
 - Annual Conference
 - Distinguished Lectureship
 - Works in Progress
-- Symposium
-- Special Meeting
 
-An Event contains one or more Sessions.
-
----
-
-# Session
-
-A Session is a scheduled block of scholarly activity.
-
-A Session has:
+Typical Event properties include:
 
 - title
-- moderator
+- description
+- hero information
+- dates
 - location
-- date
-- time
-
-A Session contains one or more Presentations.
-
----
-
-# Presentation
-
-A Presentation is the fundamental scholarly contribution.
-
-Examples include:
-
-- paper
-- lecture
-- keynote
-- response
-- panel contribution
-- discussion
-
-Presentations are created by one or more People.
-
----
-
-# Person
-
-A Person represents an individual participating in the intellectual life of
-the Society.
-
-A Person may serve many roles simultaneously, including:
-
-- member
-- presenter
-- moderator
-- officer
-- board member
-- organizer
-- distinguished lecturer
-
-The Person is represented once and participates in many relationships.
-
----
-
-# Principle
-
-The ontology is intended to remain stable even as software implementations
-change.
-
-
----
-
-# Canonical and Derived Knowledge
-
-The Ontology records the Society's canonical knowledge.
-
-Canonical knowledge consists of facts explicitly asserted by the Society.
-
-Examples include:
-
-- titles
+- sessions
+- presentations
 - presenters
 - moderators
-- dates
-- start times
-- official Society time zones
+- related organizations
 
-Some ontology fields provide sufficient information for renderers to derive
-additional information.
+Events generally follow a lifecycle:
 
-For example:
-
-```yaml
-date: 2025-11-15
-start_time: "07:00"
-timezone: PST
-timezone_iana: America/Los_Angeles
-```
-
-The first three fields represent the Society's published schedule.
-
-The IANA time-zone identifier exists to permit renderers to compute derived
-local times for visitors while preserving the Society's canonical schedule.
-
+~~~text
+draft
+    ↓
+upcoming
+    ↓
+active
+    ↓
+completed
+    ↓
+archived
+~~~
 
 ---
 
-# Event Type and Rendering
+# Sessions
 
-Each Event has a `type` field identifying its semantic category.
+Some Events contain one or more Sessions.
+
+Examples:
+
+- Annual Conference morning session
+- Annual Conference afternoon session
+- Distinguished Lecture (single session)
+
+Sessions contain:
+
+- title
+- start time
+- end time
+- moderator
+- presentations
+
+---
+
+# Presentations
+
+Presentations are scholarly contributions within Sessions.
+
+Typical properties include:
+
+- title
+- presenter(s)
+- affiliation(s)
+- abstract (optional)
+
+Presentations belong to exactly one Session.
+
+---
+
+# Calls
+
+Calls are actionable Society announcements.
 
 Examples include:
 
-- `annual_conference`
-- `distinguished_lectureship`
-- `works_in_progress`
+- Call for Papers
+- Call for Nominations
+- Elections
+- Membership Campaigns
 
-The `type` field helps renderers choose an appropriate presentation for the
-same underlying Event → Session → Presentation structure.
+Typical properties include:
 
-AI systems generating Event knowledge objects should assign the correct
-semantic type, but should not make visual presentation decisions.
+- title
+- summary
+- deadlines
+- eligibility
+- submission instructions
+- contact
+- related organizations
+- related event series
+
+Calls are not Events.
+
+Calls often precede Events but are independent institutional objects.
+
+---
+
+# Governance
+
+Governance represents persistent institutional knowledge.
+
+Examples include:
+
+- Constitution
+- Bylaws
+- Officers
+- Board Members
+- Committees
+- Policies
+- Minutes
+
+Unlike Events, Governance objects generally evolve through versioning and
+effective dates rather than scheduled occurrences.
+
+---
+
+# Membership
+
+Membership represents the Society's community.
+
+Future ontology objects may include:
+
+- member
+- membership category
+- membership status
+- renewal history
+
+---
+
+# People
+
+People represent individuals who interact with the Society.
+
+Examples include:
+
+- speakers
+- moderators
+- officers
+- committee members
+- authors
+
+People may participate in multiple Events and Calls.
+
+---
+
+# Organizations
+
+Organizations represent institutions connected with Society activities.
+
+Examples include:
+
+- universities
+- scholarly societies
+- publishers
+
+Organizations may be associated with People, Events, Calls, or Publications.
+
+---
+
+# Publications
+
+Future publication objects may include:
+
+- newsletters
+- proceedings
+- announcements
+- journal partnerships
+
+---
+
+# Relationships
+
+~~~text
+Society
+
+    owns
+
+        Events
+        Calls
+        Governance
+        Membership
+        Publications
+
+Events
+
+    contain
+
+        Sessions
+
+Sessions
+
+    contain
+
+        Presentations
+
+Presentations
+
+    involve
+
+        People
+
+People
+
+    belong to
+
+        Organizations
+~~~
+
+---
+
+# Guiding Principle
+
+The ontology models the Society.
+
+The implementation models the ontology.
+
+The website renders the implementation.
 

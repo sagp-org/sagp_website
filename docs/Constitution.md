@@ -1,93 +1,116 @@
-# Constitution of the SAGP Digital Platform
+# SAGP Knowledge Platform Constitution
 
-## Preamble
+## Purpose
 
-The Society for Ancient Greek Philosophy exists to foster the study,
-discussion, preservation, and advancement of Ancient Greek philosophy.
+The purpose of this repository is to preserve, organize, and publish the
+institutional knowledge of the Society for Ancient Greek Philosophy.
 
-The purpose of the SAGP Digital Platform is to preserve and communicate the
-scholarly life of the Society in forms that remain independent of any
-particular technology, software implementation, or method of presentation.
+The website is one presentation of this knowledge. Future AI systems,
+search engines, document generators, calendars, email systems, and
+institutional tools are additional presentations.
 
-This Constitution establishes the governing principles of the platform. It is
-intended to outlive individual software systems and guide future development
-regardless of changes in technology.
-
-The Constitution governs the Ontology.
-
-The Ontology governs the Implementation.
-
-The Implementation governs the software.
-
-This hierarchy is intentional.
+The repository models the Society—not merely its website.
 
 ---
 
-# Article I — Purpose
+# I. Canonical Knowledge
 
-The platform exists to preserve the scholarly activities of the Society rather
-than merely its webpages.
+Institutional knowledge shall exist exactly once.
 
-Its purpose is to represent the intellectual life of the Society faithfully,
-accurately, and durably.
+Every fact about the Society should have one authoritative representation.
 
----
-
-# Article II — Authority
-
-This Constitution is the highest governing document of the digital platform.
-
-Changes to software shall not require changes to the Constitution.
-
-Changes to the Constitution should occur only after careful consideration by
-the maintainers of the platform.
+Presentation systems must derive their information from canonical
+knowledge objects rather than duplicating facts.
 
 ---
 
-# Article III — Guiding Principles
+# II. Derived Presentation
 
-1. Knowledge is more fundamental than presentation.
+Pages, archives, summaries, homepages, schedules, PDFs, announcements,
+and AI assistants are derived views.
 
-2. Scholarly objects are more fundamental than webpages.
-
-3. Software implementations are temporary.
-
-4. The underlying knowledge should remain portable across technologies.
-
-5. Artificial intelligence assists in creating and organizing knowledge but
-   does not define the structure of that knowledge.
+Presentation should never become an independent source of truth.
 
 ---
 
-# Article IV — Relationship to Other Documents
+# III. Ontology Before Implementation
 
-This Constitution defines the governing philosophy.
+When new Society activities are discovered, they should first be modeled
+as ontology objects.
 
-The Ontology defines the conceptual model.
-
-The Implementation defines the current realization of that model.
-
+Software should be written only after the ontology is understood.
 
 ---
 
-# Article V — Canonical and Derived Knowledge
+# IV. Observation Before Generalization
 
-The digital platform distinguishes between **canonical knowledge** and
-**derived knowledge**.
+The ontology grows through observation.
 
-Canonical knowledge consists of information explicitly asserted by the Society
-and recorded within the Ontology.
+New primitives are introduced because the Society possesses genuine new
+institutional concepts—not because they appear theoretically elegant.
 
-Derived knowledge consists of information computed deterministically from
-canonical knowledge.
+Examples:
 
-Derived knowledge:
+- Events
+- Calls
 
-- must be reproducible from canonical knowledge;
-- must remain traceable to its canonical source;
-- must never silently replace or reinterpret canonical information; and
-- exists solely to improve accessibility, usability, or presentation.
+Future examples may include:
 
-When canonical and derived information are presented together, canonical
-information shall remain primary.
+- Governance
+- Awards
+- Elections
+
+---
+
+# V. Separation of Responsibilities
+
+Canonical knowledge contains institutional facts.
+
+Loaders retrieve canonical knowledge.
+
+Queries answer questions over canonical knowledge.
+
+Renderers present ontology objects.
+
+Pages compose renderers.
+
+Each layer has one responsibility.
+
+---
+
+# VI. AI-Centered Publishing
+
+Artificial intelligence should operate primarily on canonical knowledge
+objects.
+
+The preferred AI workflow is:
+
+~~~text
+Source Document
+        ↓
+Knowledge Extraction
+        ↓
+Canonical YAML
+        ↓
+Validation
+        ↓
+Publication
+~~~
+
+AI systems should modify knowledge rather than webpages.
+
+---
+
+# VII. Repository Philosophy
+
+The repository should become easier to maintain as additional knowledge is
+added.
+
+Adding a new Annual Conference should primarily consist of adding one
+canonical knowledge object.
+
+Adding a new Distinguished Lecture should primarily consist of adding one
+canonical knowledge object.
+
+The architecture should eliminate duplication rather than manage it.
 

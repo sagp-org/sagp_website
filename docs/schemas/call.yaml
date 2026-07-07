@@ -1,0 +1,43 @@
+# SAGP Call Schema
+#
+# A Call is an actionable Society announcement with one or more deadlines.
+
+call:
+  id:
+  title:
+  type:
+  status:
+
+  summary:
+
+  dates:
+    posted:
+    closes:
+
+  deadlines:
+    - label:
+      date:
+      note:
+
+  eligibility:
+    - text:
+
+  submission:
+    contact:
+      name:
+      email:
+
+    instructions:
+      - text:
+
+    attachment:
+      formats:
+      blind_review:
+      max_words:
+      min_words_note:
+
+  related:
+    organizations:
+      - name:
+    event_series:
+      - name:

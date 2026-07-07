@@ -1,0 +1,88 @@
+---
+import { loadCurrentItem } from "../lib/content/index.js";
+
+const current = loadCurrentItem();
+
+function normalizeDate(value) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value ?? "");
+}
+
+function formatDate(value) {
+  const dateString = normalizeDate(value);
+  const [year, month, day] = dateString.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+function firstFutureDeadline(call) {
+  const today = new Date().toISOString().slice(0, 10);
+
+  return call.deadlines
+    ?.filter((deadline) => normalizeDate(deadline.date) >= today)
+    .sort((a, b) => normalizeDate(a.date).localeCompare(normalizeDate(b.date)))[0];
+}
+
+function eventYear(event) {
+  return event.id?.match(/\d{4}/)?.[0] ?? normalizeDate(event.dates?.start).slice(0,4);
+}
+
+const item = current?.item;
+const isCall = current?.kind === "call";
+const isEvent = current?.kind === "event";
+
+const deadline = isCall ? firstFutureDeadline(item) : null;
+
+const eventHref = isEvent && item.type === "annual_conference"
+  ? `/events/annual-conference/${eventYear(item)}/`
+  : isEvent
+    ? `/events/distinguished-lectureship/${eventYear(item)}/`
+    : "";
+
+const callHref = "/calls/apa-panels-2026/";
+---
+
+{current && (
+  <section class="section next-event">
+    <div>
+      <p class="kicker">{current.label}</p>
+
+      <h2>{isCall ? item.hero.title : item.title}</h2>
+
+      <p class="muted">
+        {isCall && deadline && (
+          <>Next deadline: {deadline.label} · {formatDate(deadline.date)}</>
+        )}
+
+        {isEvent && (
+          <>
+            {formatDate(item.dates.start)}
+            ·
+            {item.location?.venue}
+            ·
+            {item.dates.timezone}
+          </>
+        )}
+      </p>
+    </div>
+
+    <div>
+      <p>{isCall ? item.summary : item.description}</p>
+
+      <p>
+        <a
+          class="button"
+          href={`${import.meta.env.BASE_URL}${isCall ? callHref : eventHref}`}
+        >
+          {isCall ? "View the call for papers" : "View details"}
+        </a>
+      </p>
+    </div>
+  </section>
+)}

@@ -1,5 +1,5 @@
 ---
-import { loadUpcomingEvents, loadLastEvent } from "../lib/events.js";
+import { loadUpcomingEvents, loadLastEvent } from "../lib/content/index.js";
 
 const upcoming = loadUpcomingEvents()[0];
 const event = upcoming ?? loadLastEvent();

@@ -1,0 +1,95 @@
+---
+const { call } = Astro.props;
+
+function normalizeDate(value) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value ?? "");
+}
+
+function formatDate(value) {
+  const dateString = normalizeDate(value);
+  const [year, month, day] = dateString.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+---
+
+<section class="section two-col">
+  <div>
+    <h2>About this call</h2>
+  </div>
+
+  <div>
+    <p>{call.summary}</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Deadlines</h2>
+
+  <div class="card-grid">
+    {call.deadlines.map((deadline) => (
+      <article class="card">
+        <h3>{deadline.label}</h3>
+        <p class="muted">{formatDate(deadline.date)}</p>
+        {deadline.note && <p>{deadline.note}</p>}
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="section two-col">
+  <div>
+    <h2>Eligibility</h2>
+  </div>
+
+  <div>
+    <ul>
+      {call.eligibility.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section class="section two-col">
+  <div>
+    <h2>Submission Instructions</h2>
+  </div>
+
+  <div>
+    <p>
+      Email submissions to
+      <a href={`mailto:${call.submission.contact.email}`}>
+        {call.submission.contact.name}
+      </a>.
+    </p>
+
+    <ul>
+      {call.submission.instructions.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+
+    <div class="callout">
+      Attachments should be prepared for blind review and submitted as
+      {call.submission.attachment.formats.map((format, index) => (
+        <>
+          {index > 0 && index === call.submission.attachment.formats.length - 1 ? " or " : index > 0 ? ", " : " "}
+          .{format}
+        </>
+      ))}
+      .
+      <br /><br />
+      Maximum length: {call.submission.attachment.max_words} words, including footnotes and bibliography.
+      <br /><br />
+      {call.submission.attachment.note}
+    </div>
+  </div>
+</section>

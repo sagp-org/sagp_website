@@ -1,0 +1,24 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import yaml from "js-yaml";
+
+import PageHero from "../../../components/PageHero.astro";
+import SAGPLayout from "../../../layouts/SAGPLayout.astro";
+import CallRenderer from "../../../components/calls/CallRenderer.astro";
+
+const file = path.resolve("content/calls/apa_panels_2026.yaml");
+const data = yaml.load(fs.readFileSync(file, "utf8"));
+const call = data.call;
+---
+
+<SAGPLayout title={`${call.title} | SAGP`}>
+  <PageHero
+    kicker={call.hero.kicker}
+    title={call.hero.title}
+    subtitle={call.hero.subtitle}
+    image="/assets/images/parthenon_night.jpg"
+  />
+
+  <CallRenderer call={call} />
+</SAGPLayout>

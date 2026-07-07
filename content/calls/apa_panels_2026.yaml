@@ -1,0 +1,59 @@
+call:
+  id: apa_panels_2026
+  type: call_for_papers
+  status: active
+
+  title: "SAGP Panels at the American Philosophical Association Meetings"
+
+  summary: >
+    SAGP invites paper submissions for Society-sponsored panels at the
+    American Philosophical Association meetings.
+
+  hero:
+    kicker: "Call for Papers"
+    title: "APA Panels 2026"
+    subtitle: "Submit your work for consideration for SAGP panels at APA meetings."
+
+  deadlines:
+    - label: Eastern APA
+      date: 2026-07-01
+      note: Extended deadline
+
+    - label: Central APA
+      date: 2026-08-01
+
+    - label: Pacific APA
+      date: 2026-08-01
+
+  eligibility:
+    - Current SAGP membership is required.
+    - Authors accepted by SAGP for an APA paper within the previous year should not be considered.
+
+  submission:
+    contact:
+      name: Betsy Jelinek
+      email: elizabeth.jelinek@cnu.edu
+
+    instructions:
+      - Include your name.
+      - Include your academic affiliation.
+      - Include the title of your paper.
+      - Specify Eastern, Central, or Pacific APA.
+      - Include the month and year in which you last paid SAGP membership dues.
+      - Attach the paper prepared for blind review.
+
+    attachment:
+      blind_review: true
+      formats:
+        - docx
+        - rtf
+        - pdf
+      max_words: 3000
+      note: >
+        Submissions of 1000 words or fewer are generally too short to be evaluated effectively.
+
+  related:
+    organizations:
+      - American Philosophical Association
+    event_series:
+      - APA Panels

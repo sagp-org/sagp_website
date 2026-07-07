@@ -2,7 +2,7 @@
 import PageHero from "../../../../components/PageHero.astro";
 import SAGPLayout from "../../../../layouts/SAGPLayout.astro";
 import EventCollection from "../../../../components/events/EventCollection.astro";
-import { loadEvents } from "../../../../lib/events.js";
+import { loadEvents } from "../../../../lib/content/index.js";
 
 const conferences = loadEvents("annual_conference");
 ---

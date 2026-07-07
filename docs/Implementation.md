@@ -1,96 +1,208 @@
-# Implementation of the SAGP Digital Platform
+# SAGP Knowledge Platform Implementation
 
 ## Purpose
 
-This document describes the current software realization of the Constitution
-and Ontology.
+This document describes how the ontology is implemented in software.
 
-Unlike the Constitution and Ontology, this document is expected to evolve
-frequently.
-
----
-
-# Current Architecture
-
-The current platform consists of:
-
-- Astro static website
-- Git repository
-- GitHub Pages deployment
-- YAML knowledge objects
-- AI-assisted content generation
+The implementation exists to publish canonical institutional knowledge while
+maintaining a strict separation between knowledge and presentation.
 
 ---
 
-# Design Philosophy
+# Overall Architecture
 
-The implementation renders scholarly knowledge rather than storing webpages.
+~~~text
+Canonical Knowledge Objects
+        │
+        ▼
+Content Loaders
+        │
+        ▼
+Queries
+        │
+        ▼
+Renderers
+        │
+        ▼
+Pages
+~~~
 
-Knowledge objects are represented independently of presentation.
+Each layer has one responsibility.
 
-Multiple renderers may consume the same underlying knowledge.
+---
+
+# Repository Layout
+
+~~~text
+content/
+    events/
+    calls/
+    governance/
+    people/
+    organizations/
+
+src/
+    components/
+    layouts/
+    lib/
+        content/
+    pages/
+~~~
+
+---
+
+# Canonical Knowledge
+
+Canonical knowledge lives under:
+
+~~~text
+content/
+~~~
+
+Knowledge is represented as structured YAML.
+
+Knowledge objects are authoritative.
+
+No other location should become an independent source of truth.
+
+---
+
+# Content Loaders
+
+Content loaders live in:
+
+~~~text
+src/lib/content/
+~~~
+
+Examples:
+
+- events.js
+- calls.js
+- current.js
+
+Responsibilities include:
+
+- reading YAML
+- parsing YAML
+- normalization
+- sorting
+- simple validation
+
+Loaders do not render presentation.
+
+---
+
+# Queries
+
+Queries answer questions about the knowledge base.
+
+Examples:
+
+- loadEvents()
+- loadLatestEvent()
+- loadUpcomingEvents()
+- loadLastEvent()
+- loadCurrentItem()
+
+Queries represent reusable institutional questions rather than webpage logic.
+
+---
+
+# Renderers
+
+Renderers present ontology objects.
 
 Examples include:
 
-- website
-- printable conference programs
-- posters
-- email announcements
-- future mobile applications
+- EventRenderer
+- EventCollection
+- CallRenderer
+- CurrentItem
+
+Renderers know how to display knowledge.
+
+They do not create knowledge.
 
 ---
 
-# Artificial Intelligence
+# Pages
 
-Artificial intelligence is responsible for assisting in the creation of
-structured knowledge objects.
+Pages compose renderers.
 
-AI should not directly generate webpages.
+A page should contain as little factual information as possible.
 
-Instead, AI should populate objects that conform to the Ontology.
+Instead, pages ask questions such as:
 
----
+- What is the current event?
+- What is the current call?
+- What conferences exist?
+- What lectures exist?
 
-# Future Work
-
-Possible future renderers include:
-
-- conference schedule generator
-- archival search interface
-- membership portal
-- speaker directory
-- digital exhibits
-
+Pages should rarely contain hardcoded institutional facts.
 
 ---
 
-# Canonical and Derived Rendering
+# AI Publishing Pipeline
 
-Renderers faithfully present canonical ontology objects.
+The intended publishing workflow is:
 
-Renderers may additionally compute derived information when it improves the
-user experience.
+~~~text
+Word Document
+PDF
+Email
+Announcement
+        │
+        ▼
+AI Knowledge Extraction
+        │
+        ▼
+Canonical YAML
+        │
+        ▼
+Validation
+        │
+        ▼
+Git Commit
+        │
+        ▼
+Automatic Deployment
+~~~
 
-Examples include:
+The AI should operate primarily on canonical knowledge objects.
 
-- visitor-local time
-- maps
-- driving directions
-- downloadable calendar entries
-- AI-generated summaries
+---
 
-Derived information must always be clearly distinguishable from canonical
-Society information.
+# Single Source of Truth
 
-For example, the website renderer displays:
+The implementation is designed around one engineering principle:
 
-    Saturday, Nov. 15 · 7:00am PST
+**Every institutional fact should have exactly one authoritative
+representation.**
 
-followed by
+Presentation is derived.
 
-    Your local time: 10:00am EST
+Knowledge is canonical.
 
-The first line is canonical.
+---
 
-The second line is derived.
+# Extensibility
+
+Future ontology domains should be added by:
+
+1. defining the ontology object;
+2. creating canonical YAML;
+3. implementing a loader;
+4. implementing a renderer;
+5. composing the renderer into pages.
+
+The architecture should become simpler—not more complex—as the repository grows.
+
+---
+
+Architecture Version: 2.0
+
+July 2026
+
+Knowledge-Centric Architecture
 
