@@ -1,0 +1,52 @@
+# SAGP Event Specification
+# Version: 0.1
+
+event:
+  id: string
+  title: string
+  type: annual_conference | distinguished_lectureship | works_in_progress | symposium | special_event
+  status: draft | upcoming | current | archived
+
+  dates:
+    start: YYYY-MM-DD
+    end: YYYY-MM-DD
+    timezone: string
+
+  location:
+    mode: online | in_person | hybrid
+    venue: string
+    city: string
+    region: string
+    country: string
+    url: string
+
+  description: string
+
+  links:
+    registration: string
+    program: string
+    zoom: string
+
+  sessions:
+    - id: string
+      title: string
+      date: YYYY-MM-DD
+      start_time: HH:MM
+      end_time: HH:MM
+      moderator:
+        name: string
+        institution: string
+
+      presentations:
+        - id: string
+          title: string
+          type: paper | lecture | keynote | response | discussion | panel_contribution
+          presenters:
+            - name: string
+              institution: string
+          abstract: string
+          start_time: HH:MM
+          end_time: HH:MM
+          materials:
+            - label: string
+              url: string
