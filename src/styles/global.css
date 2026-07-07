@@ -733,3 +733,27 @@ h3 {
   z-index: 1000;
 }
 
+
+/* -----------------------------------------
+   Elegant sticky navigation
+----------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(247,243,235,.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition:
+      background .25s ease,
+      box-shadow .25s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(247,243,235,.97);
+  box-shadow: 0 4px 18px rgba(0,0,0,.10);
+}
+

@@ -42,5 +42,16 @@ const base = import.meta.env.BASE_URL;
       <a href={`${base}/contact/`}>Contact</a>
     </p>
   </footer>
+
+  <script>
+    const header = document.querySelector(".site-header");
+
+    function updateHeader() {
+      header?.classList.toggle("scrolled", window.scrollY > 12);
+    }
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader);
+  </script>
 </body>
 </html>
