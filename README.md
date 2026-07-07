@@ -1,43 +1,136 @@
-# Astro Starter Kit: Minimal
+# Society for Ancient Greek Philosophy Website
 
-```sh
-npm create astro@latest -- --template minimal
+This repository contains the official website and digital publishing platform
+for the **Society for Ancient Greek Philosophy (SAGP)**.
+
+The project has two complementary goals:
+
+1. Present the public face of the Society through a modern, accessible website.
+2. Preserve and publish the scholarly life of the Society using a structured,
+   implementation-independent knowledge model.
+
+Although the current implementation uses Astro and GitHub Pages, the project is
+designed so that its underlying knowledge remains independent of any
+particular technology.
+
+---
+
+# Project Philosophy
+
+The repository is organized around three foundational documents.
+
+## Constitution
+
+The Constitution defines the governing principles of the digital platform.
+
+It answers the question:
+
+> **Why does this platform exist?**
+
+---
+
+## Ontology
+
+The Ontology defines the conceptual structure of the Society.
+
+It answers the question:
+
+> **What does the platform know?**
+
+Rather than describing webpages, it defines scholarly entities such as:
+
+- Society
+- Person
+- Event
+- Session
+- Presentation
+
+---
+
+## Implementation
+
+The Implementation describes the current realization of the Constitution and
+Ontology.
+
+It answers the question:
+
+> **How is the platform currently implemented?**
+
+Unlike the Constitution and Ontology, this document is expected to evolve as
+technology changes.
+
+---
+
+# Repository Structure
+
+```
+docs/
+    Constitution.md
+    Ontology.md
+    Implementation.md
+
+src/
+    components/
+    layouts/
+    pages/
+    styles/
+    icons/
+
+public/
+
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+# Development Philosophy
 
-Inside of your Astro project, you'll see the following folders and files:
+The project follows a simple hierarchy.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+Constitution
+      ↓
+Ontology
+      ↓
+Implementation
+      ↓
+Software
+      ↓
+Rendered Artifacts
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Software should always be viewed as an implementation of the Ontology rather
+than the definition of it.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+---
 
-Any static assets, like images, can be placed in the `public/` directory.
+# Future Vision
 
-## 🧞 Commands
+The long-term goal is to support AI-assisted publishing.
 
-All commands are run from the root of the project, from a terminal:
+Rather than generating webpages directly, artificial intelligence systems
+should construct structured scholarly knowledge objects that conform to the
+Ontology.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+These knowledge objects may then be rendered into multiple forms, including:
 
-## 👀 Want to learn more?
+- website pages
+- conference programs
+- schedule posters
+- email announcements
+- archival collections
+- future digital applications
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+# Current Status
+
+The website is currently under active development.
+
+The present implementation focuses on:
+
+- public website
+- conference archive
+- events
+- membership information
+- AI-assisted publishing workflow
+
