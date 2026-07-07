@@ -1,0 +1,15 @@
+governance:
+  id: bylaws
+
+  type: bylaws
+
+  status: current
+
+  title: Bylaws of the Society for Ancient Greek Philosophy
+
+  summary: >
+    The governing bylaws of the Society for Ancient Greek Philosophy.
+
+  last_updated: 2026-03-03
+
+  canonical_document: bylaws.md

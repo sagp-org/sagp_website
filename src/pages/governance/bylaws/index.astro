@@ -1,0 +1,61 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import yaml from "js-yaml";
+import { marked } from "marked";
+
+import SAGPLayout from "../../../layouts/SAGPLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+
+const metadataFile = path.resolve(
+  "content/governance/bylaws/metadata.yaml"
+);
+
+const metadata = yaml.load(fs.readFileSync(metadataFile, "utf8")).governance;
+
+const markdownFile = path.resolve(
+  "content/governance/bylaws",
+  metadata.canonical_document
+);
+
+const html = marked.parse(fs.readFileSync(markdownFile, "utf8"));
+---
+
+<SAGPLayout title={`${metadata.title} | SAGP`}>
+
+<PageHero
+  kicker="Governance"
+  title={metadata.title}
+  subtitle={metadata.summary}
+  image="/assets/images/delphi_treasury.jpg"
+/>
+
+<section class="section">
+  <article class="prose">
+    <Fragment set:html={html} />
+  </article>
+</section>
+
+</SAGPLayout>
+
+<style>
+.prose {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  margin-top: 2rem;
+}
+
+.prose ul {
+  margin-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.8rem;
+}
+</style>
+
