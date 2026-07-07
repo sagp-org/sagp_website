@@ -507,3 +507,160 @@ h3 {
     display: none !important;
   }
 }
+
+/* SVG icon system */
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  color: var(--olive-dark);
+}
+
+.icon svg {
+  width: 54px;
+  height: 54px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brand-mark .icon svg {
+  width: 42px;
+  height: 42px;
+  stroke-width: 3;
+}
+
+.card .icon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: rgba(111, 103, 54, 0.10);
+}
+
+.card .icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+/* Kicker emphasis tuning */
+
+.kicker {
+  font-size: 1.18rem;
+  letter-spacing: 0.16em;
+}
+
+.home-hero .kicker {
+  font-size: 0.95rem;
+}
+
+.membership-icon {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: rgba(111, 103, 54, 0.12);
+}
+
+.membership-icon .icon svg {
+  width: 58px;
+  height: 58px;
+}
+
+/* -------------------------------------------------
+   Next Event refinements
+-------------------------------------------------- */
+
+.next-event-card {
+  display: grid;
+  grid-template-columns: minmax(280px,40%) 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.next-event-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.next-event-kicker .icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.next-event-right {
+  padding-top: 38px;
+}
+
+/* -------------------------------------------------
+   Membership icon sizing
+-------------------------------------------------- */
+
+.membership-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.membership-icon .icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+
+/* Next Event restore/tune */
+
+.next-event {
+  max-width: var(--max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  grid-template-columns: minmax(260px, 40%) 1fr !important;
+  gap: 36px !important;
+}
+
+.next-event > div:first-child {
+  min-height: auto !important;
+}
+
+.next-event h2 {
+  margin-bottom: 10px !important;
+}
+
+.next-event .button {
+  margin-top: 8px;
+}
+
+
+/* Membership section refinement */
+
+.membership-band {
+  display: block !important;
+}
+
+.membership-content {
+  max-width: 760px;
+}
+
+.membership-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.membership-kicker .icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(111, 103, 54, 0.12);
+}
+
+.membership-kicker .icon svg {
+  width: 26px;
+  height: 26px;
+}
+

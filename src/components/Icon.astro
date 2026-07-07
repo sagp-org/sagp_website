@@ -1,0 +1,41 @@
+---
+const { name, class: className = "" } = Astro.props;
+---
+
+<span class={`icon icon-${name} ${className}`} aria-hidden="true">
+  {name === "column" && (
+    <svg viewBox="0 0 64 64">
+      <path d="M16 12h32M20 18h24M24 18v34M32 18v34M40 18v34M18 52h28M14 58h36" />
+      <path d="M22 12c0-4 4-6 10-6s10 2 10 6" />
+    </svg>
+  )}
+
+  {name === "calendar" && (
+    <svg viewBox="0 0 64 64">
+      <rect x="14" y="16" width="36" height="36" rx="3" />
+      <path d="M22 10v10M42 10v10M14 26h36" />
+    </svg>
+  )}
+
+  {name === "laurel" && (
+    <svg viewBox="0 0 64 64">
+      <path d="M20 50c-5-8-5-20 2-30M44 50c5-8 5-20-2-30" />
+      <path d="M22 40c-7 0-10-5-10-5s6-3 11 1M24 30c-7-2-8-8-8-8s7-1 10 4M42 40c7 0 10-5 10-5s-6-3-11 1M40 30c7-2 8-8 8-8s-7-1-10 4" />
+    </svg>
+  )}
+
+  {name === "podium" && (
+    <svg viewBox="0 0 64 64">
+      <path d="M24 24h16v28H24zM18 52h28M20 20h24M26 14h12" />
+      <path d="M24 24c-6 0-10 4-10 10M40 24c6 0 10 4 10 10" />
+    </svg>
+  )}
+
+  {name === "scroll" && (
+    <svg viewBox="0 0 64 64">
+      <path d="M20 14h30v34c0 5-4 8-8 8H18" />
+      <path d="M20 14c-5 0-8 4-8 8v26c0 4 3 8 8 8s8-4 8-8V22c0-4-3-8-8-8z" />
+      <path d="M32 24h12M32 34h12M32 44h8" />
+    </svg>
+  )}
+</span>

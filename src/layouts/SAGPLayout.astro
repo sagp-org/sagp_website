@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Icon from "../components/Icon.astro";
 
 const { title = "Society for Ancient Greek Philosophy" } = Astro.props;
 const base = import.meta.env.BASE_URL;
@@ -15,7 +16,7 @@ const base = import.meta.env.BASE_URL;
 <body>
   <header class="site-header">
     <a class="brand" href={base}>
-      <div class="brand-mark">Σ</div>
+      <div class="brand-mark"><Icon name="column" /></div>
       <div class="brand-text">
         <div class="brand-acronym">SAGP</div>
         <div class="brand-name">Society for Ancient<br />Greek Philosophy</div>
