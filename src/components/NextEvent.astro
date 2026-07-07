@@ -1,21 +1,77 @@
-<section class="section next-event">
-  <div>
-    <p class="kicker">Upcoming Event</p>
-    <h2>Annual Conference 2025</h2>
-    <p class="muted">
-      November 15–16, 2025 · via Zoom · Pacific Standard Time
-    </p>
-  </div>
+---
+import { loadUpcomingEvents, loadLastEvent } from "../lib/events.js";
 
-  <div>
-    <p>
-      The 2025 SAGP Annual Conference includes sessions on Plato, Aristotle,
-      Presocratic ontology, and Stoic epistemology.
-    </p>
-    <p>
-      <a class="button" href={`${import.meta.env.BASE_URL}/events/annual-conference/2025/`}>
-        View the conference program
-      </a>
-    </p>
-  </div>
-</section>
+const upcoming = loadUpcomingEvents()[0];
+const event = upcoming ?? loadLastEvent();
+const label = upcoming ? "Upcoming Event" : "Last Event";
+
+function normalizeDate(value) {
+  if (value instanceof Date) return value.toISOString().slice(0,10);
+  return String(value);
+}
+
+function formatRange(start, end) {
+  const s = new Date(normalizeDate(start) + "T00:00:00");
+  const e = new Date(normalizeDate(end) + "T00:00:00");
+
+  if (normalizeDate(start) === normalizeDate(end)) {
+    return s.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
+
+  return `${s.toLocaleDateString("en-US", { month: "long", day: "numeric" })}–${e.toLocaleDateString("en-US", { day: "numeric", year: "numeric" })}`;
+}
+
+function eventYear(event) {
+  return event.id?.match(/\d{4}/)?.[0] ?? normalizeDate(event.dates?.start).slice(0,4);
+}
+
+const presentation = event?.sessions?.[0]?.presentations?.[0];
+
+const href = event?.type === "annual_conference"
+  ? `/events/annual-conference/${eventYear(event)}/`
+  : `/events/distinguished-lectureship/${eventYear(event)}/`;
+
+const button = event?.type === "annual_conference"
+  ? "View the conference program"
+  : "View the lecture";
+
+const title = event?.type === "annual_conference"
+  ? event.title
+  : event?.hero?.title;
+
+const description = event?.type === "annual_conference"
+  ? event.description
+  : presentation?.title;
+---
+
+{event && (
+  <section class="section next-event">
+    <div>
+      <p class="kicker">{label}</p>
+
+      <h2>{title}</h2>
+
+      <p class="muted">
+        {formatRange(event.dates.start, event.dates.end)}
+        ·
+        {event.location?.venue}
+        ·
+        {event.dates.timezone}
+      </p>
+    </div>
+
+    <div>
+      <p>{description}</p>
+
+      <p>
+        <a class="button" href={`${import.meta.env.BASE_URL}${href}`}>
+          {button}
+        </a>
+      </p>
+    </div>
+  </section>
+)}

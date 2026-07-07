@@ -1,0 +1,61 @@
+event:
+  id: distinguished-lectureship-2024
+  title: 2024 Distinguished Lectureship
+  type: distinguished_lectureship
+  status: completed
+
+  hero:
+    kicker: 2024 Distinguished Lectureship
+    title: Professor Sir Geoffrey Lloyd
+    subtitle: "“What is the Use of Ancient Philosophy?”"
+    image: /assets/images/parthenon_night.jpg
+
+  description: >
+    Professor Sir Geoffrey Lloyd is Emeritus Professor of Ancient Philosophy
+    and Science at the University of Cambridge.
+
+  attendance:
+    instructions: >
+      This event was held via Zoom.
+
+  dates:
+    start: 2025-01-15
+    end: 2025-01-15
+    timezone: EST
+    timezone_iana: America/New_York
+
+  location:
+    mode: online
+    venue: Zoom
+
+  sessions:
+    - id: distinguished-lecture
+      title: Distinguished Lecture
+      date: 2025-01-15
+      start_time: "12:00"
+      timezone: EST
+      timezone_iana: America/New_York
+
+      presentations:
+        - id: use-of-ancient-philosophy
+          type: lecture
+
+          title: "What is the Use of Ancient Philosophy?"
+
+          presenters:
+            - name: Professor Sir Geoffrey Lloyd
+              institution: University of Cambridge
+
+          commentator:
+            name: Brad Inwood
+            institution: Yale University
+            title: William Lampson Professor of Philosophy and Classics
+
+          abstract: >
+            Despite the obvious differences between social anthropology and the
+            study of antiquity, Lloyd argues that anthropology provides an
+            important model for getting the most out of ancient philosophy and
+            science.
+
+            The lecture considers how comparative approaches challenge
+            assumptions about nature, univocity, proof, and mind/body dualism.

@@ -62,14 +62,27 @@ function sessionIso(session) {
     <p>{event.description}</p>
   </div>
 
-  {presentation?.commentator && (
+  {(presentation?.commentator || presentation?.commentators?.length > 0) && (
     <div class="lecture-commentator">
-      <p class="kicker">Commentator</p>
-      <p>
-        <strong>{presentation.commentator.name}</strong>
-        {presentation.commentator.title && `, ${presentation.commentator.title}`}
-        {presentation.commentator.institution && `, ${presentation.commentator.institution}`}
+      <p class="kicker">
+        {presentation.commentators?.length > 1 ? "Commentators" : "Commentator"}
       </p>
+
+      {presentation.commentator && (
+        <p>
+          <strong>{presentation.commentator.name}</strong>
+          {presentation.commentator.title && `, ${presentation.commentator.title}`}
+          {presentation.commentator.institution && `, ${presentation.commentator.institution}`}
+        </p>
+      )}
+
+      {presentation.commentators?.map((commentator) => (
+        <p>
+          <strong>{commentator.name}</strong>
+          {commentator.title && `, ${commentator.title}`}
+          {commentator.institution && `, ${commentator.institution}`}
+        </p>
+      ))}
     </div>
   )}
 

@@ -2,21 +2,20 @@
 const { event } = Astro.props;
 
 function normalizeDate(value) {
-  if (value instanceof Date) {
-    return value.toISOString().slice(0, 10);
-  }
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
   return String(value);
 }
 
-function formatDate(value) {
+function formatDate(value, style = "short") {
   const dateString = normalizeDate(value);
   const [year, month, day] = dateString.split("-").map(Number);
   const date = new Date(Date.UTC(year, month - 1, day));
 
   return date.toLocaleDateString("en-US", {
     weekday: "long",
-    month: "short",
+    month: style === "long" ? "long" : "short",
     day: "numeric",
+    year: style === "long" ? "numeric" : undefined,
     timeZone: "UTC",
   });
 }
@@ -32,13 +31,36 @@ function formatTime(timeString) {
 }
 
 function formatSessionTime(session) {
-  return `${formatDate(session.date)} · ${formatTime(session.start_time)} ${session.timezone}`;
+  return `${formatTime(session.start_time)} ${session.timezone}`;
 }
 
 function sessionIso(session) {
   const date = normalizeDate(session.date);
   return `${date}T${session.start_time}:00`;
 }
+
+function groupSessionsByDate(sessions = []) {
+  const grouped = new Map();
+
+  [...sessions]
+    .sort((a, b) => {
+      const da = `${normalizeDate(a.date)} ${a.start_time || ""}`;
+      const db = `${normalizeDate(b.date)} ${b.start_time || ""}`;
+      return da.localeCompare(db);
+    })
+    .forEach((session) => {
+      const key = normalizeDate(session.date);
+      if (!grouped.has(key)) grouped.set(key, []);
+      grouped.get(key).push(session);
+    });
+
+  return Array.from(grouped.entries()).map(([date, sessions]) => ({
+    date,
+    sessions,
+  }));
+}
+
+const days = groupSessionsByDate(event.sessions);
 ---
 
 <section class="section two-col">
@@ -55,77 +77,67 @@ function sessionIso(session) {
 </section>
 
 <section class="section">
-  <h2>Program</h2>
+  <h2>Conference Schedule</h2>
 
-  <div class="card-grid">
-    {event.sessions.map((session) => (
-      <article class="card">
-        {session.display_title ? (
-          <h3 set:html={session.display_title} />
-        ) : (
-          <h3>{session.title}</h3>
-        )}
+  {days.map((day) => (
+    <section class="conference-day">
+      <h3>{formatDate(day.date, "long")}</h3>
 
-        <p class="muted">{formatSessionTime(session)}</p>
+      <div class="conference-day-grid">
+        {day.sessions.map((session) => (
+          <article class="card">
+            {session.display_title ? (
+              <h3 set:html={session.display_title} />
+            ) : (
+              <h3>{session.title}</h3>
+            )}
 
-        {session.timezone_iana && (
-          <p
-            class="muted local-time"
-            data-date-time={sessionIso(session)}
-            data-time-zone={session.timezone_iana}
-          >
-            Local time will appear here.
-          </p>
-        )}
+            <p class="muted">{formatSessionTime(session)}</p>
 
-        {session.theme && (
-          <p>
-            <strong>Theme:</strong><br />
-            {session.theme}
-          </p>
-        )}
+            {session.timezone_iana && (
+              <p
+                class="muted local-time"
+                data-date-time={sessionIso(session)}
+                data-time-zone={session.timezone_iana}
+              >
+                Local time will appear here.
+              </p>
+            )}
 
-        {session.moderator && (
-          <p>
-            <strong>Moderator:</strong> {session.moderator.name}
-            {session.moderator.institution && `, ${session.moderator.institution}`}
-          </p>
-        )}
+            {session.theme && (
+              <p>
+                <strong>Theme:</strong><br />
+                {session.theme}
+              </p>
+            )}
 
-        <ul>
-          {session.presentations.map((presentation) => (
-            <li>
-              {presentation.presenters?.map((p, index) => (
-                <>
-                  {index > 0 && "; "}
-                  {p.name}
-                  {p.institution && `, ${p.institution}`}
-                </>
+            {session.moderator && (
+              <p>
+                <strong>Moderator:</strong> {session.moderator.name}
+                {session.moderator.institution && `, ${session.moderator.institution}`}
+              </p>
+            )}
+
+            <ul>
+              {session.presentations.map((presentation) => (
+                <li>
+                  {presentation.presenters?.map((p, index) => (
+                    <>
+                      {index > 0 && "; "}
+                      {p.name}
+                      {p.institution && `, ${p.institution}`}
+                    </>
+                  ))}
+                  {" — "}
+                  “{presentation.title}”
+                </li>
               ))}
-              {" — "}
-              “{presentation.title}”
-
-              {presentation.commentator && (
-                <div class="presentation-detail">
-                  <strong>Commentator:</strong>{" "}
-                  {presentation.commentator.name}
-                  {presentation.commentator.title && `, ${presentation.commentator.title}`}
-                  {presentation.commentator.institution && `, ${presentation.commentator.institution}`}
-                </div>
-              )}
-
-              {presentation.abstract && (
-                <div class="presentation-abstract">
-                  <strong>Abstract:</strong>
-                  <p>{presentation.abstract}</p>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </article>
-    ))}
-  </div>
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
 </section>
 
 <section class="section two-col">
@@ -136,9 +148,9 @@ function sessionIso(session) {
   <div>
     <p>
       SAGP welcomes participants from around the world. The Society publishes
-      its official schedule in <strong>Pacific Standard Time (PST)</strong>.
-      For your convenience, this page also displays the corresponding time in
-      your local time zone.
+      its official schedule in <strong>{event.dates.timezone}</strong>. For your
+      convenience, this page also displays the corresponding time in your local
+      time zone.
     </p>
 
     <div class="callout">
@@ -149,20 +161,6 @@ function sessionIso(session) {
     </div>
   </div>
 </section>
-
-{event.notes?.length > 0 && (
-  <section class="section two-col">
-    <div>
-      <h2>Additional Notes</h2>
-    </div>
-
-    <div>
-      {event.notes.map((note) => (
-        <p>{note}</p>
-      ))}
-    </div>
-  </section>
-)}
 
 <script>
   function getOffsetMinutes(date, timeZone) {

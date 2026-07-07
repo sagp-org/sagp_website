@@ -1,0 +1,59 @@
+event:
+  id: distinguished-lectureship-2023
+  title: 2023 Distinguished Lectureship
+  type: distinguished_lectureship
+  status: completed
+
+  hero:
+    kicker: 2023 Distinguished Lectureship
+    title: Tony Long
+    subtitle: "“The Stoic Zeus and the Values of Nature”"
+    image: /assets/images/parthenon_night.jpg
+
+  description: >
+    Tony Long is Chancellor’s Distinguished Professor Emeritus of Classics and
+    Affiliated Professor of Philosophy at the University of California, Berkeley.
+
+  attendance:
+    instructions: >
+      This lecture was rescheduled from 2023 and held via Zoom.
+
+  dates:
+    start: 2024-03-12
+    end: 2024-03-12
+    timezone: Eastern
+    timezone_iana: America/New_York
+
+  location:
+    mode: online
+    venue: Zoom
+
+  sessions:
+    - id: distinguished-lecture
+      title: Distinguished Lecture
+      date: 2024-03-12
+      start_time: "12:00"
+      timezone: Eastern
+      timezone_iana: America/New_York
+
+      presentations:
+        - id: stoic-zeus-and-values-of-nature
+          type: lecture
+          title: "The Stoic Zeus and the Values of Nature"
+          presenters:
+            - name: Tony Long
+              institution: University of California, Berkeley
+          commentators:
+            - name: Tad Brennan
+              institution: Cornell University
+            - name: Gretchen Reydams-Schils
+              institution: University of Notre Dame
+          abstract: >
+            The founders of Stoicism applied a range of terms to the world’s
+            active principle, including god, nature, cause, reason, fate, and
+            necessity.
+
+            Long examines the conceptual relationship between these
+            designations, especially that between nature and Zeus, and considers
+            Chrysippus’s claim that Zeus and universal nature are the foundation
+            of justice and ethical theory.

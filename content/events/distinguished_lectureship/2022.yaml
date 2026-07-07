@@ -1,0 +1,58 @@
+event:
+  id: distinguished-lectureship-2022
+  title: 2022 Distinguished Lectureship
+  type: distinguished_lectureship
+  status: completed
+
+  hero:
+    kicker: 2022 Distinguished Lectureship
+    title: Dorothea Frede
+    subtitle: "“Aristotle’s ‘Political Architect’ and the City of His Prayers”"
+    image: /assets/images/parthenon_night.jpg
+
+  description: >
+    Dorothea Frede is Professor Emerita of Philosophy at Hamburg University.
+
+  attendance:
+    instructions: >
+      This event was held via Zoom.
+
+  dates:
+    start: 2022-12-16
+    end: 2022-12-16
+    timezone: EDT
+    timezone_iana: America/New_York
+
+  location:
+    mode: online
+    venue: Zoom
+
+  sessions:
+    - id: distinguished-lecture
+      title: Distinguished Lecture
+      date: 2022-12-16
+      start_time: "13:00"
+      end_time: "15:00"
+      timezone: EDT
+      timezone_iana: America/New_York
+
+      presentations:
+        - id: aristotles-political-architect
+          type: lecture
+          title: "Aristotle’s ‘Political Architect’ and the City of His Prayers"
+          presenters:
+            - name: Dorothea Frede
+              institution: Hamburg University
+          commentators:
+            - name: Melissa Lane
+              institution: Princeton University
+            - name: James Warren
+              institution: University of Cambridge
+          abstract: >
+            At the beginning of the Nicomachean Ethics, Aristotle invokes the
+            need for a master-science that determines the good human life in a
+            community by providing for its order and laws.
+
+            Frede examines legislation, its role in Aristotle’s ethical and
+            political thought, and its compatibility with Aristotle’s apparent
+            preference for a theoretical form of life.

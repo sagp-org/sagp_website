@@ -1,0 +1,60 @@
+event:
+  id: distinguished-lectureship-2021
+  title: 2021 Distinguished Lectureship
+  type: distinguished_lectureship
+  status: completed
+
+  hero:
+    kicker: 2021 Distinguished Lectureship
+    title: David Sedley
+    subtitle: "“Divine Anonymity”"
+    image: /assets/images/parthenon_night.jpg
+
+  description: >
+    David Sedley is Emeritus Laurence Professor of Ancient Philosophy at the
+    University of Cambridge.
+
+  attendance:
+    instructions: >
+      This event was held via Zoom.
+
+  dates:
+    start: 2021-10-30
+    end: 2021-10-30
+    timezone: EDT
+    timezone_iana: America/New_York
+
+  location:
+    mode: online
+    venue: Zoom
+
+  sessions:
+    - id: distinguished-lecture
+      title: Distinguished Lecture
+      date: 2021-10-30
+      start_time: "11:00"
+      end_time: "13:00"
+      timezone: EDT
+      timezone_iana: America/New_York
+
+      presentations:
+        - id: divine-anonymity
+          type: lecture
+          title: "Divine Anonymity"
+          presenters:
+            - name: David Sedley
+              institution: University of Cambridge
+          commentators:
+            - name: Rachel Barney
+              institution: University of Toronto
+            - name: Alex Long
+              institution: University of St. Andrews
+          abstract: >
+            In Greek usage one is at liberty to refer to or address a divinity
+            without naming it. Sedley argues that a philosophical tradition
+            running from Xenophanes to Aristotle, and prominently including
+            Socrates, went well beyond that permissive practice, keeping gods
+            systematically anonymous.
+
+            The reason was not a leaning toward monotheism, but respect for the
+            moral homogeneity of the divine.

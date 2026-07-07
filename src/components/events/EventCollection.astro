@@ -1,0 +1,60 @@
+---
+const { events, basePath, label = "event" } = Astro.props;
+
+function firstPresentation(event) {
+  return event.sessions?.[0]?.presentations?.[0];
+}
+
+function eventTitle(event) {
+  return event.title ?? "";
+}
+
+function detailLine(event) {
+  const presentation = firstPresentation(event);
+
+  if (event.type === "distinguished_lectureship") {
+    return presentation?.title ?? event.hero?.subtitle ?? "";
+  }
+
+  return event.subtitle ?? event.hero?.title ?? "";
+}
+
+function speakerName(event) {
+  return firstPresentation(event)?.presenters?.[0]?.name ?? event.hero?.title ?? "";
+}
+
+function heading(event) {
+  if (event.type === "distinguished_lectureship") {
+    return `${pageYear(event)} · ${speakerName(event)}`;
+  }
+
+  return eventTitle(event);
+}
+
+function normalizeDate(value) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value ?? "");
+}
+
+function pageYear(event) {
+  return event.id?.match(/\d{4}/)?.[0] ?? normalizeDate(event.dates?.start).slice(0, 4);
+}
+---
+
+<div class="card-grid">
+  {events.filter(Boolean).map((event) => (
+    <article class="card">
+      <h3>{heading(event)}</h3>
+
+      {detailLine(event) && (
+        <p><em>“{detailLine(event)}”</em></p>
+      )}
+
+      <p>
+        <a href={`${import.meta.env.BASE_URL}${basePath}/${pageYear(event)}/`}>
+          View the {pageYear(event)} {label} →
+        </a>
+      </p>
+    </article>
+  ))}
+</div>
