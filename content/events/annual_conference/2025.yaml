@@ -30,9 +30,6 @@ event:
     country:
     url:
 
-  notes:
-    - All times are Pacific Standard Time.
-    - Time-zone conversion information should be included for international participants.
 
   hero:
     kicker: Annual Conference 2025

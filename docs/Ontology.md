@@ -140,3 +140,22 @@ The first three fields represent the Society's published schedule.
 The IANA time-zone identifier exists to permit renderers to compute derived
 local times for visitors while preserving the Society's canonical schedule.
 
+
+---
+
+# Event Type and Rendering
+
+Each Event has a `type` field identifying its semantic category.
+
+Examples include:
+
+- `annual_conference`
+- `distinguished_lectureship`
+- `works_in_progress`
+
+The `type` field helps renderers choose an appropriate presentation for the
+same underlying Event → Session → Presentation structure.
+
+AI systems generating Event knowledge objects should assign the correct
+semantic type, but should not make visual presentation decisions.
+

@@ -1,0 +1,181 @@
+---
+const { event } = Astro.props;
+const session = event.sessions?.[0];
+const presentation = session?.presentations?.[0];
+
+function normalizeDate(value) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value);
+}
+
+function formatDate(value) {
+  const [year, month, day] = normalizeDate(value).split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+function formatTime(timeString) {
+  if (!timeString) return "";
+  const [hour, minute] = String(timeString).split(":").map(Number);
+  const hour12 = hour % 12 || 12;
+  const ampm = hour < 12 ? "am" : "pm";
+  return `${hour12}:${String(minute).padStart(2, "0")}${ampm}`;
+}
+
+function sessionIso(session) {
+  const date = normalizeDate(session.date);
+  return `${date}T${session.start_time}:00`;
+}
+---
+
+<section class="section lecture-feature">
+  <p class="kicker">Distinguished Lecture</p>
+
+  <h2>{presentation?.presenters?.[0]?.name}</h2>
+
+  <p class="lecture-title">
+    “{presentation?.title}”
+  </p>
+
+  <p class="muted">
+    {formatDate(session.date)} · {formatTime(session.start_time)} {session.timezone}
+  </p>
+
+  {session.timezone_iana && (
+    <p
+      class="muted local-time"
+      data-date-time={sessionIso(session)}
+      data-time-zone={session.timezone_iana}
+    >
+      Local time will appear here.
+    </p>
+  )}
+
+  <div class="lecture-bio">
+    <p>{event.description}</p>
+  </div>
+
+  {presentation?.commentator && (
+    <div class="lecture-commentator">
+      <p class="kicker">Commentator</p>
+      <p>
+        <strong>{presentation.commentator.name}</strong>
+        {presentation.commentator.title && `, ${presentation.commentator.title}`}
+        {presentation.commentator.institution && `, ${presentation.commentator.institution}`}
+      </p>
+    </div>
+  )}
+
+  {event.attendance?.instructions && (
+    <div class="callout">
+      {event.attendance.instructions}
+    </div>
+  )}
+</section>
+
+{presentation?.abstract && (
+  <section class="section two-col">
+    <div>
+      <h2>Abstract</h2>
+    </div>
+    <div>
+      <p>{presentation.abstract}</p>
+    </div>
+  </section>
+)}
+
+<section class="section two-col">
+  <div>
+    <h2>Time Zones</h2>
+  </div>
+
+  <div>
+    <p>
+      SAGP welcomes participants from around the world. The Society publishes
+      its official schedule in <strong>{session.timezone}</strong>. For your
+      convenience, this page also displays the corresponding time in your local
+      time zone.
+    </p>
+
+    <div class="callout">
+      Please verify that your device is configured for your local time zone,
+      particularly if you are traveling or using a VPN.
+      <br /><br />
+      <strong>The official Society schedule remains the authoritative reference.</strong>
+    </div>
+  </div>
+</section>
+
+<script>
+  function getOffsetMinutes(date, timeZone) {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      hour12: false,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }).formatToParts(date);
+
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+
+    const asUtc = Date.UTC(
+      Number(values.year),
+      Number(values.month) - 1,
+      Number(values.day),
+      Number(values.hour),
+      Number(values.minute),
+      Number(values.second)
+    );
+
+    return (asUtc - date.getTime()) / 60000;
+  }
+
+  function zonedTimeToUtc(dateTimeString, timeZone) {
+    const [datePart, timePart] = dateTimeString.split("T");
+    const [year, month, day] = datePart.split("-").map(Number);
+    const [hour, minute, second] = timePart.split(":").map(Number);
+
+    const utcGuess = new Date(Date.UTC(year, month - 1, day, hour, minute, second || 0));
+    const offset = getOffsetMinutes(utcGuess, timeZone);
+
+    return new Date(utcGuess.getTime() - offset * 60000);
+  }
+
+  function formatLocalTime(date) {
+    const timeZoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    return new Intl.DateTimeFormat("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      timeZoneName: "short",
+      timeZone: timeZoneName,
+    }).format(date);
+  }
+
+  document.querySelectorAll(".local-time").forEach((element) => {
+    const dateTime = element.dataset.dateTime;
+    const sourceZone = element.dataset.timeZone;
+
+    if (!dateTime || !sourceZone) return;
+
+    try {
+      const instant = zonedTimeToUtc(dateTime, sourceZone);
+      element.textContent = `Your local time: ${formatLocalTime(instant)}`;
+    } catch {
+      element.remove();
+    }
+  });
+</script>

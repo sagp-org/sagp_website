@@ -4,10 +4,10 @@ import path from "node:path";
 import yaml from "js-yaml";
 
 import PageHero from "../../../../components/PageHero.astro";
-import EventProgram from "../../../../components/EventProgram.astro";
+import EventRenderer from "../../../../components/events/EventRenderer.astro";
 import SAGPLayout from "../../../../layouts/SAGPLayout.astro";
 
-const file = path.resolve("content/events/annual_conference_2025.yaml");
+const file = path.resolve("content/events/annual_conference/2025.yaml");
 const data = yaml.load(fs.readFileSync(file, "utf8"));
 const event = data.event;
 ---
@@ -20,5 +20,5 @@ const event = data.event;
     image={event.hero.image}
   />
 
-  <EventProgram event={event} />
+  <EventRenderer event={event} />
 </SAGPLayout>

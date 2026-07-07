@@ -1,0 +1,10 @@
+---
+import AnnualConference from "./AnnualConference.astro";
+import DistinguishedLecture from "./DistinguishedLecture.astro";
+
+const { event } = Astro.props;
+---
+
+{event.type === "annual_conference" && <AnnualConference event={event} />}
+
+{event.type === "distinguished_lectureship" && <DistinguishedLecture event={event} />}

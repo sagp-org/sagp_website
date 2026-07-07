@@ -937,3 +937,48 @@ h3 {
   border-radius: 0 !important;
 }
 
+
+.presentation-detail {
+  margin-top: 8px;
+}
+
+.presentation-abstract {
+  margin-top: 10px;
+}
+
+.presentation-abstract p {
+  margin-top: 6px;
+}
+
+
+/* Distinguished Lectureship renderer */
+
+.lecture-feature {
+  max-width: 980px;
+}
+
+.lecture-feature h2 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  margin-bottom: 18px;
+}
+
+.lecture-title {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.25;
+  max-width: 900px;
+  margin-bottom: 22px;
+}
+
+.lecture-bio {
+  max-width: 780px;
+  margin-top: 36px;
+  font-size: 1.12rem;
+}
+
+.lecture-commentator {
+  margin-top: 38px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(40, 35, 29, 0.16);
+  max-width: 780px;
+}
+

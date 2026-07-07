@@ -1,0 +1,186 @@
+event:
+  id: annual-conference-2024
+  title: Annual Conference 2024
+  subtitle: Pre-Socratics, Plato, Aristotle, and the Stoics.
+  type: annual_conference
+  status: archived
+
+  hero:
+    kicker: Annual Conference 2024
+    title: Pre-Socratics, Plato, Aristotle, and the Stoics.
+    subtitle: November 16–17, 2024 · via Zoom · All times listed in Pacific Standard Time.
+    image: /assets/images/parthenon_night.jpg
+
+  description: >
+    The 2024 Annual Conference explored four major areas of Ancient Greek
+    philosophy through themed panel discussions bringing together scholars
+    from universities around the world.
+
+  attendance:
+    instructions: >
+      To attend via Zoom, contact apreus@binghamton.edu, indicating which
+      session or sessions you wish to attend.
+    contact_email: apreus@binghamton.edu
+
+  dates:
+    start: 2024-11-16
+    end: 2024-11-17
+    timezone: PST
+    timezone_iana: America/Los_Angeles
+
+  location:
+    mode: online
+    venue: Zoom
+    city:
+    region:
+    country:
+    url:
+
+
+  sessions:
+
+    - id: panel-on-the-pre-socratics
+      title: Panel on the Pre-Socratics
+      date: 2024-11-16
+      start_time: "07:00"
+      end_time:
+      timezone: PST
+      timezone_iana: America/Los_Angeles
+      theme: Rethinking the Presocratic Philosophers
+      moderator:
+        name: Daniel W. Graham
+        institution: Brigham Young University (Emeritus)
+      presentations:
+        - id: xenophanes-of-colophon
+          title: "Xenophanes of Colophon: Iconoclast in Religion, Ionian Physicalist, and Dualist in Cosmology"
+          type: paper
+          presenters:
+            - name: Alexander P. D. Mourelatos
+              institution: The University of Texas at Austin
+
+        - id: eleatic-revolution-in-philosophy-and-science
+          title: The Eleatic Revolution in Philosophy and Science
+          type: paper
+          presenters:
+            - name: Daniel W. Graham
+              institution:
+
+        - id: introducing-philolaus
+          title: Introducing Philolaus
+          type: paper
+          presenters:
+            - name: Richard D. McKirahan
+              institution: Pomona College
+
+    - id: panel-on-socrates-and-plato
+      title: Panel on Socrates and Plato
+      date: 2024-11-16
+      start_time: "11:00"
+      end_time:
+      timezone: PST
+      timezone_iana: America/Los_Angeles
+      theme: Plato on the Non-Ideal
+      moderator:
+        name: James Warren
+        institution: University of Cambridge
+      presentations:
+        - id: platos-metaphors-as-toy-scale-and-idealized-models
+          title: "Plato's Metaphors as Toy, Scale, and Idealized Models"
+          type: paper
+          presenters:
+            - name: Mariana Beatriz Noé
+              institution: Harvard University
+
+        - id: imperfect-forms-of-friendships-in-plato
+          title: "Imperfect (Forms of) Friendships in Plato"
+          type: paper
+          presenters:
+            - name: Dimitri El-Murr
+              institution: École Normale Supérieure
+
+        - id: lack-of-motivation-to-inquire
+          title: Lack of Motivation to Inquire
+          type: paper
+          presenters:
+            - name: Patricia Marechal
+              institution: University of California, San Diego
+
+        - id: platos-pistis
+          title: "Plato's Pistis"
+          type: paper
+          presenters:
+            - name: Jessica Moss
+              institution: New York University
+
+    - id: panel-on-aristotle
+      title: Panel on Aristotle
+      date: 2024-11-17
+      start_time: "07:00"
+      end_time:
+      timezone: PST
+      timezone_iana: America/Los_Angeles
+      theme: Principles of Substance in Aristotle's Metaphysics
+      moderator:
+        name: Christof Rapp
+        institution: Ludwig-Maximilians-Universität München
+      presentations:
+        - id: introduction-principles-of-substance
+          title: "Introduction: Principles of Substance"
+          type: paper
+          presenters:
+            - name: Christof Rapp
+              institution:
+
+        - id: why-aristotle-rejects-mathematical-principles
+          title: Why Aristotle Rejects Mathematical Principles?
+          type: paper
+          presenters:
+            - name: Emily Katz
+              institution: Michigan State University
+
+        - id: aristotles-search-for-principles-in-metaphysics-lambda
+          title: Aristotle's Search for Principles in Metaphysics Lambda
+          type: paper
+          presenters:
+            - name: Samuel Meister
+              institution: University of Geneva
+
+        - id: being-and-its-causes-in-the-middle-books
+          title: Being and its Causes in the Middle Books of the Metaphysics
+          type: paper
+          presenters:
+            - name: Christian Pfeiffer
+              institution: University of Toronto
+
+    - id: panel-on-post-aristotelian-philosophy
+      title: Panel on Post-Aristotelian Philosophy
+      date: 2024-11-17
+      start_time: "11:00"
+      end_time:
+      timezone: PST
+      timezone_iana: America/Los_Angeles
+      theme: Stoic Ontology
+      moderator:
+        name: Ricardo Salles
+        institution: Universidad Nacional Autónoma de México
+      presentations:
+        - id: timaeus-and-stoic-ontology
+          title: The Timaeus and Stoic Ontology
+          type: paper
+          presenters:
+            - name: David Sedley
+              institution: University of Cambridge
+
+        - id: making-sense-of-stoic-fictional-entities
+          title: Making Sense of Stoic Fictional Entities
+          type: paper
+          presenters:
+            - name: Marion Durand
+              institution: University of Oxford
+
+        - id: notes-on-ontology-of-stoic-propositions
+          title: Some Notes on the Ontology of Stoic Propositions
+          type: paper
+          presenters:
+            - name: Susanne Bobzien
+              institution: University of Oxford
