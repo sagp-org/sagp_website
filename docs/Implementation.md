@@ -61,3 +61,36 @@ Possible future renderers include:
 - speaker directory
 - digital exhibits
 
+
+---
+
+# Canonical and Derived Rendering
+
+Renderers faithfully present canonical ontology objects.
+
+Renderers may additionally compute derived information when it improves the
+user experience.
+
+Examples include:
+
+- visitor-local time
+- maps
+- driving directions
+- downloadable calendar entries
+- AI-generated summaries
+
+Derived information must always be clearly distinguishable from canonical
+Society information.
+
+For example, the website renderer displays:
+
+    Saturday, Nov. 15 · 7:00am PST
+
+followed by
+
+    Your local time: 10:00am EST
+
+The first line is canonical.
+
+The second line is derived.
+

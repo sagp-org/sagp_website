@@ -67,3 +67,27 @@ The Ontology defines the conceptual model.
 
 The Implementation defines the current realization of that model.
 
+
+---
+
+# Article V — Canonical and Derived Knowledge
+
+The digital platform distinguishes between **canonical knowledge** and
+**derived knowledge**.
+
+Canonical knowledge consists of information explicitly asserted by the Society
+and recorded within the Ontology.
+
+Derived knowledge consists of information computed deterministically from
+canonical knowledge.
+
+Derived knowledge:
+
+- must be reproducible from canonical knowledge;
+- must remain traceable to its canonical source;
+- must never silently replace or reinterpret canonical information; and
+- exists solely to improve accessibility, usability, or presentation.
+
+When canonical and derived information are presented together, canonical
+information shall remain primary.
+

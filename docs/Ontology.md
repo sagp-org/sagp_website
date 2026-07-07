@@ -105,3 +105,38 @@ The Person is represented once and participates in many relationships.
 The ontology is intended to remain stable even as software implementations
 change.
 
+
+---
+
+# Canonical and Derived Knowledge
+
+The Ontology records the Society's canonical knowledge.
+
+Canonical knowledge consists of facts explicitly asserted by the Society.
+
+Examples include:
+
+- titles
+- presenters
+- moderators
+- dates
+- start times
+- official Society time zones
+
+Some ontology fields provide sufficient information for renderers to derive
+additional information.
+
+For example:
+
+```yaml
+date: 2025-11-15
+start_time: "07:00"
+timezone: PST
+timezone_iana: America/Los_Angeles
+```
+
+The first three fields represent the Society's published schedule.
+
+The IANA time-zone identifier exists to permit renderers to compute derived
+local times for visitors while preserving the Society's canonical schedule.
+

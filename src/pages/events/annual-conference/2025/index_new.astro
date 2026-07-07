@@ -14,10 +14,10 @@ const event = data.event;
 
 <SAGPLayout title={`${event.title} | SAGP`}>
   <PageHero
-    kicker={event.hero.kicker}
-    title={event.hero.title}
-    subtitle={event.hero.subtitle}
-    image={event.hero.image}
+    kicker={event.title}
+    title={event.subtitle}
+    subtitle={`${event.dates.start}–${event.dates.end} · ${event.location.venue} · ${event.dates.timezone}`}
+    image={event.hero_image}
   />
 
   <EventProgram event={event} />
