@@ -15,3 +15,7 @@ export {
 export {
   loadCurrentItem,
 } from "./current.js";
+
+export {
+  loadGovernance,
+} from "./governance.js";

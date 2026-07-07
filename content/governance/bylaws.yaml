@@ -1,0 +1,18 @@
+governance:
+  id: bylaws-current
+  title: Bylaws
+  type: bylaws
+  status: pending
+
+  summary: >
+    The Society's current bylaws will be added here as canonical governance
+    content once the authoritative text is available.
+
+  effective_date:
+  supersedes:
+
+  document:
+    path:
+    format:
+
+  sections: []

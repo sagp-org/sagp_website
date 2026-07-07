@@ -1,0 +1,62 @@
+governance:
+  id: leadership-current
+  title: Current Leadership
+  type: leadership
+  status: current
+
+  summary: >
+    The Society is led by officers and a Board of Directors representing an
+    international community of scholars.
+
+  officers:
+    - name: Voula Tsouna
+      role: President
+      affiliation: University of California, Santa Barbara
+      image: voula_tsouna.jpg
+
+    - name: Anthony Preus
+      role: Secretary Emeritus
+      affiliation: Binghamton University
+      image: anthony_preus.jpg
+
+    - name: Betsy Jelinek
+      role: Secretary
+      affiliation: Christopher Newport University
+      image: betsy_jelinek.png
+
+  board_members:
+    - name: Gábor Betegh
+      affiliation: University of Cambridge
+      image: gabor_betegh.jpeg
+
+    - name: María Angélica Fierro
+      affiliation: University of Buenos Aires
+      image: maria_angelica_fierro.jpg
+
+    - name: Brad Inwood
+      affiliation: Yale University
+      image: brad_inwood.png
+
+    - name: John Thorp
+      affiliation: University of Western Ontario
+      image: john_thorp.jpeg
+
+    - name: Richard McKirahan
+      affiliation: Pomona College
+      image: richard_mckirahan.jpg
+
+    - name: Fred Miller
+      affiliation: Bowling Green State University
+      image: fred_miller.jpg
+
+    - name: Pierre-Marie Morel
+      affiliation: Université Paris 1 Panthéon-Sorbonne
+      image: pierre_marie_morel.jpg
+
+    - name: Christof Rapp
+      affiliation: Ludwig Maximilian University of Munich
+      image: christof_rapp.jpg
+
+    - name: Riccardo Chiaradonna
+      affiliation: Roma Tre University
+      image: riccardo_chiaradonna.jpg
