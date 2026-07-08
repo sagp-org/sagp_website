@@ -1,0 +1,96 @@
+---
+import SAGPLayout from "../../../layouts/SAGPLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+---
+
+<SAGPLayout title="Membership Workspace | SAGP Executive Portal">
+
+<PageHero
+  kicker="Executive Portal"
+  title="Membership Workspace"
+  subtitle="Members, renewals, and audiences for Society communications."
+  image="/assets/images/parthenon_night.jpg"
+/>
+
+<section class="section">
+  <div class="workspace-grid">
+    <article class="card feature-card">
+      <h3>Membership Engine</h3>
+      <p>
+        The SAGP Membership Engine is currently a standalone desktop workspace
+        for viewing members, updating membership records, and generating
+        communication audiences.
+      </p>
+      <div class="callout">
+        Phase I integration keeps the validated membership tool intact while
+        exposing it through the Executive Portal as the Membership Workspace.
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>Members</h3>
+      <p>
+        Search and review canonical membership records, including names,
+        affiliations, email addresses, regions, and membership status.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Renewals</h3>
+      <p>
+        Update a member's last paid year and membership status when renewal
+        information is received.
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>Audiences</h3>
+      <p>
+        Generate email audiences such as current paid members, renewal reminder
+        groups, expired members, and Executive and Board members.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section two-col">
+  <div>
+    <h2>Current workflow</h2>
+  </div>
+
+  <div>
+    <ol>
+      <li>Open the standalone SAGP Membership Manager.</li>
+      <li>Choose an audience preset.</li>
+      <li>Preview the matching members.</li>
+      <li>Copy comma-separated email addresses for use in an email client.</li>
+      <li>Optionally export the audience as CSV.</li>
+    </ol>
+
+    <p class="muted">
+      Future versions may embed this workflow directly inside the Executive
+      Portal. For now, the Membership Engine remains a validated standalone
+      subsystem.
+    </p>
+  </div>
+</section>
+
+</SAGPLayout>
+
+<style>
+.workspace-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+  .workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

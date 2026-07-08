@@ -1,0 +1,184 @@
+---
+import SAGPLayout from "../../../layouts/SAGPLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import { loadCalls, loadAllEvents } from "../../../lib/content/index.js";
+
+const calls = loadCalls();
+const events = loadAllEvents();
+
+function normalizeDate(value) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value ?? "");
+}
+
+function eventYear(event) {
+  return event.id?.match(/\d{4}/)?.[0] ?? normalizeDate(event.dates?.start).slice(0, 4);
+}
+
+function eventCategory(event) {
+  if (event.type === "annual_conference") return "annual-conference";
+  if (event.type === "distinguished_lectureship") return "distinguished-lectureship";
+  return event.type;
+}
+---
+
+<SAGPLayout title="Communications Workspace | SAGP Executive Portal">
+
+<PageHero
+  kicker="Executive Portal"
+  title="Communications Workspace"
+  subtitle="Compose a communication by combining an audience with a message."
+  image="/assets/images/parthenon_night.jpg"
+/>
+
+<section class="section two-col">
+  <div>
+    <h2>Communication algebra</h2>
+  </div>
+
+  <div>
+    <div class="callout">
+      <strong>Communication = Audience ⊕ Message</strong>
+      <br />
+      The Membership Engine produces audiences. The Publishing Engine produces
+      messages. The Communications Workspace combines them into a communication
+      package.
+    </div>
+  </div>
+</section>
+
+<section class="section communication-builder">
+  <div class="builder-grid">
+    <article class="card">
+      <p class="kicker">Step 1</p>
+      <h3>Choose Audience</h3>
+      <p>
+        Audiences are derived from the canonical membership database.
+      </p>
+
+      <label for="audience">Audience</label>
+      <select id="audience">
+        <option>Current paid members</option>
+        <option>Executive and Board Members</option>
+        <option>Last paid in selected year</option>
+        <option>Expired members</option>
+        <option>All members</option>
+        <option>Current filtered view</option>
+      </select>
+
+      <p class="muted">
+        Phase I: generate and copy the recipient list from the standalone
+        Membership Workspace.
+      </p>
+
+      <p>
+        <a class="button" href={`${import.meta.env.BASE_URL}/executive/membership/`}>
+          Open membership workspace
+        </a>
+      </p>
+    </article>
+
+    <article class="card">
+      <p class="kicker">Step 2</p>
+      <h3>Choose Message</h3>
+      <p>
+        Messages are derived from canonical Calls or Events.
+      </p>
+
+      <label for="message">Message</label>
+      <select id="message">
+        {calls.map((call) => (
+          <option value={`${import.meta.env.BASE_URL}/executive/publishing/calls/${call.id}/`}>
+            Call: {call.hero?.title ?? call.title}
+          </option>
+        ))}
+
+        {events.map((event) => (
+          <option value={`${import.meta.env.BASE_URL}/executive/publishing/events/${eventCategory(event)}/${eventYear(event)}/`}>
+            Event: {event.title}
+          </option>
+        ))}
+      </select>
+
+      <p class="muted">
+        Phase I: generate and copy the subject, rich text, and plain text from
+        the Publishing Workspace.
+      </p>
+
+      <p>
+        <button class="button" id="open-message">Open publishing workspace</button>
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section two-col">
+  <div>
+    <h2>Communication Package</h2>
+  </div>
+
+  <div>
+    <p>
+      A communication package contains the pieces Betsy needs to send a message
+      from her normal email client:
+    </p>
+
+    <ul>
+      <li>recipient list from an audience</li>
+      <li>subject line from a message</li>
+      <li>rich-text email body from a message</li>
+      <li>plain-text fallback from a message</li>
+    </ul>
+
+    <div class="callout">
+      Phase I keeps delivery outside the Portal. The Portal prepares the
+      package; the email client sends it.
+    </div>
+  </div>
+</section>
+
+</SAGPLayout>
+
+<script>
+  document.querySelector("#open-message")?.addEventListener("click", () => {
+    const select = document.querySelector("#message");
+    if (select?.value) {
+      window.location.href = select.value;
+    }
+  });
+</script>
+
+<style>
+.communication-builder {
+  max-width: 1200px;
+}
+
+.builder-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fffaf0;
+  color: var(--color-text);
+  font: inherit;
+}
+
+@media (max-width: 800px) {
+  .builder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
