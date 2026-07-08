@@ -137,6 +137,12 @@ import PageHero from "../../../components/PageHero.astro";
     }
   }
 
+  function platformUrl(path) {
+    const base = "/sagp_website";
+    const cleanPath = String(path).replace(/^\//, "");
+    return `${base}/${cleanPath}`;
+  }
+
   async function loadJson(url) {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`Could not load ${url}: ${response.status}`);
@@ -144,7 +150,7 @@ import PageHero from "../../../components/PageHero.astro";
   }
 
   async function loadManifest() {
-    manifest = await loadJson(`${import.meta.env.BASE_URL}/platform/platform_manifest.json`);
+    manifest = await loadJson(platformUrl("/platform/platform_manifest.json"));
 
     fillSelect(audienceSelect, manifest.audiences ?? [], "Choose an audience...");
     fillSelect(messageSelect, manifest.messages ?? [], "Choose a saved message...");
@@ -203,7 +209,7 @@ import PageHero from "../../../components/PageHero.astro";
       return;
     }
 
-    audience = await loadJson(`${import.meta.env.BASE_URL}${audienceSelect.value.replace(/^\//, "")}`);
+    audience = await loadJson(platformUrl(audienceSelect.value));
 
     audiencePreview.textContent = [
       `Name: ${audience.name}`,
@@ -228,7 +234,7 @@ import PageHero from "../../../components/PageHero.astro";
       return;
     }
 
-    message = await loadJson(`${import.meta.env.BASE_URL}${messageSelect.value.replace(/^\//, "")}`);
+    message = await loadJson(platformUrl(messageSelect.value));
 
     messagePreview.textContent = [
       `Title: ${message.title}`,
