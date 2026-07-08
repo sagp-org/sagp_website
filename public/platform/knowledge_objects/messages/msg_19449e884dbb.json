@@ -1,0 +1,12 @@
+{
+  "title": "Membership Renewal Reminder",
+  "subject": "Please renew your SAGP membership",
+  "rich_html": "<h1>Please renew</h1>",
+  "plain_text": "Please renew your SAGP membership.",
+  "source_yaml": null,
+  "message_type": "membership_renewal",
+  "attachments_or_links": [],
+  "message_id": "msg_19449e884dbb",
+  "generated_at": "2026-07-08T15:13:29.775475+00:00",
+  "source_engine": "publishing"
+}

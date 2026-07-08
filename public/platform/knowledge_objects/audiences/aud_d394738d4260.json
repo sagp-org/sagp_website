@@ -1,0 +1,202 @@
+{
+  "name": "Executive and Board Members",
+  "description": "Members marked as Executive and Donors.",
+  "criteria": {
+    "preset": "executive_and_board_members"
+  },
+  "recipients": [
+    {
+      "person_id": "SAGP000011",
+      "name": "Bill Fortenbaugh",
+      "email": "fortenb@rutgers.edu",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000148",
+      "name": "Anthony Preus",
+      "email": "apreus@binghamton.edu",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000230",
+      "name": "Deborah Modrak",
+      "email": "dmod@mail.rochester.edu",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000342",
+      "name": "Rapp Christof",
+      "email": "Christof.Rapp@lrz.uni-muenchen.de",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000437",
+      "name": "George Leaman",
+      "email": "leaman@pdcnet.org",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000534",
+      "name": "Elizabeth Jelinek",
+      "email": "betsyjelinek@gmail.com",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000548",
+      "name": "Morel PierreMarie",
+      "email": "pierremarie.morel@gmail.com",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000650",
+      "name": "Oliver Leaman",
+      "email": "oleaman@uky.edu",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000660",
+      "name": "Chet McLesky",
+      "email": "mcleskey@msu.edu",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP000780",
+      "name": "Dan Arnold",
+      "email": "daarnold@uchicago.edu",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP001078",
+      "name": "Jessica Maycock",
+      "email": "jmayock@csusm.edu",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP001110",
+      "name": "Jan Szaif",
+      "email": "jmszaif@ucdavis.edu",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP001111",
+      "name": "Chris Tennberg",
+      "email": "chris@tennberg.com",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP001118",
+      "name": "Elliot Welch",
+      "email": "Welch.elliot@gmail.com",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP001169",
+      "name": "Hugh Hunter",
+      "email": "hunter.hugh@gmail.com",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP001215",
+      "name": "Nic Thorne",
+      "email": "nrthorne@yahoo.com",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP001229",
+      "name": "Jack Zupko",
+      "email": "zupko@ualberta.ca",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    },
+    {
+      "person_id": "SAGP001239",
+      "name": "Carter Jason W",
+      "email": "<jwc29@st-andrews.ac.uk>",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution=University of St. Andrews"
+    },
+    {
+      "person_id": "SAGP001415",
+      "name": "Giovanni Casertano",
+      "email": "casertan@unina.it",
+      "membership_status": "Executive and Donors",
+      "tags": [
+        "preset:Executive and Board Members"
+      ],
+      "eligibility_notes": "last_paid_year=; region=; institution="
+    }
+  ],
+  "audience_id": "aud_d394738d4260",
+  "generated_at": "2026-07-08T17:17:38.917041+00:00",
+  "source_engine": "membership"
+}

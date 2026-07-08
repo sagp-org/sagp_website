@@ -1,25 +1,6 @@
 ---
 import SAGPLayout from "../../../layouts/SAGPLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
-import { loadCalls, loadAllEvents } from "../../../lib/content/index.js";
-
-const calls = loadCalls();
-const events = loadAllEvents();
-
-function normalizeDate(value) {
-  if (value instanceof Date) return value.toISOString().slice(0, 10);
-  return String(value ?? "");
-}
-
-function eventYear(event) {
-  return event.id?.match(/\d{4}/)?.[0] ?? normalizeDate(event.dates?.start).slice(0, 4);
-}
-
-function eventCategory(event) {
-  if (event.type === "annual_conference") return "annual-conference";
-  if (event.type === "distinguished_lectureship") return "distinguished-lectureship";
-  return event.type;
-}
 ---
 
 <SAGPLayout title="Communications Workspace | SAGP Executive Portal">
@@ -27,146 +8,348 @@ function eventCategory(event) {
 <PageHero
   kicker="Executive Portal"
   title="Communications Workspace"
-  subtitle="Compose a communication by combining an audience with a message."
+  subtitle="Prepare an email package by choosing an audience and writing or selecting a message."
   image="/assets/images/parthenon_night.jpg"
 />
 
-<section class="section two-col">
-  <div>
-    <h2>Communication algebra</h2>
-  </div>
-
-  <div>
-    <div class="callout">
-      <strong>Communication = Audience ⊕ Message</strong>
-      <br />
-      The Membership Engine produces audiences. The Publishing Engine produces
-      messages. The Communications Workspace combines them into a communication
-      package.
-    </div>
-  </div>
-</section>
-
 <section class="section communication-builder">
-  <div class="builder-grid">
-    <article class="card">
-      <p class="kicker">Step 1</p>
-      <h3>Choose Audience</h3>
-      <p>
-        Audiences are derived from the canonical membership database.
-      </p>
+  <article class="card">
+    <p class="kicker">Step 1</p>
+    <h3>Choose Audience</h3>
+    <select id="audience-select">
+      <option value="">Loading audiences...</option>
+    </select>
+    <pre id="audience-preview" class="preview">No audience selected.</pre>
+  </article>
 
-      <label for="audience">Audience</label>
-      <select id="audience">
-        <option>Current paid members</option>
-        <option>Executive and Board Members</option>
-        <option>Last paid in selected year</option>
-        <option>Expired members</option>
-        <option>All members</option>
-        <option>Current filtered view</option>
-      </select>
+  <article class="card">
+    <p class="kicker">Step 2</p>
+    <h3>Choose Message</h3>
 
-      <p class="muted">
-        Phase I: generate and copy the recipient list from the standalone
-        Membership Workspace.
-      </p>
+    <label>
+      <input type="radio" name="message-mode" value="saved" checked />
+      Use saved message
+    </label>
 
-      <p>
-        <a class="button" href={`${import.meta.env.BASE_URL}/executive/membership/`}>
-          Open membership workspace
-        </a>
-      </p>
-    </article>
+    <select id="message-select">
+      <option value="">Loading messages...</option>
+    </select>
 
-    <article class="card">
-      <p class="kicker">Step 2</p>
-      <h3>Choose Message</h3>
-      <p>
-        Messages are derived from canonical Calls or Events.
-      </p>
+    <label>
+      <input type="radio" name="message-mode" value="compose" />
+      Compose message now
+    </label>
 
-      <label for="message">Message</label>
-      <select id="message">
-        {calls.map((call) => (
-          <option value={`${import.meta.env.BASE_URL}/executive/publishing/calls/${call.id}/`}>
-            Call: {call.hero?.title ?? call.title}
-          </option>
-        ))}
+    <label for="custom-title">Message title</label>
+    <input id="custom-title" type="text" placeholder="Membership renewal reminder" />
 
-        {events.map((event) => (
-          <option value={`${import.meta.env.BASE_URL}/executive/publishing/events/${eventCategory(event)}/${eventYear(event)}/`}>
-            Event: {event.title}
-          </option>
-        ))}
-      </select>
+    <label for="custom-subject">Subject</label>
+    <input id="custom-subject" type="text" placeholder="Please renew your SAGP membership" />
 
-      <p class="muted">
-        Phase I: generate and copy the subject, rich text, and plain text from
-        the Publishing Workspace.
-      </p>
+    <label for="custom-body">Message body</label>
+    <textarea id="custom-body" rows="8" placeholder="Write the message Betsy wants to send..."></textarea>
 
-      <p>
-        <button class="button" id="open-message">Open publishing workspace</button>
-      </p>
-    </article>
-  </div>
-</section>
+    <pre id="message-preview" class="preview">No message selected.</pre>
+  </article>
 
-<section class="section two-col">
-  <div>
-    <h2>Communication Package</h2>
+  <div class="actions">
+    <button class="button" id="compose-button" disabled>Compose Communication</button>
+    <button class="button" id="copy-emails-button" disabled>Copy Email Addresses</button>
+    <button class="button" id="copy-subject-button" disabled>Copy Subject</button>
+    <button class="button" id="copy-body-button" disabled>Copy Body</button>
+    <button class="button" id="download-button" disabled>Download Communication JSON</button>
   </div>
 
-  <div>
-    <p>
-      A communication package contains the pieces Betsy needs to send a message
-      from her normal email client:
-    </p>
-
-    <ul>
-      <li>recipient list from an audience</li>
-      <li>subject line from a message</li>
-      <li>rich-text email body from a message</li>
-      <li>plain-text fallback from a message</li>
-    </ul>
-
-    <div class="callout">
-      Phase I keeps delivery outside the Portal. The Portal prepares the
-      package; the email client sends it.
-    </div>
-  </div>
+  <article class="card">
+    <p class="kicker">Step 3</p>
+    <h3>Preview Communication</h3>
+    <pre id="communication-preview" class="preview">No communication composed.</pre>
+  </article>
 </section>
 
 </SAGPLayout>
 
 <script>
-  document.querySelector("#open-message")?.addEventListener("click", () => {
-    const select = document.querySelector("#message");
-    if (select?.value) {
-      window.location.href = select.value;
+  let manifest = null;
+  let audience = null;
+  let message = null;
+  let communication = null;
+
+  const audienceSelect = document.querySelector("#audience-select");
+  const messageSelect = document.querySelector("#message-select");
+  const composeButton = document.querySelector("#compose-button");
+  const downloadButton = document.querySelector("#download-button");
+  const copyEmailsButton = document.querySelector("#copy-emails-button");
+  const copySubjectButton = document.querySelector("#copy-subject-button");
+  const copyBodyButton = document.querySelector("#copy-body-button");
+
+  const audiencePreview = document.querySelector("#audience-preview");
+  const messagePreview = document.querySelector("#message-preview");
+  const communicationPreview = document.querySelector("#communication-preview");
+
+  const customTitle = document.querySelector("#custom-title");
+  const customSubject = document.querySelector("#custom-subject");
+  const customBody = document.querySelector("#custom-body");
+
+  function makeId(prefix) {
+    return `${prefix}_${crypto.randomUUID().replaceAll("-", "").slice(0, 12)}`;
+  }
+
+  function nowIso() {
+    return new Date().toISOString();
+  }
+
+  function selectedMessageMode() {
+    return document.querySelector('input[name="message-mode"]:checked')?.value ?? "saved";
+  }
+
+  function updateButtons() {
+    const canCompose = audience && message;
+    composeButton.disabled = !canCompose;
+
+    const hasCommunication = !!communication;
+    downloadButton.disabled = !hasCommunication;
+    copyEmailsButton.disabled = !hasCommunication;
+    copySubjectButton.disabled = !hasCommunication;
+    copyBodyButton.disabled = !hasCommunication;
+  }
+
+  function fillSelect(select, items, emptyLabel) {
+    select.innerHTML = "";
+
+    const empty = document.createElement("option");
+    empty.value = "";
+    empty.textContent = emptyLabel;
+    select.appendChild(empty);
+
+    for (const item of items) {
+      const option = document.createElement("option");
+      option.value = item.url;
+      option.textContent = `${item.title} — ${item.detail}`;
+      select.appendChild(option);
     }
+  }
+
+  async function loadJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Could not load ${url}: ${response.status}`);
+    return response.json();
+  }
+
+  async function loadManifest() {
+    manifest = await loadJson(`${import.meta.env.BASE_URL}/platform/platform_manifest.json`);
+
+    fillSelect(audienceSelect, manifest.audiences ?? [], "Choose an audience...");
+    fillSelect(messageSelect, manifest.messages ?? [], "Choose a saved message...");
+  }
+
+  function resetCommunication() {
+    communication = null;
+    communicationPreview.textContent = "No communication composed.";
+    updateButtons();
+  }
+
+  function buildCustomMessage() {
+    const title = customTitle.value.trim() || "Custom message";
+    const subject = customSubject.value.trim();
+    const body = customBody.value.trim();
+
+    if (!subject || !body) {
+      message = null;
+      messagePreview.textContent = "Enter both a subject and message body.";
+      updateButtons();
+      return;
+    }
+
+    message = {
+      title,
+      subject,
+      rich_html: `<p>${body.replaceAll("\n\n", "</p><p>").replaceAll("\n", "<br />")}</p>`,
+      plain_text: body,
+      source_yaml: null,
+      message_type: "custom",
+      attachments_or_links: [],
+      message_id: makeId("msg"),
+      generated_at: nowIso(),
+      source_engine: "executive_portal",
+    };
+
+    messagePreview.textContent = [
+      `Title: ${message.title}`,
+      `Subject: ${message.subject}`,
+      `Type: custom`,
+      "",
+      message.plain_text,
+    ].join("\n");
+
+    updateButtons();
+  }
+
+  audienceSelect.addEventListener("change", async () => {
+    resetCommunication();
+
+    if (!audienceSelect.value) {
+      audience = null;
+      audiencePreview.textContent = "No audience selected.";
+      updateButtons();
+      return;
+    }
+
+    audience = await loadJson(`${import.meta.env.BASE_URL}${audienceSelect.value.replace(/^\//, "")}`);
+
+    audiencePreview.textContent = [
+      `Name: ${audience.name}`,
+      `Recipients: ${audience.recipients?.length ?? 0}`,
+      `Description: ${audience.description}`,
+      "",
+      "Criteria:",
+      JSON.stringify(audience.criteria ?? {}, null, 2),
+    ].join("\n");
+
+    updateButtons();
+  });
+
+  messageSelect.addEventListener("change", async () => {
+    resetCommunication();
+    document.querySelector('input[name="message-mode"][value="saved"]').checked = true;
+
+    if (!messageSelect.value) {
+      message = null;
+      messagePreview.textContent = "No saved message selected.";
+      updateButtons();
+      return;
+    }
+
+    message = await loadJson(`${import.meta.env.BASE_URL}${messageSelect.value.replace(/^\//, "")}`);
+
+    messagePreview.textContent = [
+      `Title: ${message.title}`,
+      `Subject: ${message.subject}`,
+      `Type: ${message.message_type ?? ""}`,
+      "",
+      message.plain_text ?? "",
+    ].join("\n");
+
+    updateButtons();
+  });
+
+  for (const input of [customTitle, customSubject, customBody]) {
+    input.addEventListener("input", () => {
+      resetCommunication();
+      document.querySelector('input[name="message-mode"][value="compose"]').checked = true;
+      buildCustomMessage();
+    });
+  }
+
+  document.querySelectorAll('input[name="message-mode"]').forEach((radio) => {
+    radio.addEventListener("change", () => {
+      resetCommunication();
+      if (selectedMessageMode() === "compose") {
+        buildCustomMessage();
+      }
+    });
+  });
+
+  composeButton.addEventListener("click", () => {
+    if (selectedMessageMode() === "compose") buildCustomMessage();
+    if (!audience || !message) return;
+
+    communication = {
+      communication_id: makeId("com"),
+      created_at: nowIso(),
+      created_by: "executive_portal",
+      delivery_status: "draft",
+      delivery_metadata: {},
+      audit_notes: [],
+      audience,
+      message,
+    };
+
+    communicationPreview.textContent = [
+      `Recipients: ${audience.recipients?.length ?? 0}`,
+      `Audience: ${audience.name}`,
+      `Subject: ${message.subject}`,
+      "",
+      "Message:",
+      message.plain_text ?? "",
+    ].join("\n");
+
+    updateButtons();
+  });
+
+  copyEmailsButton.addEventListener("click", async () => {
+    const emails = communication.audience.recipients.map((r) => r.email).filter(Boolean).join(", ");
+    await navigator.clipboard.writeText(emails);
+  });
+
+  copySubjectButton.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(communication.message.subject);
+  });
+
+  copyBodyButton.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(communication.message.plain_text);
+  });
+
+  downloadButton.addEventListener("click", () => {
+    if (!communication) return;
+
+    const blob = new Blob(
+      [JSON.stringify(communication, null, 2)],
+      { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = `${communication.communication_id}.json`;
+    link.click();
+
+    URL.revokeObjectURL(url);
+  });
+
+  loadManifest().catch((error) => {
+    audienceSelect.innerHTML = `<option value="">Could not load audiences</option>`;
+    messageSelect.innerHTML = `<option value="">Could not load messages</option>`;
+    communicationPreview.textContent = error.message;
   });
 </script>
 
 <style>
 .communication-builder {
-  max-width: 1200px;
+  max-width: 1000px;
 }
 
-.builder-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+.card + .card {
+  margin-top: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.preview {
+  white-space: pre-wrap;
+  background: #fffaf0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem;
+  min-height: 100px;
+  overflow-x: auto;
 }
 
 label {
   display: block;
   margin-top: 1rem;
-  margin-bottom: 0.4rem;
   font-weight: 600;
 }
 
-select {
+select,
+input[type="text"],
+textarea {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid var(--color-border);
@@ -174,11 +357,15 @@ select {
   background: #fffaf0;
   color: var(--color-text);
   font: inherit;
+  margin: 0.4rem 0 1rem;
 }
 
-@media (max-width: 800px) {
-  .builder-grid {
-    grid-template-columns: 1fr;
-  }
+textarea {
+  resize: vertical;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 </style>

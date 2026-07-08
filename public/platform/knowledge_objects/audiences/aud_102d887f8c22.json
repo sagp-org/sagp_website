@@ -1,0 +1,1123 @@
+{
+  "name": "Last paid in 2025",
+  "description": "Members whose last paid year is 2025.",
+  "criteria": {
+    "preset": "last_paid_in_year",
+    "year": 2025
+  },
+  "recipients": [
+    {
+      "person_id": "SAGP000006",
+      "name": "Condon Isabel",
+      "email": "condoni@cua.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=CUA"
+    },
+    {
+      "person_id": "SAGP000021",
+      "name": "John Lenz",
+      "email": "jlenz@drew.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000025",
+      "name": "Miano Lauren",
+      "email": "lm1078@princeton.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000031",
+      "name": "Alexander Nehamas",
+      "email": "nehamas@princeton.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000044",
+      "name": "Woodcock Norah",
+      "email": "norahw@princeton.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000068",
+      "name": "Claire Bubb",
+      "email": "claire.bubb@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000073",
+      "name": "Condie Jack",
+      "email": "condj411@newschool.edu>",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000092",
+      "name": "Haagenson Jacob",
+      "email": "jch2212@columbia.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000125",
+      "name": "McNamara Mary",
+      "email": "mmcnamara@gradcenter.cuny.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000130",
+      "name": "Mitch Miller",
+      "email": "mimiller@vassar.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000138",
+      "name": "David Murphy",
+      "email": "david.murphy20@verizon.net",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000144",
+      "name": "Bruce Payne",
+      "email": "brucelloydpayne@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Baruch College, CUNY"
+    },
+    {
+      "person_id": "SAGP000156",
+      "name": "Romp Jack",
+      "email": "jr4531@columbia.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000162",
+      "name": "Gregory Scott",
+      "email": "drgscott62@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000165",
+      "name": "Douglas Shepardson",
+      "email": "douglasashepardson@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000211",
+      "name": "Duque Mateo",
+      "email": "mduque@binghamton.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000227",
+      "name": "Long Duane",
+      "email": "hdlong@buffalo.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=SUNY Buffalo, Iowa State"
+    },
+    {
+      "person_id": "SAGP000250",
+      "name": "Gina Santiago",
+      "email": "gsantia2@binghamton.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000293",
+      "name": "Sean Driscoll",
+      "email": "sean.d.driscoll@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000317",
+      "name": "Richard Klonoski",
+      "email": "richard.klonoski@scranton.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000326",
+      "name": "Lutz Christopher",
+      "email": "lutzc2@duq.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000331",
+      "name": "John Mulhern",
+      "email": "johnjm11@verizon.net",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000337",
+      "name": "Andrew Payne",
+      "email": "apayne@sju.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000346",
+      "name": "Jan Maximilian Robitzsch",
+      "email": "jmrobitzsch@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000363",
+      "name": "Roslyn Weiss",
+      "email": "rw03@lehigh.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000373",
+      "name": "Coleen Zoller",
+      "email": "zoller@susqu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000379",
+      "name": "Geoff Batchelder",
+      "email": "gmbatch@verizon.net",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000443",
+      "name": "Li Daryl Z",
+      "email": "lid@cua.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000460",
+      "name": "Maria Picone",
+      "email": "mspicone@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000492",
+      "name": "Walz Nicholas",
+      "email": "walzn@cua.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=CUA"
+    },
+    {
+      "person_id": "SAGP000498",
+      "name": "Sister Anna OP Wray",
+      "email": "wray@cua.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000500",
+      "name": "Brandon Zimmerman",
+      "email": "66zimmerman@cua.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=University of St. Thomas"
+    },
+    {
+      "person_id": "SAGP000523",
+      "name": "John Garner",
+      "email": "jgarner@westga.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000533",
+      "name": "Huang Minxing",
+      "email": "huang186@ku.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Kansas University"
+    },
+    {
+      "person_id": "SAGP000537",
+      "name": "Aimee Koeplin",
+      "email": "akoeplin@msmu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000550",
+      "name": "Thomas Olshewsky",
+      "email": "tolshewsky@verizon.net",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000560",
+      "name": "Rothschild Nathan",
+      "email": "njrothschild@ufl.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=University of Florida"
+    },
+    {
+      "person_id": "SAGP000565",
+      "name": "Slabon Thomas",
+      "email": "tslabon@usf.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000579",
+      "name": "Wendell George",
+      "email": "wcountbasie@aol.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000587",
+      "name": "Arevalo Maria",
+      "email": "mareval2@nd.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Notre Dame"
+    },
+    {
+      "person_id": "SAGP000672",
+      "name": "David O'Connor",
+      "email": "o'connor.2@nd.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000677",
+      "name": "Daniel Propson",
+      "email": "danielcpropson@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000689",
+      "name": "Michael Seidler",
+      "email": "michael.seidler@wku.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000708",
+      "name": "Erik Wielenberg",
+      "email": "ewielenberg@depauw.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000733",
+      "name": "Gary Gabor",
+      "email": "garygabor2002@yahoo.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000755",
+      "name": "Steven Nadler",
+      "email": "smnadler@wisc.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000757",
+      "name": "Terry Penner",
+      "email": "tmpenner@facstaff.wisc.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000758",
+      "name": "Sandra Peterson",
+      "email": "peter009@umn.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000770",
+      "name": "David Talcott",
+      "email": "datalcott@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=New St. Andrews College, Moscow, Idaho"
+    },
+    {
+      "person_id": "SAGP000791",
+      "name": "Cunningham Gabby",
+      "email": "gabby_cunningham1@baylor.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Baylor University"
+    },
+    {
+      "person_id": "SAGP000802",
+      "name": "Samuel Galloway",
+      "email": "sgalloway@uchicago.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000804",
+      "name": "Gonzales Humberto",
+      "email": "hgonzal2@villanova.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000806",
+      "name": "Jeon Haewon",
+      "email": "haewon@u.northwestern.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000812",
+      "name": "Timothy Huson",
+      "email": "husontc95@yahoo.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000813",
+      "name": "Tushar Irani",
+      "email": "tirani@wesleyan.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000824",
+      "name": "E. M. Macierowski",
+      "email": "edwardm@benedictine.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000847",
+      "name": "Robert Perlman",
+      "email": "r-perlman@uchicago.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000857",
+      "name": "Gary Tubb",
+      "email": "tubb@uchicago.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000868",
+      "name": "Karl Aho",
+      "email": "kmf.aho@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000902",
+      "name": "Frank Grabowski",
+      "email": "fgrabowski@rsu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000912",
+      "name": "Jacob Howland",
+      "email": "jacob-howland@utulsa.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000913",
+      "name": "Jie Chen",
+      "email": "jc139@rice.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Rice University"
+    },
+    {
+      "person_id": "SAGP000926",
+      "name": "Mark Morelli",
+      "email": "mmorelli@lmu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000944",
+      "name": "Erin Stackle",
+      "email": "estackle@lmu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000946",
+      "name": "Fabian VanOnzen",
+      "email": "fjvanonzen@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000957",
+      "name": "Andre Archie",
+      "email": "andrarchie@msn.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000970",
+      "name": "Tyler Huismann",
+      "email": "tyler.huismann@colorado.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000989",
+      "name": "Vaughan Barry",
+      "email": "bfvaughan@mesacc.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000995",
+      "name": "Wynne John P.F.",
+      "email": "john.wynne@utah.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001013",
+      "name": "Brook Eric C.",
+      "email": "tecbrook@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=California Baptist University"
+    },
+    {
+      "person_id": "SAGP001051",
+      "name": "Hensley Paula",
+      "email": "songbirdcourt@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001058",
+      "name": "David Jennings",
+      "email": "davidleejennings@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001072",
+      "name": "John Malcolm",
+      "email": "jfmalcolm@ucdavis.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001076",
+      "name": "Mason Marshall",
+      "email": "mason.marshall@pepperdine.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Pepperdine University"
+    },
+    {
+      "person_id": "SAGP001079",
+      "name": "Richard McKirahan",
+      "email": "rmckirahan@pomona.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001089",
+      "name": "Justin Nordin",
+      "email": "jpn144@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001095",
+      "name": "William J. Prior",
+      "email": "wprior@scu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001120",
+      "name": "Charles Young",
+      "email": "charles.young@cgu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001143",
+      "name": "Ian Drummond",
+      "email": "ian.drummond@utoronto.ca",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001156",
+      "name": "David Guetter",
+      "email": "guetter@uwindsor.ca",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001201",
+      "name": "Zeev Perelmuter",
+      "email": "zeev.can@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001208",
+      "name": "Nicholas Riegel",
+      "email": "nicholas.riegel@utoronto.ca",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001233",
+      "name": "Bergamo Max",
+      "email": "mx.bergamo@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001235",
+      "name": "Istvan Bodnar",
+      "email": "BodnarIM@gmx.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001236",
+      "name": "Borthwick Catherine",
+      "email": "catherine@borthwick.us",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001237",
+      "name": "Carlos Cortissoz",
+      "email": "carlos.cortissoz@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001238",
+      "name": "Carter Jason",
+      "email": "jwc29@st-andrews.ac.uk",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001240",
+      "name": "Connell Sophia",
+      "email": "sophia.connell@bbk.ac.uk",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001243",
+      "name": "Esmaeili Javad Mohammad",
+      "email": "esmaeili.mj@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001247",
+      "name": "Kurihara Yuji",
+      "email": "ykuri@tmu.ac.jp",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Tokyo Metropolitan University"
+    },
+    {
+      "person_id": "SAGP001248",
+      "name": "Lea Luke",
+      "email": "luke.lea@bilkent.edu.tr",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001249",
+      "name": "Lefka Aikaterini",
+      "email": "Aikaterini.Lefka@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001252",
+      "name": "Anna Marmodoro",
+      "email": "anna.marmodoro@slu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001255",
+      "name": "Teresa Padilla",
+      "email": "mtpadilla25@hotmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001257",
+      "name": "Caterina Pello'",
+      "email": "caterinapello@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001258",
+      "name": "Phelps Cole",
+      "email": "cole.phelps@philosophy.ox.ac.uk",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Oxford University"
+    },
+    {
+      "person_id": "SAGP001260",
+      "name": "SCHMID Riccarda",
+      "email": "riccarda.schmid@unifr.ch",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001261",
+      "name": "Sozopoulou Maria",
+      "email": "hieratetraktys@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001262",
+      "name": "Theodoroudi Evangelia (Lia)",
+      "email": "liatheodoroudi@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001264",
+      "name": "Mashhura Vazirova",
+      "email": "mashura.vazirova@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001365",
+      "name": "Andreas Spyridon Michalakopoulos",
+      "email": "michalan@student.eursc.eu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001375",
+      "name": "Balla Chloe",
+      "email": "chloeballa@uoc.gr",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001397",
+      "name": "Lou Bradizza",
+      "email": "lou.bradizza@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001401",
+      "name": "Erlend Breidal",
+      "email": "erlend.breidal@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001411",
+      "name": "Cantor Lea",
+      "email": "lyc24@cam.ac.uk",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001436",
+      "name": "Hugh Curran",
+      "email": "hugh.curran@maine.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001450",
+      "name": "Richard DeWitt",
+      "email": "rdewitt@fairfield.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001514",
+      "name": "Griffiths Jonathan",
+      "email": "j.griffiths.17@ucl.ac.uk",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001574",
+      "name": "Laks André",
+      "email": "laks.andre@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution=Universidad Panamericana Mexico City"
+    },
+    {
+      "person_id": "SAGP001763",
+      "name": "Suzanne Stern-Gillet",
+      "email": "suzannesterngillet@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001797",
+      "name": "Marius Wegrzyn",
+      "email": "mariuszwegrzyn@wp.pl",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Last paid in 2025"
+      ],
+      "eligibility_notes": "last_paid_year=2025; region=; institution="
+    }
+  ],
+  "audience_id": "aud_102d887f8c22",
+  "generated_at": "2026-07-08T17:17:38.925941+00:00",
+  "source_engine": "membership"
+}

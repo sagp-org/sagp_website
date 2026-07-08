@@ -1,0 +1,20 @@
+{
+  "name": "Expired 2025 Members",
+  "description": "Members whose membership expired in 2025",
+  "criteria": {
+    "membership_expiration_year": 2025
+  },
+  "recipients": [
+    {
+      "person_id": "p001",
+      "name": "Ada Lovelace",
+      "email": "ada@example.org",
+      "membership_status": "expired",
+      "tags": [],
+      "eligibility_notes": null
+    }
+  ],
+  "audience_id": "aud_5daf72980bb7",
+  "generated_at": "2026-07-08T15:13:29.775265+00:00",
+  "source_engine": "membership"
+}

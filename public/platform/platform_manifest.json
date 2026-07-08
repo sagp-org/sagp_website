@@ -1,0 +1,85 @@
+{
+  "audiences": [
+    {
+      "object_type": "audience",
+      "object_id": "aud_102d887f8c22",
+      "title": "Last paid in 2025",
+      "detail": "111 recipients",
+      "url": "/platform/knowledge_objects/audiences/aud_102d887f8c22.json"
+    },
+    {
+      "object_type": "audience",
+      "object_id": "aud_5daf72980bb7",
+      "title": "Expired 2025 Members",
+      "detail": "1 recipients",
+      "url": "/platform/knowledge_objects/audiences/aud_5daf72980bb7.json"
+    },
+    {
+      "object_type": "audience",
+      "object_id": "aud_6127894af4ed",
+      "title": "Expired before 2026",
+      "detail": "996 recipients",
+      "url": "/platform/knowledge_objects/audiences/aud_6127894af4ed.json"
+    },
+    {
+      "object_type": "audience",
+      "object_id": "aud_6606aa3249ca",
+      "title": "Current paid members",
+      "detail": "201 recipients",
+      "url": "/platform/knowledge_objects/audiences/aud_6606aa3249ca.json"
+    },
+    {
+      "object_type": "audience",
+      "object_id": "aud_d394738d4260",
+      "title": "Executive and Board Members",
+      "detail": "19 recipients",
+      "url": "/platform/knowledge_objects/audiences/aud_d394738d4260.json"
+    },
+    {
+      "object_type": "audience",
+      "object_id": "aud_e10b61551934",
+      "title": "All members",
+      "detail": "1,737 recipients",
+      "url": "/platform/knowledge_objects/audiences/aud_e10b61551934.json"
+    },
+    {
+      "object_type": "audience",
+      "object_id": "aud_eb4fa879bb4a",
+      "title": "Expired members",
+      "detail": "886 recipients",
+      "url": "/platform/knowledge_objects/audiences/aud_eb4fa879bb4a.json"
+    }
+  ],
+  "messages": [
+    {
+      "object_type": "message",
+      "object_id": "msg_19449e884dbb",
+      "title": "Membership Renewal Reminder",
+      "detail": "Please renew your SAGP membership",
+      "url": "/platform/knowledge_objects/messages/msg_19449e884dbb.json"
+    }
+  ],
+  "communications": [
+    {
+      "object_type": "communication",
+      "object_id": "com_2c1689490c3e",
+      "title": "Please renew your SAGP membership",
+      "detail": "1 recipients; draft",
+      "url": "/platform/knowledge_objects/communications/com_2c1689490c3e.json"
+    },
+    {
+      "object_type": "communication",
+      "object_id": "com_cc8020592fed",
+      "title": "Welcome to SAGP",
+      "detail": "1 recipients; draft",
+      "url": "/platform/knowledge_objects/communications/com_cc8020592fed.json"
+    },
+    {
+      "object_type": "communication",
+      "object_id": "com_f8f614d08cd6",
+      "title": "Please renew your SAGP membership",
+      "detail": "1 recipients; draft",
+      "url": "/platform/knowledge_objects/communications/com_f8f614d08cd6.json"
+    }
+  ]
+}

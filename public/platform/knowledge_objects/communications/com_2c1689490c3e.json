@@ -1,0 +1,40 @@
+{
+  "communication_id": "com_2c1689490c3e",
+  "created_at": "2026-07-08T15:00:22.540458+00:00",
+  "created_by": null,
+  "delivery_status": "draft",
+  "delivery_metadata": {},
+  "audit_notes": [],
+  "audience": {
+    "name": "Expired 2025 Members",
+    "description": "Members whose membership expired in 2025",
+    "criteria": {
+      "membership_expiration_year": 2025
+    },
+    "recipients": [
+      {
+        "person_id": "p001",
+        "name": "Ada Lovelace",
+        "email": "ada@example.org",
+        "membership_status": "expired",
+        "tags": [],
+        "eligibility_notes": null
+      }
+    ],
+    "audience_id": "aud_cd388e4d808b",
+    "generated_at": "2026-07-08T15:00:22.540153+00:00",
+    "source_engine": "membership"
+  },
+  "message": {
+    "title": "Membership Renewal Reminder",
+    "subject": "Please renew your SAGP membership",
+    "rich_html": "<h1>Please renew</h1>",
+    "plain_text": "Please renew your SAGP membership.",
+    "source_yaml": null,
+    "message_type": null,
+    "attachments_or_links": [],
+    "message_id": "msg_72e603bba992",
+    "generated_at": "2026-07-08T15:00:22.540444+00:00",
+    "source_engine": "publishing"
+  }
+}
