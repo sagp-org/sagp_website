@@ -193,10 +193,11 @@ import PageHero from "../../../components/PageHero.astro";
         <dt>Phone</dt><dd>${member.phone || ""}</dd>
         <dt>Location</dt><dd>${[member.city, member.state_province, member.country].filter(Boolean).join(", ")}</dd>
         <dt>Region</dt><dd>${member.region || ""}</dd>
-        <dt>Membership Status</dt><dd>${member.membership_status || ""}</dd>
+        <dt>Derived Status</dt><dd>${member.derived_membership_status || ""}</dd>
+        <dt>Stored Status</dt><dd>${member.membership_status || ""}</dd>
         <dt>Original Code</dt><dd>${member.original_membership_code || ""}</dd>
         <dt>Member Since</dt><dd>${member.member_since || ""}</dd>
-        <dt>Last Paid Year</dt><dd>${member.last_paid_year || ""}</dd>
+        <dt>Expiration Year</dt><dd>${member.membership_expiration_year || member.last_paid_year || ""}</dd>
         <dt>Active</dt><dd>${member.active || ""}</dd>
         <dt>Updated</dt><dd>${member.updated_at || ""}</dd>
       </dl>
