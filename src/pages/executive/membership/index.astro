@@ -8,89 +8,360 @@ import PageHero from "../../../components/PageHero.astro";
 <PageHero
   kicker="Executive Portal"
   title="Membership Workspace"
-  subtitle="Members, renewals, and audiences for Society communications."
+  subtitle="View the current membership profile and operational membership status."
   image="/assets/images/parthenon_night.jpg"
 />
 
 <section class="section">
-  <div class="workspace-grid">
-    <article class="card feature-card">
-      <h3>Membership Engine</h3>
-      <p>
-        The SAGP Membership Engine is currently a standalone desktop workspace
-        for viewing members, updating membership records, and generating
-        communication audiences.
-      </p>
-      <div class="callout">
-        Phase I integration keeps the validated membership tool intact while
-        exposing it through the Executive Portal as the Membership Workspace.
-      </div>
+  <div class="dashboard-grid">
+    <article class="stat-card">
+      <p>Total members</p>
+      <strong id="total-members">—</strong>
     </article>
 
-    <article class="card">
-      <h3>Members</h3>
-      <p>
-        Search and review canonical membership records, including names,
-        affiliations, email addresses, regions, and membership status.
-      </p>
+    <article class="stat-card">
+      <p>Members with email</p>
+      <strong id="members-with-email">—</strong>
     </article>
 
-    <article class="card">
-      <h3>Renewals</h3>
-      <p>
-        Update a member's last paid year and membership status when renewal
-        information is received.
-      </p>
+    <article class="stat-card">
+      <p>Current paid members</p>
+      <strong id="current-paid-members">—</strong>
     </article>
 
-    <article class="card">
-      <h3>Audiences</h3>
-      <p>
-        Generate email audiences such as current paid members, renewal reminder
-        groups, expired members, and Executive and Board members.
-      </p>
+    <article class="stat-card">
+      <p>Expired members</p>
+      <strong id="expired-members">—</strong>
+    </article>
+
+    <article class="stat-card">
+      <p>Paid / renewed this year</p>
+      <strong id="paid-this-year">—</strong>
+    </article>
+
+    <article class="stat-card">
+      <p>Not renewed this year</p>
+      <strong id="not-renewed-this-year">—</strong>
     </article>
   </div>
 </section>
 
+<section class="section member-lookup">
+  <article class="card">
+    <h2>Find Member</h2>
+    <p class="muted">Search by name, institution, email, region, status, or paid year.</p>
+
+    <input id="member-search" type="search" placeholder="Search members..." />
+
+    <div id="member-results" class="member-results">
+      Type to search member records.
+    </div>
+  </article>
+
+  <article class="card member-detail-card">
+    <h2>Member Record</h2>
+    <div id="member-detail" class="member-detail">
+      Select a member to view the record.
+    </div>
+  </article>
+
+
+</section>
+
 <section class="section two-col">
   <div>
-    <h2>Current workflow</h2>
+    <h2>Status profile</h2>
+    <p class="muted" id="generated-at">Loading membership dashboard...</p>
+  </div>
+
+  <div class="card">
+    <h3>Membership status counts</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody id="status-table"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <article class="card">
+    <h3>Last paid year distribution</h3>
+    <div id="year-bars" class="year-bars"></div>
+  </article>
+</section>
+
+<section class="section two-col">
+  <div>
+    <h2>Next membership tasks</h2>
   </div>
 
   <div>
-    <ol>
-      <li>Open the standalone SAGP Membership Manager.</li>
-      <li>Choose an audience preset.</li>
-      <li>Preview the matching members.</li>
-      <li>Copy comma-separated email addresses for use in an email client.</li>
-      <li>Optionally export the audience as CSV.</li>
-    </ol>
-
-    <p class="muted">
-      Future versions may embed this workflow directly inside the Executive
-      Portal. For now, the Membership Engine remains a validated standalone
-      subsystem.
-    </p>
+    <div class="callout">
+      This dashboard is read-only. The next Membership Workspace milestone will add member lookup and individual member detail updates using the authoritative operational membership database.
+    </div>
   </div>
 </section>
 
 </SAGPLayout>
 
+<script>
+  const fmt = new Intl.NumberFormat("en-US");
+
+  function setText(id, value) {
+    document.querySelector(`#${id}`).textContent = fmt.format(value ?? 0);
+  }
+
+  function platformUrl(path) {
+    return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+  }
+
+  async function loadDashboard() {
+    const response = await fetch(platformUrl("/platform/membership_dashboard.json"));
+    if (!response.ok) {
+      throw new Error(`Could not load membership dashboard: ${response.status}`);
+    }
+    return response.json();
+  }
+
+  function renderStatusTable(counts) {
+    const tbody = document.querySelector("#status-table");
+    tbody.innerHTML = "";
+
+    for (const [status, count] of Object.entries(counts ?? {})) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${status}</td><td>${fmt.format(count)}</td>`;
+      tbody.appendChild(row);
+    }
+  }
+
+  let memberRecords = [];
+
+  function memberEmail(member) {
+    return member.primary_email || member.secondary_email || "";
+  }
+
+  function renderMemberResults(members) {
+    const container = document.querySelector("#member-results");
+
+    if (!members.length) {
+      container.textContent = "No matching members.";
+      return;
+    }
+
+    container.innerHTML = "";
+
+    for (const member of members.slice(0, 50)) {
+      const button = document.createElement("button");
+      button.className = "member-result";
+      button.type = "button";
+
+      button.innerHTML = `
+        <strong>${member.display_name || "(No name)"}</strong>
+        <span>${member.institution || ""}</span>
+        <span>${member.membership_status || "(No status)"}${member.last_paid_year ? ` · Last paid ${member.last_paid_year}` : ""}</span>
+      `;
+
+      button.addEventListener("click", () => renderMemberDetail(member));
+      container.appendChild(button);
+    }
+
+    if (members.length > 50) {
+      const more = document.createElement("p");
+      more.className = "muted";
+      more.textContent = `Showing first 50 of ${members.length.toLocaleString()} matches. Refine the search to narrow results.`;
+      container.appendChild(more);
+    }
+  }
+
+  function renderMemberDetail(member) {
+    const container = document.querySelector("#member-detail");
+
+    container.innerHTML = `
+      <div class="record-header">
+        <h3>${member.display_name || "(No name)"}</h3>
+        <p>${member.institution || ""}</p>
+      </div>
+
+      <dl class="record-grid">
+        <dt>Person ID</dt><dd>${member.person_id || ""}</dd>
+        <dt>Email</dt><dd>${memberEmail(member)}</dd>
+        <dt>Phone</dt><dd>${member.phone || ""}</dd>
+        <dt>Location</dt><dd>${[member.city, member.state_province, member.country].filter(Boolean).join(", ")}</dd>
+        <dt>Region</dt><dd>${member.region || ""}</dd>
+        <dt>Membership Status</dt><dd>${member.membership_status || ""}</dd>
+        <dt>Original Code</dt><dd>${member.original_membership_code || ""}</dd>
+        <dt>Member Since</dt><dd>${member.member_since || ""}</dd>
+        <dt>Last Paid Year</dt><dd>${member.last_paid_year || ""}</dd>
+        <dt>Active</dt><dd>${member.active || ""}</dd>
+        <dt>Updated</dt><dd>${member.updated_at || ""}</dd>
+      </dl>
+
+      <h4>Notes</h4>
+      <pre class="preview">${member.notes || ""}</pre>
+    `;
+  }
+
+  async function loadMemberRecords() {
+    const response = await fetch(platformUrl("/platform/membership_records.json"));
+    if (!response.ok) {
+      throw new Error(`Could not load member records: ${response.status}`);
+    }
+
+    const payload = await response.json();
+    memberRecords = payload.members ?? [];
+
+    const search = document.querySelector("#member-search");
+    const results = document.querySelector("#member-results");
+
+    results.textContent = `${memberRecords.length.toLocaleString()} member records loaded. Type to search.`;
+
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+
+      if (!query) {
+        results.textContent = `${memberRecords.length.toLocaleString()} member records loaded. Type to search.`;
+        return;
+      }
+
+      const terms = query.split(/\s+/).filter(Boolean);
+      const matches = memberRecords.filter((member) =>
+        terms.every((term) => member.search_text.includes(term))
+      );
+
+      renderMemberResults(matches);
+    });
+  }
+
+  function renderYearBars(counts) {
+    const container = document.querySelector("#year-bars");
+    container.innerHTML = "";
+
+    const entries = Object.entries(counts ?? {});
+    const numericEntries = entries.filter(([year]) => year !== "(blank)");
+    const maxCount = Math.max(...numericEntries.map(([, count]) => count), 1);
+
+    for (const [year, count] of entries) {
+      const row = document.createElement("div");
+      row.className = "year-row";
+
+      const width = Math.max(4, (count / maxCount) * 100);
+
+      row.innerHTML = `
+        <span class="year-label">${year}</span>
+        <span class="bar-wrap">
+          <span class="bar" style="width: ${width}%"></span>
+        </span>
+        <span class="year-count">${fmt.format(count)}</span>
+      `;
+
+      container.appendChild(row);
+    }
+  }
+
+  loadDashboard()
+    .then((dashboard) => {
+      const summary = dashboard.summary ?? {};
+
+      setText("total-members", summary.total_members);
+      setText("members-with-email", summary.members_with_email);
+      setText("current-paid-members", summary.current_paid_members);
+      setText("expired-members", summary.expired_members);
+      setText("paid-this-year", summary.paid_or_renewed_this_year);
+      setText("not-renewed-this-year", summary.not_renewed_this_year);
+
+      document.querySelector("#generated-at").textContent =
+        `Generated ${dashboard.generated_at}; source: ${dashboard.source_database}`;
+
+      renderStatusTable(dashboard.membership_status_counts);
+      renderYearBars(dashboard.last_paid_year_counts);
+      loadMemberRecords().catch((error) => {
+        document.querySelector("#member-results").textContent = error.message;
+      });
+    })
+    .catch((error) => {
+      document.querySelector("#generated-at").textContent = error.message;
+    });
+</script>
+
 <style>
-.workspace-grid {
+.dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
-.feature-card {
-  grid-column: 1 / -1;
+.stat-card {
+  background: #fffaf0;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 22px;
 }
 
-@media (max-width: 800px) {
-  .workspace-grid {
+.stat-card p {
+  margin: 0 0 10px;
+  color: var(--color-muted);
+}
+
+.stat-card strong {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.year-bars {
+  display: grid;
+  gap: 8px;
+}
+
+.year-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 70px;
+  gap: 12px;
+  align-items: center;
+}
+
+.year-label,
+.year-count {
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-wrap {
+  background: #f3ead8;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 14px;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  background: #8a5a13;
+  border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
     grid-template-columns: 1fr;
+  }
+
+  .year-row {
+    grid-template-columns: 70px 1fr 54px;
   }
 }
 </style>
