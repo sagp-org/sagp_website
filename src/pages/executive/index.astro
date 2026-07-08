@@ -1,0 +1,67 @@
+---
+import SAGPLayout from "../../layouts/SAGPLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+---
+
+<SAGPLayout title="Executive Portal | SAGP">
+
+<PageHero
+  kicker="Executive Portal"
+  title="SAGP Executive Publishing Portal"
+  subtitle="Create, maintain, and publish canonical Society content."
+  image="/assets/images/parthenon_night.jpg"
+/>
+
+<section class="section">
+  <div class="portal-grid">
+    <article class="card">
+      <h3>New Event</h3>
+      <p>Create a new Annual Conference, Distinguished Lecture, or Works in Progress event from source material.</p>
+      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/new-event/`}>Start new event</a></p>
+    </article>
+
+    <article class="card">
+      <h3>Update Event</h3>
+      <p>Edit or revise an existing event knowledge object.</p>
+      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/update-event/`}>Update event</a></p>
+    </article>
+
+    <article class="card">
+      <h3>New Call</h3>
+      <p>Create a new call for papers, nominations, renewals, or other Society action.</p>
+      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/new-call/`}>Start new call</a></p>
+    </article>
+
+    <article class="card">
+      <h3>Update Call</h3>
+      <p>Edit or revise an existing call knowledge object.</p>
+      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/update-call/`}>Update call</a></p>
+    </article>
+
+    <article class="card feature-card">
+      <h3>Publish Content</h3>
+      <p>Generate publication outputs from canonical content: website pages, rich-text emails, plain-text emails, and later PDFs.</p>
+      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/publishing/`}>Open publisher</a></p>
+    </article>
+  </div>
+</section>
+
+</SAGPLayout>
+
+<style>
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 800px) {
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

@@ -1,0 +1,28 @@
+---
+import SAGPLayout from "../../../layouts/SAGPLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+---
+
+<SAGPLayout title="New Event | SAGP Executive Portal">
+
+<PageHero
+  kicker="Executive Portal"
+  title="New Event"
+  subtitle="Future workflow: upload or paste source material and generate a draft event YAML object."
+  image="/assets/images/parthenon_night.jpg"
+/>
+
+<section class="section two-col">
+  <div><h2>Planned workflow</h2></div>
+  <div>
+    <ol>
+      <li>Upload or paste source content.</li>
+      <li>AI identifies the event type.</li>
+      <li>AI drafts canonical YAML.</li>
+      <li>Executive reviewer approves or edits.</li>
+      <li>System publishes derived outputs.</li>
+    </ol>
+  </div>
+</section>
+
+</SAGPLayout>

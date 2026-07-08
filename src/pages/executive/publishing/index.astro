@@ -1,0 +1,70 @@
+---
+import SAGPLayout from "../../../layouts/SAGPLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+import { loadCalls, loadAllEvents } from "../../../lib/content/index.js";
+
+const calls = loadCalls();
+const events = loadAllEvents();
+
+function normalizeDate(value) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value ?? "");
+}
+
+function eventYear(event) {
+  return event.id?.match(/\d{4}/)?.[0] ?? normalizeDate(event.dates?.start).slice(0, 4);
+}
+
+function eventCategory(event) {
+  if (event.type === "annual_conference") return "annual-conference";
+  if (event.type === "distinguished_lectureship") return "distinguished-lectureship";
+  return event.type;
+}
+---
+
+<SAGPLayout title="Publishing | SAGP Executive Portal">
+
+<PageHero
+  kicker="Executive Portal"
+  title="Publishing"
+  subtitle="Choose canonical Society content and generate publication-ready materials."
+  image="/assets/images/parthenon_night.jpg"
+/>
+
+<section class="section">
+  <h2>Calls</h2>
+
+  <div class="card-grid">
+    {calls.map((call) => (
+      <article class="card">
+        <h3>{call.hero?.title ?? call.title}</h3>
+        <p>{call.summary}</p>
+        <p>
+          <a class="button" href={`${import.meta.env.BASE_URL}/executive/publishing/calls/${call.id}/`}>
+            Open publishing workspace
+          </a>
+        </p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="section">
+  <h2>Events</h2>
+
+  <div class="card-grid">
+    {events.map((event) => (
+      <article class="card">
+        <h3>{event.title}</h3>
+        <p>{event.description ?? event.hero?.subtitle}</p>
+        <p>
+          <a class="button" href={`${import.meta.env.BASE_URL}/executive/publishing/events/${eventCategory(event)}/${eventYear(event)}/`}>
+            Open publishing workspace
+          </a>
+        </p>
+      </article>
+    ))}
+  </div>
+</section>
+
+</SAGPLayout>

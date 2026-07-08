@@ -1,0 +1,192 @@
+---
+import SAGPLayout from "../../../../../layouts/SAGPLayout.astro";
+import PageHero from "../../../../../components/PageHero.astro";
+import { loadAllEvents } from "../../../../../lib/content/index.js";
+import {
+  renderEventHtml,
+  renderEventText,
+  renderEventSubject,
+} from "../../../../../../publisher/renderers/email/EventEmailRenderer.js";
+
+function normalizeDate(value) {
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  return String(value ?? "");
+}
+
+export function getStaticPaths() {
+  return loadAllEvents().map((event) => {
+    const year =
+      event.id?.match(/\d{4}/)?.[0] ??
+      normalizeDate(event.dates?.start).slice(0, 4);
+
+    const category =
+      event.type === "annual_conference"
+        ? "annual-conference"
+        : event.type === "distinguished_lectureship"
+          ? "distinguished-lectureship"
+          : event.type;
+
+    return {
+      params: { category, year },
+      props: { event, category, year },
+    };
+  });
+}
+
+const { event, category, year } = Astro.props;
+
+const subject = renderEventSubject(event);
+const html = renderEventHtml(event);
+const text = renderEventText(event);
+---
+
+<SAGPLayout title={`Publishing: ${event.title} | SAGP`}>
+
+<PageHero
+  kicker="Executive Publishing"
+  title={event.title}
+  subtitle="Generate publication-ready materials from this canonical Event."
+  image="/assets/images/parthenon_night.jpg"
+/>
+
+<section class="section publishing-workspace">
+  <div class="publishing-header">
+    <div>
+      <p class="kicker">Event</p>
+      <h2>{event.title}</h2>
+      <p class="muted">{event.description ?? event.hero?.subtitle}</p>
+      <p>
+        <a href={`${import.meta.env.BASE_URL}/events/${category}/${year}/`}>
+          View public event page →
+        </a>
+      </p>
+    </div>
+
+    <div class="publishing-actions">
+      <button class="button" id="copy-subject">Copy Subject</button>
+      <button class="button" id="copy-html">Copy Rich Email</button>
+      <button class="button" id="copy-text">Copy Plain Text</button>
+    </div>
+  </div>
+
+  <div class="publishing-grid">
+    <div>
+      <h3>Subject</h3>
+      <input id="email-subject" value={subject} readonly />
+
+      <h3>Plain Text</h3>
+      <textarea id="email-text" readonly>{text}</textarea>
+
+      <textarea id="email-html" readonly hidden>{html}</textarea>
+    </div>
+
+    <div>
+      <h3>Email Preview</h3>
+      <iframe title="Email preview" srcdoc={html}></iframe>
+    </div>
+  </div>
+</section>
+
+</SAGPLayout>
+
+<script>
+  async function copyTextFrom(selector) {
+    const element = document.querySelector(selector);
+    await navigator.clipboard.writeText(element.value);
+  }
+
+  async function copyHtmlEmail() {
+    const html = document.querySelector("#email-html").value;
+    const text = document.querySelector("#email-text").value;
+
+    if (window.ClipboardItem) {
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          "text/html": new Blob([html], { type: "text/html" }),
+          "text/plain": new Blob([text], { type: "text/plain" }),
+        }),
+      ]);
+    } else {
+      await navigator.clipboard.writeText(text);
+    }
+  }
+
+  document.querySelector("#copy-subject")?.addEventListener("click", () => {
+    copyTextFrom("#email-subject");
+  });
+
+  document.querySelector("#copy-text")?.addEventListener("click", () => {
+    copyTextFrom("#email-text");
+  });
+
+  document.querySelector("#copy-html")?.addEventListener("click", () => {
+    copyHtmlEmail();
+  });
+</script>
+
+<style>
+.publishing-workspace {
+  max-width: 1200px;
+}
+
+.publishing-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.publishing-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 190px;
+}
+
+.publishing-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  gap: 2rem;
+}
+
+.publishing-grid input,
+.publishing-grid textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 0.9rem;
+  font: inherit;
+  background: #fffaf0;
+  color: var(--color-text);
+}
+
+.publishing-grid textarea {
+  min-height: 420px;
+  resize: vertical;
+}
+
+.publishing-grid iframe {
+  width: 100%;
+  min-height: 720px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: white;
+}
+
+@media (max-width: 900px) {
+  .publishing-header,
+  .publishing-grid {
+    display: block;
+  }
+
+  .publishing-actions {
+    margin-top: 1.5rem;
+  }
+
+  .publishing-grid iframe {
+    margin-top: 1rem;
+  }
+}
+</style>
