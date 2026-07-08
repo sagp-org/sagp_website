@@ -117,7 +117,9 @@ import PageHero from "../../../components/PageHero.astro";
   }
 
   function platformUrl(path) {
-    return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+    const base = "/sagp_website";
+    const cleanPath = String(path).replace(/^\//, "");
+    return `${base}/${cleanPath}`;
   }
 
   async function loadDashboard() {
