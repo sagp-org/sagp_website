@@ -56,7 +56,8 @@ import PageHero from "../../../components/PageHero.astro";
     <button class="button" id="compose-button" disabled>Compose Communication</button>
     <button class="button" id="copy-emails-button" disabled>Copy Email Addresses</button>
     <button class="button" id="copy-subject-button" disabled>Copy Subject</button>
-    <button class="button" id="copy-body-button" disabled>Copy Body</button>
+    <button class="button" id="copy-body-button" disabled>Copy Plain Text</button>
+    <button class="button" id="copy-rich-html-button" disabled>Copy Rich HTML</button>
     <button class="button" id="download-button" disabled>Download Communication JSON</button>
   </div>
 
@@ -64,6 +65,9 @@ import PageHero from "../../../components/PageHero.astro";
     <p class="kicker">Step 3</p>
     <h3>Preview Communication</h3>
     <pre id="communication-preview" class="preview">No communication composed.</pre>
+
+    <h4>Rich Text Preview</h4>
+    <iframe id="rich-html-preview" class="rich-preview" title="Rich text preview"></iframe>
   </article>
 </section>
 
@@ -82,10 +86,12 @@ import PageHero from "../../../components/PageHero.astro";
   const copyEmailsButton = document.querySelector("#copy-emails-button");
   const copySubjectButton = document.querySelector("#copy-subject-button");
   const copyBodyButton = document.querySelector("#copy-body-button");
+  const copyRichHtmlButton = document.querySelector("#copy-rich-html-button");
 
   const audiencePreview = document.querySelector("#audience-preview");
   const messagePreview = document.querySelector("#message-preview");
   const communicationPreview = document.querySelector("#communication-preview");
+  const richHtmlPreview = document.querySelector("#rich-html-preview");
 
   const customTitle = document.querySelector("#custom-title");
   const customSubject = document.querySelector("#custom-subject");
@@ -112,6 +118,7 @@ import PageHero from "../../../components/PageHero.astro";
     copyEmailsButton.disabled = !hasCommunication;
     copySubjectButton.disabled = !hasCommunication;
     copyBodyButton.disabled = !hasCommunication;
+    copyRichHtmlButton.disabled = !hasCommunication;
   }
 
   function fillSelect(select, items, emptyLabel) {
@@ -146,6 +153,7 @@ import PageHero from "../../../components/PageHero.astro";
   function resetCommunication() {
     communication = null;
     communicationPreview.textContent = "No communication composed.";
+    richHtmlPreview.srcdoc = "";
     updateButtons();
   }
 
@@ -227,7 +235,10 @@ import PageHero from "../../../components/PageHero.astro";
       `Subject: ${message.subject}`,
       `Type: ${message.message_type ?? ""}`,
       "",
+      "Plain text:",
       message.plain_text ?? "",
+      "",
+      "Rich HTML is available and will appear in the rich-text preview after composing.",
     ].join("\n");
 
     updateButtons();
@@ -270,9 +281,11 @@ import PageHero from "../../../components/PageHero.astro";
       `Audience: ${audience.name}`,
       `Subject: ${message.subject}`,
       "",
-      "Message:",
+      "Plain text message:",
       message.plain_text ?? "",
     ].join("\n");
+
+    richHtmlPreview.srcdoc = message.rich_html ?? "";
 
     updateButtons();
   });
@@ -288,6 +301,21 @@ import PageHero from "../../../components/PageHero.astro";
 
   copyBodyButton.addEventListener("click", async () => {
     await navigator.clipboard.writeText(communication.message.plain_text);
+  });
+
+  copyRichHtmlButton.addEventListener("click", async () => {
+    const html = communication.message.rich_html ?? "";
+    const plain = communication.message.plain_text ?? "";
+
+    if (window.ClipboardItem) {
+      const item = new ClipboardItem({
+        "text/html": new Blob([html], { type: "text/html" }),
+        "text/plain": new Blob([plain], { type: "text/plain" }),
+      });
+      await navigator.clipboard.write([item]);
+    } else {
+      await navigator.clipboard.writeText(html);
+    }
   });
 
   downloadButton.addEventListener("click", () => {
@@ -367,5 +395,13 @@ textarea {
 button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.rich-preview {
+  width: 100%;
+  min-height: 420px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: white;
 }
 </style>

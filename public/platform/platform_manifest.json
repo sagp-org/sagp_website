@@ -57,6 +57,62 @@
       "title": "Membership Renewal Reminder",
       "detail": "Please renew your SAGP membership",
       "url": "/platform/knowledge_objects/messages/msg_19449e884dbb.json"
+    },
+    {
+      "object_type": "message",
+      "object_id": "msg_3b9ec6b9f673",
+      "title": "Call: APA Panels 2026",
+      "detail": "SAGP | APA Panels 2026",
+      "url": "/platform/knowledge_objects/messages/msg_3b9ec6b9f673.json"
+    },
+    {
+      "object_type": "message",
+      "object_id": "msg_4d21457679be",
+      "title": "Event: Annual Conference 2024",
+      "detail": "SAGP | Annual Conference 2024",
+      "url": "/platform/knowledge_objects/messages/msg_4d21457679be.json"
+    },
+    {
+      "object_type": "message",
+      "object_id": "msg_ab07b05c9f10",
+      "title": "Event: 2023 Distinguished Lectureship",
+      "detail": "SAGP | 2023 Distinguished Lectureship",
+      "url": "/platform/knowledge_objects/messages/msg_ab07b05c9f10.json"
+    },
+    {
+      "object_type": "message",
+      "object_id": "msg_b0ed8b4f6503",
+      "title": "Event: 2021 Distinguished Lectureship",
+      "detail": "SAGP | 2021 Distinguished Lectureship",
+      "url": "/platform/knowledge_objects/messages/msg_b0ed8b4f6503.json"
+    },
+    {
+      "object_type": "message",
+      "object_id": "msg_b4b041aa3b6f",
+      "title": "Event: 2022 Distinguished Lectureship",
+      "detail": "SAGP | 2022 Distinguished Lectureship",
+      "url": "/platform/knowledge_objects/messages/msg_b4b041aa3b6f.json"
+    },
+    {
+      "object_type": "message",
+      "object_id": "msg_c838b405d7b6",
+      "title": "Event: 2025 Distinguished Lectureship",
+      "detail": "SAGP | 2025 Distinguished Lectureship",
+      "url": "/platform/knowledge_objects/messages/msg_c838b405d7b6.json"
+    },
+    {
+      "object_type": "message",
+      "object_id": "msg_cc7b6e7eb076",
+      "title": "Event: 2024 Distinguished Lectureship",
+      "detail": "SAGP | 2024 Distinguished Lectureship",
+      "url": "/platform/knowledge_objects/messages/msg_cc7b6e7eb076.json"
+    },
+    {
+      "object_type": "message",
+      "object_id": "msg_dfe24e491397",
+      "title": "Event: Annual Conference 2025",
+      "detail": "SAGP | Annual Conference 2025",
+      "url": "/platform/knowledge_objects/messages/msg_dfe24e491397.json"
     }
   ],
   "communications": [
