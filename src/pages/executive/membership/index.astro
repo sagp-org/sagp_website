@@ -63,6 +63,34 @@ import PageHero from "../../../components/PageHero.astro";
     <div id="member-detail" class="member-detail">
       Select a member to view the record.
     </div>
+
+    <div id="member-editor" class="member-editor hidden">
+      <h3>Edit Member</h3>
+
+      <label>Email</label>
+      <input id="edit-primary-email" type="email" />
+
+      <label>Institution</label>
+      <input id="edit-institution" type="text" />
+
+      <label>Region</label>
+      <input id="edit-region" type="text" />
+
+      <label>Expiration Year</label>
+      <input id="edit-expiration-year" type="text" />
+
+      <label>Notes</label>
+      <textarea id="edit-notes" rows="6"></textarea>
+
+      <label>Reason for update</label>
+      <input id="edit-reason" type="text" placeholder="Renewed through 2028; corrected email; etc." />
+
+      <button class="button" id="prepare-membership-update" disabled>
+        Prepare Membership Update
+      </button>
+
+      <pre id="update-preview" class="preview">Make changes above, then enter a reason for the update.</pre>
+    </div>
   </article>
 
 
@@ -142,6 +170,7 @@ import PageHero from "../../../components/PageHero.astro";
   }
 
   let memberRecords = [];
+  let selectedMember = null;
 
   function memberEmail(member) {
     return member.primary_email || member.secondary_email || "";
@@ -180,6 +209,98 @@ import PageHero from "../../../components/PageHero.astro";
     }
   }
 
+  function setEditorValues(member) {
+    selectedMember = member;
+
+    document.querySelector("#member-editor").classList.remove("hidden");
+    document.querySelector("#edit-primary-email").value = member.primary_email || "";
+    document.querySelector("#edit-institution").value = member.institution || "";
+    document.querySelector("#edit-region").value = member.region || "";
+    document.querySelector("#edit-expiration-year").value =
+      member.membership_expiration_year || member.last_paid_year || "";
+    document.querySelector("#edit-notes").value = member.notes || "";
+    document.querySelector("#edit-reason").value = "";
+    document.querySelector("#update-preview").textContent = "Make changes above, then enter a reason for the update.";
+    document.querySelector("#prepare-membership-update").disabled = true;
+  }
+
+  function proposedChangesFromEditor() {
+    if (!selectedMember) return {};
+
+    const fields = {
+      primary_email: document.querySelector("#edit-primary-email").value.trim(),
+      institution: document.querySelector("#edit-institution").value.trim(),
+      region: document.querySelector("#edit-region").value.trim(),
+      membership_expiration_year: document.querySelector("#edit-expiration-year").value.trim(),
+      notes: document.querySelector("#edit-notes").value.trim(),
+    };
+
+    const original = {
+      primary_email: selectedMember.primary_email || "",
+      institution: selectedMember.institution || "",
+      region: selectedMember.region || "",
+      membership_expiration_year:
+        selectedMember.membership_expiration_year || selectedMember.last_paid_year || "",
+      notes: selectedMember.notes || "",
+    };
+
+    const changes = {};
+    for (const [field, value] of Object.entries(fields)) {
+      if (value !== original[field]) {
+        changes[field] = value;
+      }
+    }
+
+    return changes;
+  }
+
+  function buildMembershipUpdate() {
+    const changes = proposedChangesFromEditor();
+    const reason = document.querySelector("#edit-reason").value.trim();
+
+    if (!selectedMember || Object.keys(changes).length === 0 || !reason) {
+      return null;
+    }
+
+    return {
+      person_id: selectedMember.person_id,
+      proposed_changes: changes,
+      reason,
+      requested_by: "executive_portal",
+      request_id: `mur_${crypto.randomUUID().replaceAll("-", "").slice(0, 12)}`,
+      requested_at: new Date().toISOString(),
+      source: "executive_portal_static",
+      notes: null,
+    };
+  }
+
+  function updateRequestPreview() {
+    const changes = proposedChangesFromEditor();
+    const reason = document.querySelector("#edit-reason").value.trim();
+    const button = document.querySelector("#prepare-membership-update");
+
+    if (!selectedMember) return;
+
+    if (Object.keys(changes).length === 0) {
+      document.querySelector("#update-preview").textContent = "Make changes above, then enter a reason for the update.";
+      button.disabled = true;
+      return;
+    }
+
+    const lines = [
+      `Member: ${selectedMember.display_name}`,
+      `Person ID: ${selectedMember.person_id}`,
+      "",
+      "Changes to be reviewed:",
+      ...Object.entries(changes).map(([field, value]) => `- ${field}: ${value}`),
+      "",
+      reason ? `Reason: ${reason}` : "Reason is required before preparing the update.",
+    ];
+
+    document.querySelector("#update-preview").textContent = lines.join("\n");
+    button.disabled = !reason;
+  }
+
   function renderMemberDetail(member) {
     const container = document.querySelector("#member-detail");
 
@@ -207,6 +328,8 @@ import PageHero from "../../../components/PageHero.astro";
       <h4>Notes</h4>
       <pre class="preview">${member.notes || ""}</pre>
     `;
+
+    setEditorValues(member);
   }
 
   async function loadMemberRecords() {
@@ -265,6 +388,43 @@ import PageHero from "../../../components/PageHero.astro";
       container.appendChild(row);
     }
   }
+
+  for (const id of [
+    "edit-primary-email",
+    "edit-institution",
+    "edit-region",
+    "edit-expiration-year",
+    "edit-notes",
+    "edit-reason",
+  ]) {
+    document.addEventListener("input", (event) => {
+      if (event.target?.id === id) updateRequestPreview();
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    if (event.target?.id !== "prepare-membership-update") return;
+
+    const request = buildMembershipUpdate();
+    if (!request) return;
+
+    const blob = new Blob(
+      [JSON.stringify(request, null, 2)],
+      { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    const safeName = selectedMember.display_name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "");
+
+    link.download = `membership_update_${safeName}_${request.request_id}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+  });
 
   loadDashboard()
     .then((dashboard) => {
