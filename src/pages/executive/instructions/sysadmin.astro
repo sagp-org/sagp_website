@@ -1,0 +1,110 @@
+---
+import SAGPLayout from "../../../layouts/SAGPLayout.astro";
+import PageHero from "../../../components/PageHero.astro";
+---
+
+<SAGPLayout title="SysAdmin Instructions | SAGP Executive Administration">
+
+<PageHero
+  kicker="Executive Administration"
+  title="SysAdmin Instructions"
+  subtitle="Administrative processing instructions for SAGP update request files."
+  image="/assets/images/parthenon_night.jpg"
+/>
+
+<section class="section">
+  <article class="card instructions">
+    <h2>Always Start Here</h2>
+
+    <p>
+      Update-processing commands are always run from the top-level
+      <code>sagp</code> repository.
+    </p>
+
+    <pre><code>cd /Users/brash/sagp</code></pre>
+
+    <h2>Processing a Membership Update</h2>
+
+    <ol>
+      <li>Save the attached JSON file, usually to the <strong>Downloads</strong> folder.</li>
+      <li>Open Terminal.</li>
+      <li>Change to the top-level repository:</li>
+    </ol>
+
+    <pre><code>cd /Users/brash/sagp</code></pre>
+
+    <p>Run:</p>
+
+    <pre><code>python3 -m scripts.process_membership_update ~/Downloads/&lt;membership_update_file&gt;.json</code></pre>
+
+    <p>
+      Review the proposed changes. If everything looks correct, type:
+    </p>
+
+    <pre><code>YES</code></pre>
+
+    <p>The script will automatically update the membership database, regenerate website data, commit, push, deploy, and update the umbrella repository.</p>
+
+    <h2>Processing a Publication Update</h2>
+
+    <ol>
+      <li>Save the attached JSON file, usually to the <strong>Downloads</strong> folder.</li>
+      <li>Open Terminal.</li>
+      <li>Change to the top-level repository:</li>
+    </ol>
+
+    <pre><code>cd /Users/brash/sagp</code></pre>
+
+    <p>Run:</p>
+
+    <pre><code>python3 -m scripts.process_publication_update ~/Downloads/&lt;publication_update_file&gt;.json</code></pre>
+
+    <p>
+      Review the proposed changes. If everything looks correct, type:
+    </p>
+
+    <pre><code>YES</code></pre>
+
+    <p>The script will automatically update canonical YAML, regenerate the publishing index, rebuild the website, commit, push, deploy, and update the umbrella repository.</p>
+
+    <h2>If a Safety Check Fails</h2>
+
+    <div class="callout">
+      If the script reports that the current value does not match the expected <strong>before</strong> value, do not continue. This usually means the
+      update has already been applied or the canonical data has changed since
+      the update request was created.
+    </div>
+  </article>
+</section>
+
+</SAGPLayout>
+
+<style>
+.instructions {
+  max-width: 950px;
+}
+
+.instructions h2 {
+  margin-top: 0;
+}
+
+.instructions h2:not(:first-child) {
+  margin-top: 2.5rem;
+}
+
+.instructions li {
+  margin: 0.55rem 0;
+}
+
+pre {
+  background: #fffaf0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+</style>
