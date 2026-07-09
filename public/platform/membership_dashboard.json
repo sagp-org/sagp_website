@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09T09:24:30.859337",
+  "generated_at": "2026-07-09T09:40:45.166495",
   "source_database": "sagp_member_manager/output/sagp_members.db",
   "current_year": 2026,
   "summary": {
@@ -55,7 +55,7 @@
     "2033": 2,
     "2034": 2,
     "2038": 1,
-    "2040": 1,
+    "2041": 1,
     "2050": 1
   },
   "last_paid_year_counts": {
@@ -94,7 +94,7 @@
     "2033": 2,
     "2034": 2,
     "2038": 1,
-    "2040": 1,
+    "2041": 1,
     "2050": 1
   },
   "derived_membership_status_counts": {
