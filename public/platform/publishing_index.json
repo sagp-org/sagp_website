@@ -18,7 +18,7 @@
         "timezone_iana": "America/Los_Angeles"
       },
       "location": {
-        "mode": "online",
+        "mode": "virtual",
         "venue": "Zoom",
         "city": "",
         "region": "",

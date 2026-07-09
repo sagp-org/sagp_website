@@ -4,171 +4,147 @@ event:
   subtitle: Plato, Aristotle, Presocratics, and Stoicism.
   type: annual_conference
   status: upcoming
+  description: 'The 2025 SAGP Annual Conference brings scholars together for four thematic
+    sessions over two days, each moderated by a senior scholar and centered on original research
+    in Ancient Greek philosophy.
 
-  description: >
-    The 2025 SAGP Annual Conference brings scholars together for four thematic
-    sessions over two days, each moderated by a senior scholar and centered on
-    original research in Ancient Greek philosophy.
-
+    '
   attendance:
-    instructions: >
-      To attend via Zoom, contact apreus@binghamton.edu, indicating which event
+    instructions: 'To attend via Zoom, contact apreus@binghamton.edu, indicating which event
       or events you wish to attend by day and time.
-    contact_email: apreus@binghamton.edu
 
+      '
+    contact_email: apreus@binghamton.edu
   dates:
     start: 2025-11-15
     end: 2025-11-16
     timezone: PST
     timezone_iana: America/Los_Angeles
-
   location:
-    mode: online
+    mode: virtual
     venue: Zoom
-    city:
-    region:
-    country:
-    url:
-
-
+    city: null
+    region: null
+    country: null
+    url: null
   hero:
     kicker: Annual Conference 2025
     title: Plato, Aristotle, Presocratics, and Stoicism.
     subtitle: November 15–16, 2025 · via Zoom · All times listed in Pacific Standard Time.
     image: /assets/images/parthenon_night.jpg
-
   sessions:
-
-    - id: plato-learning-in-the-dialogues
-      title: "Plato: Learning in the Dialogues"
-      date: 2025-11-15
-      start_time: "07:00"
-      end_time:
-      timezone: PST
-      timezone_iana: America/Los_Angeles
-
-      moderator:
-        name: Nickolas Pappas
-        institution: City University of New York
-
-      presentations:
-
-        - id: protagorean-vs-aristotelian-political-wisdom
-          title: "Protagorean vs. Aristotelian political wisdom"
-          type: paper
-          presenters:
-            - name: Mitzi Lee
-              institution: University of Colorado at Boulder
-
-        - id: nostos-from-the-land-of-zalmoxis
-          title: "Nostos from the Land of Zalmoxis: Socrates, Learner and Teacher"
-          type: paper
-          presenters:
-            - name: David Murphy
-              institution: New York University
-
-        - id: war-not-a-violent-teacher
-          title: "War (Not) a ‘Violent Teacher’: Socrates and the (Mis)Teachings of Warfare"
-          type: paper
-          presenters:
-            - name: Andrea Capra
-              institution: Università degli Studi di Milano / Durham University
-
-    - id: aristotles-categories
-      title: "Aristotle’s Categories"
-      display_title: "Aristotle’s <em>Categories</em>"
-      date: 2025-11-15
-      start_time: "11:00"
-      end_time:
-      timezone: PST
-      timezone_iana: America/Los_Angeles
-
-      moderator:
-        name: Christopher Shields
-        institution: University of California San Diego
-
-      presentations:
-
-        - id: individuals-in-aristotles-categories
-          title: "Individuals in Aristotle’s Categories"
-          type: paper
-          presenters:
-            - name: Fred D. Miller, Jr.
-              institution: West Virginia University / Bowling Green State University
-
-        - id: categories-in-h2
-          title: "Categories in H.2"
-          type: paper
-          presenters:
-            - name: Christian Pfeiffer
-              institution: University of Toronto, Scarborough
-
-    - id: presocratic-ontology-in-and-after-parmenides
-      title: "Presocratic Ontology in and after Parmenides"
-      date: 2025-11-16
-      start_time: "07:00"
-      end_time:
-      timezone: PST
-      timezone_iana: America/Los_Angeles
-
-      moderator:
-        name: Shaul Tor
-        institution: King’s College London
-
-      presentations:
-
-        - id: only-now-the-puzzle-of-parmenides-b8-5-6
-          title: "Only now: the puzzle of Parmenides B8.5–6"
-          type: paper
-          presenters:
-            - name: Matthew Evans
-              institution: University of Texas at Austin
-
-        - id: being-the-full-and-the-rare
-          title: "Being, the full and the rare: Parmenides, the post-Parmenideans and the concept of body"
-          type: paper
-          presenters:
-            - name: Gábor Betegh
-              institution: University of Cambridge
-
-        - id: ontology-and-epistemology-of-colours-after-parmenides
-          title: "Ontology and epistemology of colours after Parmenides: Empedocles, Anaxagoras, Democritus"
-          type: paper
-          presenters:
-            - name: Maria Michela Sassi
-              institution: University of Pisa
-
-    - id: epistemology-and-ontology-in-stoicism
-      title: "Epistemology and Ontology in Stoicism"
-      date: 2025-11-16
-      start_time: "11:00"
-      end_time:
-      timezone: PST
-      timezone_iana: America/Los_Angeles
-
-      moderator:
-        name: Marcelo D. Boeri
-        institution: Pontifical Catholic University, Chile
-
-      presentations:
-
-        - id: having-the-impression-of-something
-          title: "Having the impression of something: the grasp of corporeal and incorporeal entities in Stoic epistemology"
-          type: paper
-          presenters:
-            - name: Michele Alessandrelli
-              institution: CNR
-
-        - id: the-stoics-on-perceiving-what-obtains
-          title: "The Stoics on Perceiving What Obtains"
-          type: paper
-          presenters:
-            - name: Christian Pineda
-              institution: IIFs-UNAM
-
-        - id: making-an-impression
-          title: "Making an Impression: Stoic incorporeals as proper objects of thought, reference, and knowledge"
-          type: paper
-          presenters:
-            - name: Vanessa de Harven
-              institution: University of Massachusetts Amherst
+  - id: plato-learning-in-the-dialogues
+    title: 'Plato: Learning in the Dialogues'
+    date: 2025-11-15
+    start_time: 07:00
+    end_time: null
+    timezone: PST
+    timezone_iana: America/Los_Angeles
+    moderator:
+      name: Nickolas Pappas
+      institution: City University of New York
+    presentations:
+    - id: protagorean-vs-aristotelian-political-wisdom
+      title: Protagorean vs. Aristotelian political wisdom
+      type: paper
+      presenters:
+      - name: Mitzi Lee
+        institution: University of Colorado at Boulder
+    - id: nostos-from-the-land-of-zalmoxis
+      title: 'Nostos from the Land of Zalmoxis: Socrates, Learner and Teacher'
+      type: paper
+      presenters:
+      - name: David Murphy
+        institution: New York University
+    - id: war-not-a-violent-teacher
+      title: 'War (Not) a ‘Violent Teacher’: Socrates and the (Mis)Teachings of Warfare'
+      type: paper
+      presenters:
+      - name: Andrea Capra
+        institution: Università degli Studi di Milano / Durham University
+  - id: aristotles-categories
+    title: Aristotle’s Categories
+    display_title: Aristotle’s <em>Categories</em>
+    date: 2025-11-15
+    start_time: '11:00'
+    end_time: null
+    timezone: PST
+    timezone_iana: America/Los_Angeles
+    moderator:
+      name: Christopher Shields
+      institution: University of California San Diego
+    presentations:
+    - id: individuals-in-aristotles-categories
+      title: Individuals in Aristotle’s Categories
+      type: paper
+      presenters:
+      - name: Fred D. Miller, Jr.
+        institution: West Virginia University / Bowling Green State University
+    - id: categories-in-h2
+      title: Categories in H.2
+      type: paper
+      presenters:
+      - name: Christian Pfeiffer
+        institution: University of Toronto, Scarborough
+  - id: presocratic-ontology-in-and-after-parmenides
+    title: Presocratic Ontology in and after Parmenides
+    date: 2025-11-16
+    start_time: 07:00
+    end_time: null
+    timezone: PST
+    timezone_iana: America/Los_Angeles
+    moderator:
+      name: Shaul Tor
+      institution: King’s College London
+    presentations:
+    - id: only-now-the-puzzle-of-parmenides-b8-5-6
+      title: 'Only now: the puzzle of Parmenides B8.5–6'
+      type: paper
+      presenters:
+      - name: Matthew Evans
+        institution: University of Texas at Austin
+    - id: being-the-full-and-the-rare
+      title: 'Being, the full and the rare: Parmenides, the post-Parmenideans and the concept
+        of body'
+      type: paper
+      presenters:
+      - name: Gábor Betegh
+        institution: University of Cambridge
+    - id: ontology-and-epistemology-of-colours-after-parmenides
+      title: 'Ontology and epistemology of colours after Parmenides: Empedocles, Anaxagoras,
+        Democritus'
+      type: paper
+      presenters:
+      - name: Maria Michela Sassi
+        institution: University of Pisa
+  - id: epistemology-and-ontology-in-stoicism
+    title: Epistemology and Ontology in Stoicism
+    date: 2025-11-16
+    start_time: '11:00'
+    end_time: null
+    timezone: PST
+    timezone_iana: America/Los_Angeles
+    moderator:
+      name: Marcelo D. Boeri
+      institution: Pontifical Catholic University, Chile
+    presentations:
+    - id: having-the-impression-of-something
+      title: 'Having the impression of something: the grasp of corporeal and incorporeal entities
+        in Stoic epistemology'
+      type: paper
+      presenters:
+      - name: Michele Alessandrelli
+        institution: CNR
+    - id: the-stoics-on-perceiving-what-obtains
+      title: The Stoics on Perceiving What Obtains
+      type: paper
+      presenters:
+      - name: Christian Pineda
+        institution: IIFs-UNAM
+    - id: making-an-impression
+      title: 'Making an Impression: Stoic incorporeals as proper objects of thought, reference,
+        and knowledge'
+      type: paper
+      presenters:
+      - name: Vanessa de Harven
+        institution: University of Massachusetts Amherst
