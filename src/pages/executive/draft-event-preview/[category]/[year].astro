@@ -1,0 +1,67 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import yaml from "js-yaml";
+
+import SAGPLayout from "../../../../layouts/SAGPLayout.astro";
+import PageHero from "../../../../components/PageHero.astro";
+import EventRenderer from "../../../../components/events/EventRenderer.astro";
+
+export function getStaticPaths() {
+  const categoryMap = {
+    "annual-conference": "annual_conference",
+    "distinguished-lectureship": "distinguished_lectureship",
+  };
+
+  const paths = [];
+
+  for (const [category, type] of Object.entries(categoryMap)) {
+    const dir = path.resolve(`content/events/${type}`);
+    if (!fs.existsSync(dir)) continue;
+
+    for (const file of fs.readdirSync(dir)) {
+      if (!file.endsWith(".draft.yaml")) continue;
+      paths.push({
+        params: {
+          category,
+          year: file.replace(".draft.yaml", ""),
+        },
+        props: {
+          category,
+          year: file.replace(".draft.yaml", ""),
+          type,
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { category, year, type } = Astro.props;
+
+const file = path.resolve(`content/events/${type}/${year}.draft.yaml`);
+const data = yaml.load(fs.readFileSync(file, "utf8"));
+const event = data.event;
+---
+
+<SAGPLayout title={`Draft Preview: ${event.title} | SAGP`}>
+
+<PageHero
+  kicker="Draft Event Preview"
+  title={event.hero?.title || event.title}
+  subtitle={event.hero?.subtitle || event.subtitle || "Draft preview generated from YAML."}
+  image={event.hero?.image || "/assets/images/parthenon_night.jpg"}
+/>
+
+<section class="section">
+  <div class="callout">
+    <strong>Draft preview.</strong>
+    This page is rendered from <code>{type}/{year}.draft.yaml</code>.
+    It is not published as a canonical event.
+  </div>
+</section>
+
+<EventRenderer event={event} />
+
+</SAGPLayout>

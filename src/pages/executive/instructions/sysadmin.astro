@@ -67,6 +67,43 @@ import PageHero from "../../../components/PageHero.astro";
 
     <p>The script will automatically update canonical YAML, regenerate the publishing index, rebuild the website, commit, push, deploy, and update the umbrella repository.</p>
 
+
+    <h2>Creating a New Event</h2>
+
+    <ol>
+      <li>Obtain the finalized Microsoft Word (<strong>.docx</strong>) version of the event announcement.</li>
+      <li>Open Terminal.</li>
+      <li>Change to the top-level SAGP repository:</li>
+    </ol>
+
+    <pre><code>cd /Users/brash/sagp</code></pre>
+
+    <p>Generate a draft Event YAML:</p>
+
+    <pre><code>python3 -m scripts.create_event_from_docx_ai \
+~/Downloads/&lt;event_document&gt;.docx \
+--type annual_conference \
+--year 2027</code></pre>
+
+    <p>The generated draft YAML will be written to:</p>
+
+    <pre><code>sagp_website/content/events/annual_conference/2027.draft.yaml</code></pre>
+
+    <p>Preview the draft website locally:</p>
+
+    <pre><code>cd sagp_website
+npm run dev</code></pre>
+
+    <p>Then open:</p>
+
+    <pre><code>http://localhost:4321/sagp_website/executive/draft-event-preview/annual-conference/2027/</code></pre>
+
+    <p>
+      Edit the draft YAML as needed and refresh the preview until satisfied.
+      Once approved, promote the draft to canonical YAML and publish using the
+      normal publication workflow.
+    </p>
+
     <h2>If a Safety Check Fails</h2>
 
     <div class="callout">

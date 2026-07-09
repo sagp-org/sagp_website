@@ -1,0 +1,149 @@
+event:
+  id: annual-conference-2026
+  title: SAGP Annual Conference 2026
+  subtitle: ''
+  type: annual_conference
+  status: draft
+  description: ''
+  attendance:
+    instructions: ''
+    contact_email: ''
+  dates:
+    start: '2026-11-16'
+    end: '2026-11-17'
+    timezone: PST
+    timezone_iana: America/Los_Angeles
+  location:
+    mode: ''
+    venue: ''
+    city: ''
+    region: ''
+    country: ''
+    url: ''
+  hero:
+    kicker: ''
+    title: SAGP Annual Conference 2026
+    subtitle: ''
+    image: /assets/images/parthenon_night.jpg
+  sessions:
+  - title: 'Plato or PlayDough: On the malleability of Ancient Greek Philosophy'
+    date: '2026-11-16'
+    start_time: 07:00
+    timezone: PST
+    moderator:
+      name: Nickolas Pappas
+      institution: Yuri Gellar Institute of Advanced Spoon Bending
+    presentations:
+    - title: Not Your Mama’s Philophy
+      abstract: ''
+      presenters:
+      - name: Mitzi Lee
+        institution: University of Colorado at Boulder
+      id: not-your-mamas-philophy
+      type: paper
+    - title: 'Murphy’s Law: Do we need it?'
+      abstract: ''
+      presenters:
+      - name: David Murphy
+        institution: New York University
+      id: murphys-law-do-we-need-it
+      type: paper
+    - title: On the gender ambiguity of given names
+      abstract: ''
+      presenters:
+      - name: Andrea Capra
+        institution: Università degli Studi di Milano / Durham University
+      id: on-the-gender-ambiguity-of-given-names
+      type: paper
+    id: plato-or-playdough:-on-the-malleability-of-ancient-greek-philosophy
+    timezone_iana: America/Los_Angeles
+    end_time: ''
+  - title: Aristotle’s Scattergories
+    date: '2026-11-16'
+    start_time: '11:00'
+    timezone: PST
+    moderator:
+      name: Christopher Shields
+      institution: University of California Mexico City
+    presentations:
+    - title: Flour production in Ancient Greece
+      abstract: ''
+      presenters:
+      - name: Fred D. Miller, Jr.
+        institution: West Virginia University / Bowling Green State University
+      id: flour-production-in-ancient-greece
+      type: paper
+    - title: Military musical instruments in Ancient Greece
+      abstract: ''
+      presenters:
+      - name: Christian Pfeiffer
+        institution: University of Toronto, Scarborough
+      id: military-musical-instruments-in-ancient-greece
+      type: paper
+    id: aristotle’s-scattergories
+    timezone_iana: America/Los_Angeles
+    end_time: ''
+  - title: 'Parmenides: Who are these two guys?'
+    date: '2026-11-17'
+    start_time: 07:00
+    timezone: PST
+    moderator:
+      name: Shaul Tor
+      institution: King’s Kollege Kambridge
+    presentations:
+    - title: Breakfast Joints in Ancient Greece
+      abstract: ''
+      presenters:
+      - name: Matthew (Bob) Evans
+        institution: University of Texas at Austin
+      id: breakfast-joints-in-ancient-greece
+      type: paper
+    - title: 'Ancient Greek Philosphers: if you can’t Betegh ‘em, join ‘em'
+      abstract: ''
+      presenters:
+      - name: Gábriel Betegh
+        institution: University of Cambridge
+      id: ancient-greek-philosphers-if-you-cant-betegh-‘em,-join-‘em
+      type: paper
+    - title: 'Ancient Female Greek Philosophers: you sassy girl!'
+      abstract: ''
+      presenters:
+      - name: Maria Michela Sassi
+        institution: University of Pisa
+      id: ancient-female-greek-philosophers-you-sassy-girl!
+      type: paper
+    id: parmenides:-who-are-these-two-guys?
+    timezone_iana: America/Los_Angeles
+    end_time: ''
+  - title: 'Epistemology and Ontology in Stoicism: Let’s Not Get Too Emotional'
+    date: '2026-11-17'
+    start_time: '11:00'
+    timezone: PST
+    moderator:
+      name: Marcelo D. Boeri
+      institution: Department of Climate Control, Pontifical Catholic University, Chile
+    presentations:
+    - title: 'Having the impression of something: lithography in Ancient Greece'
+      abstract: ''
+      presenters:
+      - name: Michele Alessandrelli
+        institution: CNR
+      id: having-the-impression-of-something-lithography-in-ancient-greece
+      type: paper
+    - title: 'The Stoics on Perceiving What Obtains: Let’s Get This!'
+      abstract: ''
+      presenters:
+      - name: Christian Pineda
+        institution: IIFs-UNAM
+      id: the-stoics-on-perceiving-what-obtains-lets-get-this!
+      type: paper
+    - title: 'Making an Impression: It turns out you actually DO get a second chance!'
+      abstract: ''
+      presenters:
+      - name: Vanessa de Harven
+        institution: University of Massachusetts Amherst
+      id: making-an-impression-it-turns-out-you-actually-do-get-a-second-chance!
+      type: paper
+    id: epistemology-and-ontology-in-stoicism:-let’s-not-get-too-emotional
+    timezone_iana: America/Los_Angeles
+    end_time: ''
