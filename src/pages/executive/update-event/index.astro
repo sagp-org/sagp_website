@@ -8,7 +8,7 @@ import PageHero from "../../../components/PageHero.astro";
 <PageHero
   kicker="Publishing Workspace"
   title="Update Event"
-  subtitle="Review canonical publication facts for an existing event."
+  subtitle="Edit canonical publication facts for an existing event."
   image="/assets/images/parthenon_night.jpg"
 />
 
@@ -26,15 +26,48 @@ import PageHero from "../../../components/PageHero.astro";
 
 <section class="section">
   <article class="card">
-    <div id="event-detail" class="event-detail">
-      Event details will appear here.
-    </div>
+    <form id="event-form" class="event-form">
+      <div id="event-detail">
+        Event details will appear here.
+      </div>
+
+      <div id="event-editor-actions" class="editor-actions hidden">
+        <label for="update-reason">Reason for update</label>
+        <input
+          id="update-reason"
+          type="text"
+          placeholder="Corrected date, updated Zoom instructions, revised title, etc."
+        />
+
+        <button class="button" id="prepare-publication-update" type="button" disabled>
+          Prepare Publication Update
+        </button>
+
+        <pre id="update-preview" class="preview">
+Make changes above, then enter a reason for the update.
+        </pre>
+      </div>
+    </form>
   </article>
 </section>
 
 </SAGPLayout>
 
 <script>
+  import {
+    EVENT_UPDATE_FIELDS,
+    getNestedValue,
+    collectEventChanges,
+    validateEventForm,
+  } from "../../../lib/publishing/update_event.js";
+
+  import {
+    buildPublicationUpdateRequest,
+    downloadPublicationUpdate,
+  } from "../../../lib/publishing/publication_update_request.js";
+
+  let selectedEvent = null;
+
   function platformUrl(path) {
     const base = "/sagp_website";
     const cleanPath = String(path).replace(/^\//, "");
@@ -45,10 +78,23 @@ import PageHero from "../../../components/PageHero.astro";
     return value || "";
   }
 
-  function renderField(label, value) {
+  function fieldInput(field, event) {
+    const value = display(getNestedValue(event, field.key));
+
+    if (field.type === "textarea") {
+      return `
+        <label>${field.label}</label>
+        <textarea data-event-field="${field.key}" rows="6">${value}</textarea>
+      `;
+    }
+
     return `
-      <dt>${label}</dt>
-      <dd>${display(value)}</dd>
+      <label>${field.label}</label>
+      <input
+        data-event-field="${field.key}"
+        type="${field.type}"
+        value="${value}"
+      />
     `;
   }
 
@@ -60,9 +106,52 @@ import PageHero from "../../../components/PageHero.astro";
     return response.json();
   }
 
+  function updatePreview() {
+    const preview = document.querySelector("#update-preview");
+    const button = document.querySelector("#prepare-publication-update");
+    const reason = document.querySelector("#update-reason").value.trim();
+
+    if (!selectedEvent) return;
+
+    const changes = collectEventChanges(selectedEvent);
+    const errors = validateEventForm();
+
+    if (errors.length) {
+      preview.textContent = [
+        "Please correct these problems:",
+        "",
+        ...errors.map((error) => `- ${error}`),
+      ].join("\n");
+      button.disabled = true;
+      return;
+    }
+
+    if (Object.keys(changes).length === 0) {
+      preview.textContent = "Make changes above, then enter a reason for the update.";
+      button.disabled = true;
+      return;
+    }
+
+    const lines = [
+      `Event: ${selectedEvent.title}`,
+      `Publication ID: ${selectedEvent.id}`,
+      "",
+      "Changes to be reviewed:",
+      ...Object.entries(changes).map(([field, value]) => `- ${field}: ${value || "(blank)"}`),
+      "",
+      reason ? `Reason: ${reason}` : "Reason is required before preparing the update.",
+    ];
+
+    preview.textContent = lines.join("\n");
+    button.disabled = !reason;
+  }
+
   function renderEvent(event) {
+    selectedEvent = event;
+
     const status = document.querySelector("#event-status");
     const detail = document.querySelector("#event-detail");
+    const actions = document.querySelector("#event-editor-actions");
 
     status.innerHTML = `
       <strong>${event.title}</strong><br />
@@ -72,37 +161,41 @@ import PageHero from "../../../components/PageHero.astro";
     detail.innerHTML = `
       <h2>${event.title}</h2>
 
-      <dl class="record-grid">
-        ${renderField("Event ID", event.event_id)}
-        ${renderField("Publication ID", event.id)}
-        ${renderField("Type", event.type)}
-        ${renderField("Status", event.status)}
-        ${renderField("Title", event.title)}
-        ${renderField("Subtitle", event.subtitle)}
-        ${renderField("Start Date", event.dates?.start)}
-        ${renderField("End Date", event.dates?.end)}
-        ${renderField("Timezone", event.dates?.timezone)}
-        ${renderField("Timezone IANA", event.dates?.timezone_iana)}
-        ${renderField("Mode", event.location?.mode)}
-        ${renderField("Venue", event.location?.venue)}
-        ${renderField("City", event.location?.city)}
-        ${renderField("Region", event.location?.region)}
-        ${renderField("Country", event.location?.country)}
-        ${renderField("Location URL", event.location?.url)}
-        ${renderField("Attendance Contact", event.attendance?.contact_email)}
-        ${renderField("Hero Kicker", event.hero?.kicker)}
-        ${renderField("Hero Title", event.hero?.title)}
-        ${renderField("Hero Subtitle", event.hero?.subtitle)}
-        ${renderField("Hero Image", event.hero?.image)}
-        ${renderField("Source YAML", event.source_yaml)}
-      </dl>
+      <div class="metadata">
+        <strong>Event ID:</strong> ${event.event_id}<br />
+        <strong>Publication ID:</strong> ${event.id}<br />
+        <strong>Source YAML:</strong> ${event.source_yaml}
+      </div>
 
-      <h3>Description</h3>
-      <pre class="preview">${event.description || ""}</pre>
-
-      <h3>Attendance Instructions</h3>
-      <pre class="preview">${event.attendance?.instructions || ""}</pre>
+      <div class="form-grid">
+        ${EVENT_UPDATE_FIELDS.map((field) => fieldInput(field, event)).join("")}
+      </div>
     `;
+
+    actions.classList.remove("hidden");
+
+    for (const element of detail.querySelectorAll("input, textarea")) {
+      element.addEventListener("input", updatePreview);
+    }
+
+    document.querySelector("#update-reason").addEventListener("input", updatePreview);
+
+    document.querySelector("#prepare-publication-update").addEventListener("click", () => {
+      const reason =
+        document.querySelector("#update-reason").value.trim();
+
+      const changes = collectEventChanges(selectedEvent);
+
+      const request = buildPublicationUpdateRequest({
+        publicationType: "event",
+        publicationId: selectedEvent.id,
+        originalObject: selectedEvent,
+        changes,
+        reason,
+      });
+
+      downloadPublicationUpdate(request);
+    });
   }
 
   const params = new URLSearchParams(window.location.search);
@@ -132,24 +225,59 @@ import PageHero from "../../../components/PageHero.astro";
 </script>
 
 <style>
-.event-detail h2 {
+.event-form h2 {
   margin-top: 0;
 }
 
-.record-grid {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 10px 18px;
-  margin-top: 20px;
-}
-
-.record-grid dt {
-  font-weight: 700;
+.metadata {
+  margin: 1rem 0 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fffaf0;
   color: var(--color-muted);
 }
 
-.record-grid dd {
-  margin: 0;
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.event-form label {
+  display: block;
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+.event-form input,
+.event-form textarea {
+  width: 100%;
+  padding: 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fffaf0;
+  color: var(--color-text);
+  font: inherit;
+}
+
+.event-form textarea {
+  resize: vertical;
+}
+
+.editor-actions {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.hidden {
+  display: none;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .preview {
@@ -159,5 +287,6 @@ import PageHero from "../../../components/PageHero.astro";
   border-radius: 12px;
   padding: 1rem;
   color: var(--color-text);
+  margin-top: 1rem;
 }
 </style>
