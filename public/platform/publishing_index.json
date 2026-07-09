@@ -271,10 +271,30 @@
     {
       "kind": "call",
       "id": "apa_panels_2026",
-      "title": "APA Panels 2026",
+      "title": "SAGP Panels at the American Philosophical Association Meetings",
       "status": "active",
+      "summary": "SAGP invites paper submissions for Society-sponsored panels at the American Philosophical Association meetings.\n",
       "deadline": "2026-07-01",
-      "detail": "SAGP invites paper submissions for Society-sponsored panels at the American Philosophical Association meetings.\n",
+      "hero": {
+        "kicker": "Call for Papers at APA Meetings",
+        "title": "APA Panels 2026",
+        "subtitle": "Submit your work for consideration for SAGP panels at APA meetings."
+      },
+      "deadlines": [
+        {
+          "label": "Eastern APA",
+          "date": "2026-07-01",
+          "note": "Extended deadline"
+        },
+        {
+          "label": "Central APA",
+          "date": "2026-08-01"
+        },
+        {
+          "label": "Pacific APA",
+          "date": "2026-08-01"
+        }
+      ],
       "source_yaml": "content/calls/apa_panels_2026.yaml"
     }
   ]
