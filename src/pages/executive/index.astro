@@ -3,59 +3,62 @@ import SAGPLayout from "../../layouts/SAGPLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 ---
 
-<SAGPLayout title="Executive Portal | SAGP">
+<SAGPLayout title="Executive Administration | SAGP">
 
 <PageHero
-  kicker="Executive Portal"
-  title="SAGP Executive Publishing Portal"
-  subtitle="Create, maintain, and publish canonical Society content."
+  kicker="Executive Administration"
+  title="SAGP Executive Administration"
+  subtitle="Operational tools for administering the Society."
   image="/assets/images/parthenon_night.jpg"
 />
 
 <section class="section">
+  <div class="portal-intro">
+    <p>
+      The Executive Administration Portal supports the operational work of the
+      Society by turning completed organizational work into canonical knowledge
+      and derived publications, communications, and membership views.
+    </p>
+  </div>
+
   <div class="portal-grid">
-    <article class="card">
-      <h3>New Event</h3>
-      <p>Create a new Annual Conference, Distinguished Lecture, or Works in Progress event from source material.</p>
-      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/new-event/`}>Start new event</a></p>
-    </article>
-
-    <article class="card">
-      <h3>Update Event</h3>
-      <p>Edit or revise an existing event knowledge object.</p>
-      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/update-event/`}>Update event</a></p>
-    </article>
-
-    <article class="card">
-      <h3>New Call</h3>
-      <p>Create a new call for papers, nominations, renewals, or other Society action.</p>
-      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/new-call/`}>Start new call</a></p>
-    </article>
-
-    <article class="card">
-      <h3>Update Call</h3>
-      <p>Edit or revise an existing call knowledge object.</p>
-      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/update-call/`}>Update call</a></p>
-    </article>
-
-
-
     <article class="card feature-card">
-      <h3>Communications Workspace</h3>
-      <p>Combine an audience from Membership with a message from Publishing to prepare a complete communication package.</p>
-      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/communications/`}>Open communications workspace</a></p>
+      <h3>Communication Workspace</h3>
+      <p>
+        Combine audiences with messages, preview rich-text communications, and
+        prepare complete communication packages.
+      </p>
+      <p>
+        <a class="button" href={`${import.meta.env.BASE_URL}/executive/communications/`}>
+          Open Workspace →
+        </a>
+      </p>
     </article>
 
     <article class="card feature-card">
       <h3>Membership Workspace</h3>
-      <p>Work with members, renewals, and communication audiences generated from the SAGP membership database.</p>
-      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/membership/`}>Open membership workspace</a></p>
+      <p>
+        View membership statistics, find members, prepare membership updates,
+        and publish refreshed membership information.
+      </p>
+      <p>
+        <a class="button" href={`${import.meta.env.BASE_URL}/executive/membership/`}>
+          Open Workspace →
+        </a>
+      </p>
     </article>
 
     <article class="card feature-card">
-      <h3>Publish Content</h3>
-      <p>Generate publication outputs from canonical content: website pages, rich-text emails, plain-text emails, and later PDFs.</p>
-      <p><a class="button" href={`${import.meta.env.BASE_URL}/executive/publishing/`}>Open publisher</a></p>
+      <h3>Publishing Workspace</h3>
+      <p>
+        Maintain events, calls for papers, and other Society publications from
+        canonical content.
+      </p>
+      <p>
+        <a class="button" href={`${import.meta.env.BASE_URL}/executive/publishing/`}>
+          Open Workspace →
+        </a>
+      </p>
     </article>
   </div>
 </section>
@@ -63,17 +66,24 @@ import PageHero from "../../components/PageHero.astro";
 </SAGPLayout>
 
 <style>
+.portal-intro {
+  max-width: 860px;
+  margin-bottom: 28px;
+  font-size: 1.1rem;
+  color: var(--color-muted);
+}
+
 .portal-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
 
 .feature-card {
-  grid-column: 1 / -1;
+  min-height: 260px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .portal-grid {
     grid-template-columns: 1fr;
   }
