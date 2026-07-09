@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-08T17:32:05.781839",
+  "generated_at": "2026-07-09T09:24:30.859337",
   "source_database": "sagp_member_manager/output/sagp_members.db",
   "current_year": 2026,
   "summary": {
     "total_members": 1812,
     "members_with_email": 1737,
-    "current_paid_members": 206,
+    "current_paid_members": 207,
     "expired_members": 932,
     "paid_or_renewed_this_year": 37,
     "not_renewed_this_year": 1044,
@@ -13,14 +13,14 @@
   },
   "membership_status_counts": {
     "(blank)": 6,
-    "Current Member": 205,
-    "Executive and Donors": 19,
+    "Current Member": 206,
+    "Executive and Donors": 18,
     "Past Member": 933,
     "Unknown A": 622,
     "Unknown B": 27
   },
   "expiration_year_counts": {
-    "(blank)": 674,
+    "(blank)": 673,
     "2002": 9,
     "2003": 7,
     "2004": 6,
@@ -55,10 +55,11 @@
     "2033": 2,
     "2034": 2,
     "2038": 1,
+    "2040": 1,
     "2050": 1
   },
   "last_paid_year_counts": {
-    "(blank)": 674,
+    "(blank)": 673,
     "2002": 9,
     "2003": 7,
     "2004": 6,
@@ -93,11 +94,12 @@
     "2033": 2,
     "2034": 2,
     "2038": 1,
+    "2040": 1,
     "2050": 1
   },
   "derived_membership_status_counts": {
-    "(blank)": 674,
-    "Current Member": 206,
+    "(blank)": 673,
+    "Current Member": 207,
     "Past Member": 932
   }
 }
