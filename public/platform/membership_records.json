@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-09T09:40:45.252726",
+  "generated_at": "2026-07-09T09:42:28.811415",
   "source_database": "sagp_member_manager/output/sagp_members.db",
   "member_count": 1812,
   "members": [
@@ -13174,7 +13174,7 @@
       "last_paid_year": "2041",
       "active": "1",
       "notes": "Update to institutional email",
-      "updated_at": "2026-07-09T09:40:45.047444",
+      "updated_at": "2026-07-09T09:42:28.611845",
       "membership_expiration_year": "2041",
       "derived_membership_status": "Current Member",
       "search_text": "elizabeth jelinek elizabeth jelinek christopher newport university elizabeth.jelinek@cnu.edu   current member current member 2041 2041"
