@@ -3,18 +3,322 @@ import SAGPLayout from "../../../layouts/SAGPLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
 ---
 
-<SAGPLayout title="Update Call | SAGP Executive Portal">
+<SAGPLayout title="Update Call | SAGP Executive Administration">
 
 <PageHero
-  kicker="Executive Portal"
+  kicker="Publishing Workspace"
   title="Update Call"
-  subtitle="Future workflow: select an existing call and revise its canonical knowledge object."
+  subtitle="Edit canonical publication facts for an existing call."
   image="/assets/images/parthenon_night.jpg"
 />
 
+<section class="section two-col">
+  <div>
+    <h2>Selected Call</h2>
+  </div>
+
+  <div>
+    <div id="call-status" class="callout">
+      Loading selected call...
+    </div>
+  </div>
+</section>
+
 <section class="section">
-  <h2>Coming soon</h2>
-  <p>This page will allow authorized users to update existing call content.</p>
+  <article class="card">
+    <form id="call-form" class="call-form">
+      <div id="call-detail">
+        Call details will appear here.
+      </div>
+
+      <div id="call-editor-actions" class="editor-actions hidden">
+        <label for="update-reason">Reason for update</label>
+        <input
+          id="update-reason"
+          type="text"
+          placeholder="Corrected deadline, revised title, updated instructions, etc."
+        />
+
+        <button class="button" id="prepare-publication-update" type="button" disabled>
+          Prepare Publication Update
+        </button>
+
+        <pre id="update-preview" class="preview">Make changes above, then enter a reason for the update.</pre>
+      </div>
+    </form>
+  </article>
 </section>
 
 </SAGPLayout>
+
+<script>
+  import {
+    buildPublicationUpdateRequest,
+    downloadPublicationUpdate,
+  } from "../../../lib/publishing/publication_update_request.js";
+
+  const CALL_UPDATE_FIELDS = [
+    { key: "title", label: "Title", type: "text" },
+    { key: "status", label: "Status", type: "text" },
+    { key: "summary", label: "Summary", type: "textarea" },
+    { key: "hero.kicker", label: "Hero Kicker", type: "text" },
+    { key: "hero.title", label: "Hero Title", type: "text" },
+    { key: "hero.subtitle", label: "Hero Subtitle", type: "text" },
+  ];
+
+  let selectedCall = null;
+
+  function platformUrl(path) {
+    const base = "/sagp_website";
+    const cleanPath = String(path).replace(/^\//, "");
+    return `${base}/${cleanPath}`;
+  }
+
+  function getNestedValue(object, path) {
+    return path.split(".").reduce((current, part) => {
+      if (!current) return "";
+      return current[part] ?? "";
+    }, object);
+  }
+
+  function display(value) {
+    return value || "";
+  }
+
+  function fieldInput(field, call) {
+    const value = display(getNestedValue(call, field.key));
+
+    if (field.type === "textarea") {
+      return `
+        <label>${field.label}</label>
+        <textarea data-call-field="${field.key}" rows="6">${value}</textarea>
+      `;
+    }
+
+    return `
+      <label>${field.label}</label>
+      <input
+        data-call-field="${field.key}"
+        type="${field.type}"
+        value="${value}"
+      />
+    `;
+  }
+
+  async function loadPublishingIndex() {
+    const response = await fetch(`${platformUrl("/platform/publishing_index.json")}?v=${Date.now()}`);
+    if (!response.ok) {
+      throw new Error(`Could not load publishing index: ${response.status}`);
+    }
+    return response.json();
+  }
+
+  function collectCallChanges(originalCall) {
+    const changes = {};
+
+    for (const field of CALL_UPDATE_FIELDS) {
+      const element = document.querySelector(`[data-call-field="${field.key}"]`);
+      if (!element) continue;
+
+      const original = String(getNestedValue(originalCall, field.key) ?? "").trim();
+      const current = element.value.trim();
+
+      if (current !== original) {
+        changes[field.key] = current;
+      }
+    }
+
+    return changes;
+  }
+
+  function validateCallForm() {
+    const errors = [];
+
+    const title = document.querySelector(`[data-call-field="title"]`)?.value.trim();
+
+    if (!title) errors.push("Title is required.");
+
+    return errors;
+  }
+
+  function updatePreview() {
+    const preview = document.querySelector("#update-preview");
+    const button = document.querySelector("#prepare-publication-update");
+    const reason = document.querySelector("#update-reason").value.trim();
+
+    if (!selectedCall) return;
+
+    const changes = collectCallChanges(selectedCall);
+    const errors = validateCallForm();
+
+    if (errors.length) {
+      preview.textContent = [
+        "Please correct these problems:",
+        "",
+        ...errors.map((error) => `- ${error}`),
+      ].join("\n");
+      button.disabled = true;
+      return;
+    }
+
+    if (Object.keys(changes).length === 0) {
+      preview.textContent = "Make changes above, then enter a reason for the update.";
+      button.disabled = true;
+      return;
+    }
+
+    const lines = [
+      `Call: ${selectedCall.title}`,
+      `Publication ID: ${selectedCall.id}`,
+      "",
+      "Changes to be reviewed:",
+      ...Object.entries(changes).map(([field, value]) => `- ${field}: ${value || "(blank)"}`),
+      "",
+      reason ? `Reason: ${reason}` : "Reason is required before preparing the update.",
+    ];
+
+    preview.textContent = lines.join("\n");
+    button.disabled = !reason;
+  }
+
+  function renderCall(call) {
+    selectedCall = call;
+
+    const status = document.querySelector("#call-status");
+    const detail = document.querySelector("#call-detail");
+    const actions = document.querySelector("#call-editor-actions");
+
+    status.innerHTML = `
+      <strong>${call.title}</strong><br />
+      ${call.status || "status not specified"} · ${call.deadline ? `deadline ${call.deadline}` : "no deadline"}
+    `;
+
+    detail.innerHTML = `
+      <h2>${call.title}</h2>
+
+      <div class="metadata">
+        <strong>Publication ID:</strong> ${call.id}<br />
+        <strong>Source YAML:</strong> ${call.source_yaml}
+      </div>
+
+      <div class="form-grid">
+        ${CALL_UPDATE_FIELDS.map((field) => fieldInput(field, call)).join("")}
+      </div>
+    `;
+
+    actions.classList.remove("hidden");
+
+    for (const element of detail.querySelectorAll("input, textarea")) {
+      element.addEventListener("input", updatePreview);
+    }
+
+    document.querySelector("#update-reason").addEventListener("input", updatePreview);
+
+    document.querySelector("#prepare-publication-update").addEventListener("click", () => {
+      const reason = document.querySelector("#update-reason").value.trim();
+      const changes = collectCallChanges(selectedCall);
+
+      const request = buildPublicationUpdateRequest({
+        publicationType: "call",
+        publicationId: selectedCall.id,
+        originalObject: selectedCall,
+        changes,
+        reason,
+      });
+
+      downloadPublicationUpdate(request);
+    });
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const selectedId = params.get("id");
+
+  loadPublishingIndex()
+    .then((index) => {
+      if (!selectedId) {
+        document.querySelector("#call-status").textContent =
+          "No call selected. Return to the Publishing Workspace and choose a call.";
+        return;
+      }
+
+      const call = (index.calls ?? []).find((item) => item.id === selectedId);
+
+      if (!call) {
+        document.querySelector("#call-status").textContent =
+          `Could not find call: ${selectedId}`;
+        return;
+      }
+
+      renderCall(call);
+    })
+    .catch((error) => {
+      document.querySelector("#call-status").textContent = error.message;
+    });
+</script>
+
+<style>
+.call-form h2 {
+  margin-top: 0;
+}
+
+.metadata {
+  margin: 1rem 0 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fffaf0;
+  color: var(--color-muted);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.call-form label {
+  display: block;
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+.call-form input,
+.call-form textarea {
+  width: 100%;
+  padding: 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fffaf0;
+  color: var(--color-text);
+  font: inherit;
+}
+
+.call-form textarea {
+  resize: vertical;
+}
+
+.editor-actions {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.hidden {
+  display: none;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.preview {
+  white-space: pre-wrap;
+  background: #fffaf0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--color-text);
+  margin-top: 1rem;
+}
+</style>
