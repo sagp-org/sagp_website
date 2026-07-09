@@ -151,7 +151,7 @@ import PageHero from "../../../components/PageHero.astro";
   }
 
   async function loadDashboard() {
-    const response = await fetch(platformUrl("/platform/membership_dashboard.json"));
+    const response = await fetch(`${platformUrl("/platform/membership_dashboard.json")}?v=${Date.now()}`);
     if (!response.ok) {
       throw new Error(`Could not load membership dashboard: ${response.status}`);
     }
@@ -333,7 +333,7 @@ import PageHero from "../../../components/PageHero.astro";
   }
 
   async function loadMemberRecords() {
-    const response = await fetch(platformUrl("/platform/membership_records.json"));
+    const response = await fetch(`${platformUrl("/platform/membership_records.json")}?v=${Date.now()}`);
     if (!response.ok) {
       throw new Error(`Could not load member records: ${response.status}`);
     }
