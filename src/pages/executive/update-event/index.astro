@@ -3,18 +3,161 @@ import SAGPLayout from "../../../layouts/SAGPLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
 ---
 
-<SAGPLayout title="Update Event | SAGP Executive Portal">
+<SAGPLayout title="Update Event | SAGP Executive Administration">
 
 <PageHero
-  kicker="Executive Portal"
+  kicker="Publishing Workspace"
   title="Update Event"
-  subtitle="Future workflow: select an existing event and revise its canonical knowledge object."
+  subtitle="Review canonical publication facts for an existing event."
   image="/assets/images/parthenon_night.jpg"
 />
 
+<section class="section two-col">
+  <div>
+    <h2>Selected Event</h2>
+  </div>
+
+  <div>
+    <div id="event-status" class="callout">
+      Loading selected event...
+    </div>
+  </div>
+</section>
+
 <section class="section">
-  <h2>Coming soon</h2>
-  <p>This page will allow authorized users to update existing event content.</p>
+  <article class="card">
+    <div id="event-detail" class="event-detail">
+      Event details will appear here.
+    </div>
+  </article>
 </section>
 
 </SAGPLayout>
+
+<script>
+  function platformUrl(path) {
+    const base = "/sagp_website";
+    const cleanPath = String(path).replace(/^\//, "");
+    return `${base}/${cleanPath}`;
+  }
+
+  function display(value) {
+    return value || "";
+  }
+
+  function renderField(label, value) {
+    return `
+      <dt>${label}</dt>
+      <dd>${display(value)}</dd>
+    `;
+  }
+
+  async function loadPublishingIndex() {
+    const response = await fetch(`${platformUrl("/platform/publishing_index.json")}?v=${Date.now()}`);
+    if (!response.ok) {
+      throw new Error(`Could not load publishing index: ${response.status}`);
+    }
+    return response.json();
+  }
+
+  function renderEvent(event) {
+    const status = document.querySelector("#event-status");
+    const detail = document.querySelector("#event-detail");
+
+    status.innerHTML = `
+      <strong>${event.title}</strong><br />
+      ${event.type} · ${event.year} · ${event.status || "status not specified"}
+    `;
+
+    detail.innerHTML = `
+      <h2>${event.title}</h2>
+
+      <dl class="record-grid">
+        ${renderField("Event ID", event.event_id)}
+        ${renderField("Publication ID", event.id)}
+        ${renderField("Type", event.type)}
+        ${renderField("Status", event.status)}
+        ${renderField("Title", event.title)}
+        ${renderField("Subtitle", event.subtitle)}
+        ${renderField("Start Date", event.dates?.start)}
+        ${renderField("End Date", event.dates?.end)}
+        ${renderField("Timezone", event.dates?.timezone)}
+        ${renderField("Timezone IANA", event.dates?.timezone_iana)}
+        ${renderField("Mode", event.location?.mode)}
+        ${renderField("Venue", event.location?.venue)}
+        ${renderField("City", event.location?.city)}
+        ${renderField("Region", event.location?.region)}
+        ${renderField("Country", event.location?.country)}
+        ${renderField("Location URL", event.location?.url)}
+        ${renderField("Attendance Contact", event.attendance?.contact_email)}
+        ${renderField("Hero Kicker", event.hero?.kicker)}
+        ${renderField("Hero Title", event.hero?.title)}
+        ${renderField("Hero Subtitle", event.hero?.subtitle)}
+        ${renderField("Hero Image", event.hero?.image)}
+        ${renderField("Source YAML", event.source_yaml)}
+      </dl>
+
+      <h3>Description</h3>
+      <pre class="preview">${event.description || ""}</pre>
+
+      <h3>Attendance Instructions</h3>
+      <pre class="preview">${event.attendance?.instructions || ""}</pre>
+    `;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const selectedId = params.get("id");
+
+  loadPublishingIndex()
+    .then((index) => {
+      if (!selectedId) {
+        document.querySelector("#event-status").textContent =
+          "No event selected. Return to the Publishing Workspace and choose an event.";
+        return;
+      }
+
+      const event = (index.events ?? []).find((item) => item.id === selectedId);
+
+      if (!event) {
+        document.querySelector("#event-status").textContent =
+          `Could not find event: ${selectedId}`;
+        return;
+      }
+
+      renderEvent(event);
+    })
+    .catch((error) => {
+      document.querySelector("#event-status").textContent = error.message;
+    });
+</script>
+
+<style>
+.event-detail h2 {
+  margin-top: 0;
+}
+
+.record-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 10px 18px;
+  margin-top: 20px;
+}
+
+.record-grid dt {
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.record-grid dd {
+  margin: 0;
+}
+
+.preview {
+  white-space: pre-wrap;
+  background: #fffaf0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--color-text);
+}
+</style>

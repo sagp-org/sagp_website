@@ -1,0 +1,281 @@
+{
+  "events": [
+    {
+      "kind": "event",
+      "id": "annual_conference/2025",
+      "event_id": "annual-conference-2025",
+      "type": "annual_conference",
+      "year": "2025",
+      "title": "Annual Conference 2025",
+      "subtitle": "Plato, Aristotle, Presocratics, and Stoicism.",
+      "status": "upcoming",
+      "description": "The 2025 SAGP Annual Conference brings scholars together for four thematic sessions over two days, each moderated by a senior scholar and centered on original research in Ancient Greek philosophy.\n",
+      "date": "2025-11-15",
+      "dates": {
+        "start": "2025-11-15",
+        "end": "2025-11-16",
+        "timezone": "PST",
+        "timezone_iana": "America/Los_Angeles"
+      },
+      "location": {
+        "mode": "online",
+        "venue": "Zoom",
+        "city": "",
+        "region": "",
+        "country": "",
+        "url": ""
+      },
+      "attendance": {
+        "instructions": "To attend via Zoom, contact apreus@binghamton.edu, indicating which event or events you wish to attend by day and time.\n",
+        "contact_email": "apreus@binghamton.edu"
+      },
+      "hero": {
+        "kicker": "Annual Conference 2025",
+        "title": "Plato, Aristotle, Presocratics, and Stoicism.",
+        "subtitle": "November 15–16, 2025 · via Zoom · All times listed in Pacific Standard Time.",
+        "image": "/assets/images/parthenon_night.jpg"
+      },
+      "detail": "The 2025 SAGP Annual Conference brings scholars together for four thematic sessions over two days, each moderated by a senior scholar and centered on original research in Ancient Greek philosophy.\n",
+      "source_yaml": "content/events/annual_conference/2025.yaml"
+    },
+    {
+      "kind": "event",
+      "id": "distinguished_lectureship/2025",
+      "event_id": "distinguished-lectureship-2025",
+      "type": "distinguished_lectureship",
+      "year": "2025",
+      "title": "2025 Distinguished Lectureship",
+      "subtitle": "",
+      "status": "upcoming",
+      "description": "André Laks is Professor Emeritus of Ancient Philosophy at the University of Paris-Sorbonne and at Princeton University, now teaching at the Universidad Panamericana, México City.\n",
+      "date": "2025-10-15",
+      "dates": {
+        "start": "2025-10-15",
+        "end": "2025-10-15",
+        "timezone": "EDT",
+        "timezone_iana": "America/New_York"
+      },
+      "location": {
+        "mode": "online",
+        "venue": "Zoom",
+        "city": "",
+        "region": "",
+        "country": "",
+        "url": ""
+      },
+      "attendance": {
+        "instructions": "This event will be held via Zoom. To register, email apreus@binghamton.edu.\n",
+        "contact_email": "apreus@binghamton.edu"
+      },
+      "hero": {
+        "kicker": "2025 Distinguished Lectureship",
+        "title": "André Laks",
+        "subtitle": "“The kouros’ descent. A methodical reading of Parmenides’ route of search?”",
+        "image": "/assets/images/parthenon_night.jpg"
+      },
+      "detail": "André Laks is Professor Emeritus of Ancient Philosophy at the University of Paris-Sorbonne and at Princeton University, now teaching at the Universidad Panamericana, México City.\n",
+      "source_yaml": "content/events/distinguished_lectureship/2025.yaml"
+    },
+    {
+      "kind": "event",
+      "id": "distinguished_lectureship/2024",
+      "event_id": "distinguished-lectureship-2024",
+      "type": "distinguished_lectureship",
+      "year": "2024",
+      "title": "2024 Distinguished Lectureship",
+      "subtitle": "",
+      "status": "completed",
+      "description": "Professor Sir Geoffrey Lloyd is Emeritus Professor of Ancient Philosophy and Science at the University of Cambridge.\n",
+      "date": "2025-01-15",
+      "dates": {
+        "start": "2025-01-15",
+        "end": "2025-01-15",
+        "timezone": "EST",
+        "timezone_iana": "America/New_York"
+      },
+      "location": {
+        "mode": "online",
+        "venue": "Zoom",
+        "city": "",
+        "region": "",
+        "country": "",
+        "url": ""
+      },
+      "attendance": {
+        "instructions": "This event was held via Zoom.\n",
+        "contact_email": ""
+      },
+      "hero": {
+        "kicker": "2024 Distinguished Lectureship",
+        "title": "Professor Sir Geoffrey Lloyd",
+        "subtitle": "“What is the Use of Ancient Philosophy?”",
+        "image": "/assets/images/parthenon_night.jpg"
+      },
+      "detail": "Professor Sir Geoffrey Lloyd is Emeritus Professor of Ancient Philosophy and Science at the University of Cambridge.\n",
+      "source_yaml": "content/events/distinguished_lectureship/2024.yaml"
+    },
+    {
+      "kind": "event",
+      "id": "annual_conference/2024",
+      "event_id": "annual-conference-2024",
+      "type": "annual_conference",
+      "year": "2024",
+      "title": "Annual Conference 2024",
+      "subtitle": "Pre-Socratics, Plato, Aristotle, and the Stoics.",
+      "status": "archived",
+      "description": "The 2024 Annual Conference explored four major areas of Ancient Greek philosophy through themed panel discussions bringing together scholars from universities around the world.\n",
+      "date": "2024-11-16",
+      "dates": {
+        "start": "2024-11-16",
+        "end": "2024-11-17",
+        "timezone": "PST",
+        "timezone_iana": "America/Los_Angeles"
+      },
+      "location": {
+        "mode": "online",
+        "venue": "Zoom",
+        "city": "",
+        "region": "",
+        "country": "",
+        "url": ""
+      },
+      "attendance": {
+        "instructions": "To attend via Zoom, contact apreus@binghamton.edu, indicating which session or sessions you wish to attend.\n",
+        "contact_email": "apreus@binghamton.edu"
+      },
+      "hero": {
+        "kicker": "Annual Conference 2024",
+        "title": "Pre-Socratics, Plato, Aristotle, and the Stoics.",
+        "subtitle": "November 16–17, 2024 · via Zoom · All times listed in Pacific Standard Time.",
+        "image": "/assets/images/parthenon_night.jpg"
+      },
+      "detail": "The 2024 Annual Conference explored four major areas of Ancient Greek philosophy through themed panel discussions bringing together scholars from universities around the world.\n",
+      "source_yaml": "content/events/annual_conference/2024.yaml"
+    },
+    {
+      "kind": "event",
+      "id": "distinguished_lectureship/2023",
+      "event_id": "distinguished-lectureship-2023",
+      "type": "distinguished_lectureship",
+      "year": "2023",
+      "title": "2023 Distinguished Lectureship",
+      "subtitle": "",
+      "status": "completed",
+      "description": "Tony Long is Chancellor’s Distinguished Professor Emeritus of Classics and Affiliated Professor of Philosophy at the University of California, Berkeley.\n",
+      "date": "2024-03-12",
+      "dates": {
+        "start": "2024-03-12",
+        "end": "2024-03-12",
+        "timezone": "Eastern",
+        "timezone_iana": "America/New_York"
+      },
+      "location": {
+        "mode": "online",
+        "venue": "Zoom",
+        "city": "",
+        "region": "",
+        "country": "",
+        "url": ""
+      },
+      "attendance": {
+        "instructions": "This lecture was rescheduled from 2023 and held via Zoom.\n",
+        "contact_email": ""
+      },
+      "hero": {
+        "kicker": "2023 Distinguished Lectureship",
+        "title": "Tony Long",
+        "subtitle": "“The Stoic Zeus and the Values of Nature”",
+        "image": "/assets/images/parthenon_night.jpg"
+      },
+      "detail": "Tony Long is Chancellor’s Distinguished Professor Emeritus of Classics and Affiliated Professor of Philosophy at the University of California, Berkeley.\n",
+      "source_yaml": "content/events/distinguished_lectureship/2023.yaml"
+    },
+    {
+      "kind": "event",
+      "id": "distinguished_lectureship/2022",
+      "event_id": "distinguished-lectureship-2022",
+      "type": "distinguished_lectureship",
+      "year": "2022",
+      "title": "2022 Distinguished Lectureship",
+      "subtitle": "",
+      "status": "completed",
+      "description": "Dorothea Frede is Professor Emerita of Philosophy at Hamburg University.\n",
+      "date": "2022-12-16",
+      "dates": {
+        "start": "2022-12-16",
+        "end": "2022-12-16",
+        "timezone": "EDT",
+        "timezone_iana": "America/New_York"
+      },
+      "location": {
+        "mode": "online",
+        "venue": "Zoom",
+        "city": "",
+        "region": "",
+        "country": "",
+        "url": ""
+      },
+      "attendance": {
+        "instructions": "This event was held via Zoom.\n",
+        "contact_email": ""
+      },
+      "hero": {
+        "kicker": "2022 Distinguished Lectureship",
+        "title": "Dorothea Frede",
+        "subtitle": "“Aristotle’s ‘Political Architect’ and the City of His Prayers”",
+        "image": "/assets/images/parthenon_night.jpg"
+      },
+      "detail": "Dorothea Frede is Professor Emerita of Philosophy at Hamburg University.\n",
+      "source_yaml": "content/events/distinguished_lectureship/2022.yaml"
+    },
+    {
+      "kind": "event",
+      "id": "distinguished_lectureship/2021",
+      "event_id": "distinguished-lectureship-2021",
+      "type": "distinguished_lectureship",
+      "year": "2021",
+      "title": "2021 Distinguished Lectureship",
+      "subtitle": "",
+      "status": "completed",
+      "description": "David Sedley is Emeritus Laurence Professor of Ancient Philosophy at the University of Cambridge.\n",
+      "date": "2021-10-30",
+      "dates": {
+        "start": "2021-10-30",
+        "end": "2021-10-30",
+        "timezone": "EDT",
+        "timezone_iana": "America/New_York"
+      },
+      "location": {
+        "mode": "online",
+        "venue": "Zoom",
+        "city": "",
+        "region": "",
+        "country": "",
+        "url": ""
+      },
+      "attendance": {
+        "instructions": "This event was held via Zoom.\n",
+        "contact_email": ""
+      },
+      "hero": {
+        "kicker": "2021 Distinguished Lectureship",
+        "title": "David Sedley",
+        "subtitle": "“Divine Anonymity”",
+        "image": "/assets/images/parthenon_night.jpg"
+      },
+      "detail": "David Sedley is Emeritus Laurence Professor of Ancient Philosophy at the University of Cambridge.\n",
+      "source_yaml": "content/events/distinguished_lectureship/2021.yaml"
+    }
+  ],
+  "calls": [
+    {
+      "kind": "call",
+      "id": "apa_panels_2026",
+      "title": "APA Panels 2026",
+      "status": "active",
+      "deadline": "2026-07-01",
+      "detail": "SAGP invites paper submissions for Society-sponsored panels at the American Philosophical Association meetings.\n",
+      "source_yaml": "content/calls/apa_panels_2026.yaml"
+    }
+  ]
+}

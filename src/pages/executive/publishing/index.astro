@@ -33,26 +33,36 @@ import PageHero from "../../../components/PageHero.astro";
     <article class="card">
       <h3>Update Event</h3>
       <p>
-        Revise an existing event, such as an Annual Conference, Distinguished
-        Lecture, or Works in Progress session.
+        Select an existing event to revise its canonical publication facts.
       </p>
+
+      <label for="event-select">Event</label>
+      <select id="event-select">
+        <option value="">Loading events...</option>
+      </select>
+
       <p>
-        <a class="button" href={`${import.meta.env.BASE_URL}/executive/update-event/`}>
-          Update Event →
-        </a>
+        <button class="button" id="open-event-button" disabled>
+          Update Selected Event →
+        </button>
       </p>
     </article>
 
     <article class="card">
       <h3>Update Call for Papers</h3>
       <p>
-        Revise an existing call for papers, nominations, renewals, or other
-        Society action.
+        Select an existing call to revise its canonical publication facts.
       </p>
+
+      <label for="call-select">Call</label>
+      <select id="call-select">
+        <option value="">Loading calls...</option>
+      </select>
+
       <p>
-        <a class="button" href={`${import.meta.env.BASE_URL}/executive/update-call/`}>
-          Update Call →
-        </a>
+        <button class="button" id="open-call-button" disabled>
+          Update Selected Call →
+        </button>
       </p>
     </article>
   </div>
@@ -91,7 +101,96 @@ import PageHero from "../../../components/PageHero.astro";
 
 </SAGPLayout>
 
+<script>
+  function platformUrl(path) {
+    const base = "/sagp_website";
+    const cleanPath = String(path).replace(/^\//, "");
+    return `${base}/${cleanPath}`;
+  }
+
+  async function loadPublishingIndex() {
+    const response = await fetch(`${platformUrl("/platform/publishing_index.json")}?v=${Date.now()}`);
+    if (!response.ok) {
+      throw new Error(`Could not load publishing index: ${response.status}`);
+    }
+    return response.json();
+  }
+
+  function fillSelect(select, items, placeholder) {
+    select.innerHTML = "";
+
+    const first = document.createElement("option");
+    first.value = "";
+    first.textContent = placeholder;
+    select.appendChild(first);
+
+    for (const item of items) {
+      const option = document.createElement("option");
+      option.value = item.id;
+      option.textContent = `${item.title}${item.date ? ` — ${item.date}` : item.deadline ? ` — deadline ${item.deadline}` : ""}`;
+      select.appendChild(option);
+    }
+  }
+
+  const eventSelect = document.querySelector("#event-select");
+  const callSelect = document.querySelector("#call-select");
+  const openEventButton = document.querySelector("#open-event-button");
+  const openCallButton = document.querySelector("#open-call-button");
+
+  loadPublishingIndex()
+    .then((index) => {
+      fillSelect(eventSelect, index.events ?? [], "Choose an event...");
+      fillSelect(callSelect, index.calls ?? [], "Choose a call...");
+
+      eventSelect.addEventListener("change", () => {
+        openEventButton.disabled = !eventSelect.value;
+      });
+
+      callSelect.addEventListener("change", () => {
+        openCallButton.disabled = !callSelect.value;
+      });
+
+      openEventButton.addEventListener("click", () => {
+        if (!eventSelect.value) return;
+        const id = encodeURIComponent(eventSelect.value);
+        window.location.href = `${import.meta.env.BASE_URL}/executive/update-event/?id=${id}`;
+      });
+
+      openCallButton.addEventListener("click", () => {
+        if (!callSelect.value) return;
+        const id = encodeURIComponent(callSelect.value);
+        window.location.href = `${import.meta.env.BASE_URL}/executive/update-call/?id=${id}`;
+      });
+    })
+    .catch((error) => {
+      eventSelect.innerHTML = `<option value="">${error.message}</option>`;
+      callSelect.innerHTML = `<option value="">${error.message}</option>`;
+    });
+</script>
+
 <style>
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+select {
+  width: 100%;
+  padding: 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fffaf0;
+  color: var(--color-text);
+  font: inherit;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .publishing-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -100,7 +199,29 @@ import PageHero from "../../../components/PageHero.astro";
 }
 
 @media (max-width: 800px) {
-  .publishing-grid {
+  label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+select {
+  width: 100%;
+  padding: 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fffaf0;
+  color: var(--color-text);
+  font: inherit;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.publishing-grid {
     grid-template-columns: 1fr;
   }
 }
