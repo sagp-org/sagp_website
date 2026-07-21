@@ -163,13 +163,6 @@ import PageHero from "../../../components/PageHero.astro";
   </div>
 </section>
 
-<section class="section">
-  <article class="card">
-    <h3>Last paid year distribution</h3>
-    <div id="year-bars" class="year-bars"></div>
-  </article>
-</section>
-
 </SAGPLayout>
 
 <script>
@@ -451,32 +444,6 @@ import PageHero from "../../../components/PageHero.astro";
     });
   }
 
-  function renderYearBars(counts) {
-    const container = document.querySelector("#year-bars");
-    container.innerHTML = "";
-
-    const entries = Object.entries(counts ?? {});
-    const numericEntries = entries.filter(([year]) => year !== "(blank)");
-    const maxCount = Math.max(...numericEntries.map(([, count]) => count), 1);
-
-    for (const [year, count] of entries) {
-      const row = document.createElement("div");
-      row.className = "year-row";
-
-      const width = Math.max(4, (count / maxCount) * 100);
-
-      row.innerHTML = `
-        <span class="year-label">${year}</span>
-        <span class="bar-wrap">
-          <span class="bar" style="width: ${width}%"></span>
-        </span>
-        <span class="year-count">${fmt.format(count)}</span>
-      `;
-
-      container.appendChild(row);
-    }
-  }
-
   for (const id of [
     "edit-primary-email",
     "edit-institution",
@@ -545,7 +512,6 @@ import PageHero from "../../../components/PageHero.astro";
         `Generated ${dashboard.generated_at}; source: ${dashboard.source_database}`;
 
       renderStatusTable(dashboard.membership_status_counts);
-      renderYearBars(dashboard.last_paid_year_counts);
       loadMemberRecords().catch((error) => {
         document.querySelector("#member-results").textContent = error.message;
       });
@@ -648,37 +614,6 @@ th {
   text-align: left;
 }
 
-.year-bars {
-  display: grid;
-  gap: 8px;
-}
-
-.year-row {
-  display: grid;
-  grid-template-columns: 90px 1fr 70px;
-  gap: 12px;
-  align-items: center;
-}
-
-.year-label,
-.year-count {
-  font-variant-numeric: tabular-nums;
-}
-
-.bar-wrap {
-  background: #f3ead8;
-  border-radius: 999px;
-  overflow: hidden;
-  height: 14px;
-}
-
-.bar {
-  display: block;
-  height: 100%;
-  background: #8a5a13;
-  border-radius: 999px;
-}
-
 @media (max-width: 900px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
@@ -692,8 +627,5 @@ th {
     grid-column: auto;
   }
 
-  .year-row {
-    grid-template-columns: 70px 1fr 54px;
-  }
 }
 </style>
