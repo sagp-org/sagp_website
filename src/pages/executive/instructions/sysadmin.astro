@@ -45,6 +45,22 @@ import PageHero from "../../../components/PageHero.astro";
 
     <p>The script will automatically update the membership database, regenerate website data, commit, push, deploy, and update the umbrella repository.</p>
 
+    <h2>Processing a New Member Request</h2>
+
+    <p>Save the attached request file, then start from the umbrella repository:</p>
+
+    <pre><code>cd /Users/brash/sagp</code></pre>
+
+    <p>Run:</p>
+
+    <pre><code>python3 -m scripts.process_membership_create ~/Downloads/&lt;membership_create_file&gt;.json</code></pre>
+
+    <p>Review the proposed record, derived status, and duplicate-check results. If everything is correct, type:</p>
+
+    <pre><code>YES</code></pre>
+
+    <p>The script will create the member, regenerate and build the website, commit and push its data, watch deployment, and update the umbrella repository.</p>
+
     <h2>Processing a Publication Update</h2>
 
     <ol>

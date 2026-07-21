@@ -46,6 +46,53 @@ import PageHero from "../../../components/PageHero.astro";
   </div>
 </section>
 
+<section class="section create-member-section">
+  <article class="card">
+    <div class="workflow-heading">
+      <div>
+        <p class="eyebrow">New membership</p>
+        <h2>Create New Member</h2>
+        <p class="muted">Enter the member’s information. This prepares a request for review; it does not change the membership database.</p>
+      </div>
+    </div>
+
+    <form id="create-member-form" class="create-member-form">
+      <label>First name <span aria-hidden="true">*</span>
+        <input id="create-first-name" name="first_name" type="text" maxlength="120" required autocomplete="given-name" />
+      </label>
+      <label>Last name <span aria-hidden="true">*</span>
+        <input id="create-last-name" name="last_name" type="text" maxlength="120" required autocomplete="family-name" />
+      </label>
+      <label>Email
+        <input id="create-primary-email" name="primary_email" type="email" maxlength="254" autocomplete="email" />
+      </label>
+      <label>Institution
+        <input id="create-institution" name="institution" type="text" maxlength="300" autocomplete="organization" />
+      </label>
+      <label>Region
+        <input id="create-region" name="region" type="text" maxlength="120" />
+      </label>
+      <label>Membership expiration year <span aria-hidden="true">*</span>
+        <input id="create-expiration-year" name="membership_expiration_year" type="number" min="1900" max="2100" step="1" inputmode="numeric" required />
+      </label>
+      <label class="wide-field">Notes
+        <textarea id="create-notes" name="notes" rows="4" maxlength="4000"></textarea>
+      </label>
+      <label class="wide-field">Reason or context <span aria-hidden="true">*</span>
+        <input id="create-reason" name="reason" type="text" maxlength="500" required placeholder="New member joined; payment received; etc." />
+      </label>
+    </form>
+
+    <div class="create-actions">
+      <button class="button" id="prepare-membership-create" type="button" disabled>
+        Prepare New Member Request
+      </button>
+      <span class="muted">* Required</span>
+    </div>
+    <pre id="create-preview" class="preview" aria-live="polite">Complete the required fields to prepare a new-member request.</pre>
+  </article>
+</section>
+
 <section class="section member-lookup">
   <article class="card">
     <h2>Find Member</h2>
@@ -123,18 +170,6 @@ import PageHero from "../../../components/PageHero.astro";
   </article>
 </section>
 
-<section class="section two-col">
-  <div>
-    <h2>Next membership tasks</h2>
-  </div>
-
-  <div>
-    <div class="callout">
-      This dashboard is read-only. The next Membership Workspace milestone will add member lookup and individual member detail updates using the authoritative operational membership database.
-    </div>
-  </div>
-</section>
-
 </SAGPLayout>
 
 <script>
@@ -171,6 +206,59 @@ import PageHero from "../../../components/PageHero.astro";
 
   let memberRecords = [];
   let selectedMember = null;
+
+  function createMemberData() {
+    return {
+      first_name: document.querySelector("#create-first-name").value.trim(),
+      last_name: document.querySelector("#create-last-name").value.trim(),
+      primary_email: document.querySelector("#create-primary-email").value.trim(),
+      institution: document.querySelector("#create-institution").value.trim(),
+      region: document.querySelector("#create-region").value.trim(),
+      notes: document.querySelector("#create-notes").value.trim(),
+      membership_expiration_year: document.querySelector("#create-expiration-year").value.trim(),
+    };
+  }
+
+  function buildMembershipCreate() {
+    const form = document.querySelector("#create-member-form");
+    const reason = document.querySelector("#create-reason").value.trim();
+    if (!form.checkValidity() || !reason) return null;
+    return {
+      proposed_member_data: createMemberData(),
+      reason,
+      requested_by: "executive_portal",
+      request_type: "membership_create",
+      request_id: `mcr_${crypto.randomUUID().replaceAll("-", "").slice(0, 12)}`,
+      requested_at: new Date().toISOString(),
+      source: "executive_portal_static",
+      notes: null,
+    };
+  }
+
+  function updateCreatePreview() {
+    const form = document.querySelector("#create-member-form");
+    const button = document.querySelector("#prepare-membership-create");
+    const data = createMemberData();
+    const reason = document.querySelector("#create-reason").value.trim();
+    button.disabled = !form.checkValidity() || !reason;
+    if (button.disabled) {
+      document.querySelector("#create-preview").textContent = "Complete the required fields with a valid email and expiration year to prepare a new-member request.";
+      return;
+    }
+    const expiration = Number(data.membership_expiration_year);
+    const status = expiration >= new Date().getFullYear() - 1 ? "Current Member" : "Past Member";
+    document.querySelector("#create-preview").textContent = [
+      `New member: ${data.first_name} ${data.last_name}`,
+      `Email: ${data.primary_email || "(not supplied)"}`,
+      `Institution: ${data.institution || "(not supplied)"}`,
+      `Region: ${data.region || "(not supplied)"}`,
+      `Expiration year: ${data.membership_expiration_year}`,
+      `Membership status: ${status} (derived)`,
+      `Reason: ${reason}`,
+      "",
+      "Edward will review this request and check for duplicate records before creation.",
+    ].join("\n");
+  }
 
   function memberEmail(member) {
     return member.primary_email || member.secondary_email || "";
@@ -402,7 +490,23 @@ import PageHero from "../../../components/PageHero.astro";
     });
   }
 
+  document.querySelector("#create-member-form").addEventListener("input", updateCreatePreview);
+
   document.addEventListener("click", (event) => {
+    if (event.target?.id === "prepare-membership-create") {
+      const request = buildMembershipCreate();
+      if (!request) return;
+      const blob = new Blob([JSON.stringify(request, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      const safeLastName = request.proposed_member_data.last_name
+        .toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "") || "member";
+      link.download = `membership_create_${safeLastName}_${request.request_id}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+      return;
+    }
     if (event.target?.id !== "prepare-membership-update") return;
 
     const request = buildMembershipUpdate();
@@ -456,6 +560,63 @@ import PageHero from "../../../components/PageHero.astro";
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+}
+
+.create-member-section .card {
+  max-width: 1050px;
+  margin-inline: auto;
+}
+
+.workflow-heading h2,
+.workflow-heading p {
+  margin-top: 0;
+}
+
+.eyebrow {
+  color: #8a5a13;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.create-member-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.create-member-form label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 650;
+}
+
+.create-member-form input,
+.create-member-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wide-field {
+  grid-column: 1 / -1;
+}
+
+.create-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.25rem 0 1rem;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.hidden {
+  display: none;
 }
 
 .stat-card {
@@ -521,6 +682,14 @@ th {
 @media (max-width: 900px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
+  }
+
+  .create-member-form {
+    grid-template-columns: 1fr;
+  }
+
+  .wide-field {
+    grid-column: auto;
   }
 
   .year-row {
