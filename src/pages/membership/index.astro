@@ -104,7 +104,12 @@ import SAGPLayout from "../../layouts/SAGPLayout.astro";
     </p>
 
     <p>
-      <a href="#">Download SAGP Membership Form</a>
+      <a
+        href={`${import.meta.env.BASE_URL}/documents/SAGP-Membership-Form-2026.docx`}
+        download
+      >
+        Download the SAGP Membership Form →
+      </a>
     </p>
 
     <p>
@@ -122,10 +127,6 @@ import SAGPLayout from "../../layouts/SAGPLayout.astro";
       Preus.
     </p>
 
-    <div class="callout">
-      Future enhancement: replace this section with a direct link to the
-      Society’s membership portal once the new membership workflow is finalized.
-    </div>
   </div>
 </section>
 
