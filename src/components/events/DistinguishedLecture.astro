@@ -1,4 +1,6 @@
 ---
+import EmailLinkedText from "../EmailLinkedText.astro";
+
 const { event } = Astro.props;
 const session = event.sessions?.[0];
 const presentation = session?.presentations?.[0];
@@ -88,7 +90,7 @@ function sessionIso(session) {
 
   {event.attendance?.instructions && (
     <div class="callout">
-      {event.attendance.instructions}
+      <EmailLinkedText text={event.attendance.instructions} />
     </div>
   )}
 </section>

@@ -1,4 +1,6 @@
 ---
+import EmailLinkedText from "../EmailLinkedText.astro";
+
 const { event } = Astro.props;
 
 function normalizeDate(value) {
@@ -71,7 +73,7 @@ const days = groupSessionsByDate(event.sessions);
     <p>{event.description}</p>
 
     {event.attendance?.instructions && (
-      <p>{event.attendance.instructions}</p>
+      <p><EmailLinkedText text={event.attendance.instructions} /></p>
     )}
   </div>
 </section>
