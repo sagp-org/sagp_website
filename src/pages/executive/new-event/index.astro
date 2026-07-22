@@ -7,21 +7,59 @@ import PageHero from "../../../components/PageHero.astro";
 
 <PageHero
   kicker="Executive Portal"
-  title="New Event"
-  subtitle="Future workflow: upload or paste source material and generate a draft event YAML object."
+  title="Create a New Event"
+  subtitle="Turn a finalized Word announcement into a reviewable event draft before anything is published."
   image="/assets/images/parthenon_night.jpg"
 />
 
 <section class="section two-col">
-  <div><h2>Planned workflow</h2></div>
+  <div><h2>How it works</h2></div>
   <div>
     <ol>
-      <li>Upload or paste source content.</li>
-      <li>AI identifies the event type.</li>
-      <li>AI drafts canonical YAML.</li>
-      <li>Executive reviewer approves or edits.</li>
-      <li>System publishes derived outputs.</li>
+      <li>Betsy prepares or receives the finalized event announcement as a Microsoft Word document.</li>
+      <li>Edward runs the event-draft assistant with the event type and year.</li>
+      <li>The assistant extracts the event details and prepares a structured draft.</li>
+      <li>The draft is reviewed on the website’s draft preview page and corrected as needed.</li>
+      <li>Only an approved draft is promoted to the public event calendar.</li>
     </ol>
+
+    <div class="callout">
+      Preparing a draft does not publish the event. Review and approval remain
+      separate steps.
+    </div>
+  </div>
+</section>
+
+<section class="section two-col">
+  <div><h2>Prepare the announcement</h2></div>
+  <div>
+    <p>
+      The Word document should contain the finalized title, dates, times and
+      time zone, location or online-attendance information, sessions, speakers,
+      presentation titles, and abstracts when available.
+    </p>
+
+    <p>
+      Send the document to Edward and identify whether it is an Annual
+      Conference or Distinguished Lectureship, along with the event year.
+    </p>
+  </div>
+</section>
+
+<section class="section two-col">
+  <div><h2>Process and review</h2></div>
+  <div>
+    <p>
+      Edward processes the document from the SAGP umbrella repository using
+      the AI-assisted event creation command documented in the SysAdmin
+      instructions.
+    </p>
+
+    <p>
+      <a class="button" href={`${import.meta.env.BASE_URL}/executive/instructions/sysadmin/`}>
+        View SysAdmin instructions →
+      </a>
+    </p>
   </div>
 </section>
 
