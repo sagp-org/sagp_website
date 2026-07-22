@@ -23,6 +23,14 @@ body {
   line-height: 1.65;
 }
 
+body.executive-locked {
+  overflow: hidden;
+}
+
+body.executive-locked #executive-content {
+  visibility: hidden;
+}
+
 a {
   color: var(--olive);
 }
@@ -1008,4 +1016,3 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
-

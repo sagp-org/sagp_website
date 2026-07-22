@@ -1,9 +1,11 @@
 ---
 import "../styles/global.css";
 import Icon from "../components/Icon.astro";
+import ExecutiveGate from "../components/ExecutiveGate.astro";
 
 const { title = "Society for Ancient Greek Philosophy" } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const isExecutive = Astro.url.pathname.startsWith(`${base}/executive/`);
 ---
 
 <!doctype html>
@@ -13,7 +15,7 @@ const base = import.meta.env.BASE_URL;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
 </head>
-<body>
+<body class:list={{ "executive-locked": isExecutive }}>
   <header class="site-header">
     <a class="brand" href={base}>
       <div class="brand-mark"><Icon name="column" /></div>
@@ -34,7 +36,13 @@ const base = import.meta.env.BASE_URL;
     </nav>
   </header>
 
-  <main>
+  {isExecutive && <ExecutiveGate />}
+
+  <main
+    id={isExecutive ? "executive-content" : undefined}
+    inert={isExecutive ? true : undefined}
+    aria-hidden={isExecutive ? "true" : undefined}
+  >
     <slot />
   </main>
 

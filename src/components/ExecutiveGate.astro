@@ -1,0 +1,151 @@
+---
+const passwordHash = "b0a0739dd65d4050afdc1270cb53ab12be83180f3797fa41aa53a963f89d374e";
+---
+
+<div id="executive-gate" class="executive-gate" data-password-hash={passwordHash}>
+  <section class="executive-gate-card" aria-labelledby="executive-gate-title">
+    <p class="kicker">Executive Portal</p>
+    <h1 id="executive-gate-title">Password required</h1>
+    <p>This area is intended for SAGP officers and administrators.</p>
+
+    <form id="executive-gate-form">
+      <label for="executive-password">Password</label>
+      <input
+        id="executive-password"
+        name="password"
+        type="password"
+        autocomplete="current-password"
+        required
+        autofocus
+      />
+      <button class="button" type="submit">Enter Executive Portal</button>
+    </form>
+
+    <p id="executive-gate-error" class="executive-gate-error" role="alert" aria-live="polite"></p>
+  </section>
+</div>
+
+<script>
+  const gate = document.querySelector("#executive-gate");
+  const form = document.querySelector("#executive-gate-form");
+  const passwordInput = document.querySelector("#executive-password");
+  const error = document.querySelector("#executive-gate-error");
+  const content = document.querySelector("#executive-content");
+  const sessionKey = "sagp_executive_access";
+
+  function hasSessionAccess() {
+    try {
+      return sessionStorage.getItem(sessionKey) === "granted";
+    } catch {
+      return false;
+    }
+  }
+
+  function rememberSessionAccess() {
+    try {
+      sessionStorage.setItem(sessionKey, "granted");
+    } catch {
+      // Access still works for this page if session storage is unavailable.
+    }
+  }
+
+  function unlock() {
+    document.body.classList.remove("executive-locked");
+    content?.removeAttribute("inert");
+    content?.removeAttribute("aria-hidden");
+    gate?.setAttribute("hidden", "");
+  }
+
+  async function sha256(value) {
+    const bytes = new TextEncoder().encode(value);
+    const digest = await crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(digest))
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  if (hasSessionAccess()) {
+    unlock();
+  } else {
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitted = passwordInput?.value ?? "";
+      const submittedHash = await sha256(submitted);
+
+      if (submittedHash === gate?.dataset.passwordHash) {
+        rememberSessionAccess();
+        unlock();
+        return;
+      }
+
+      if (error) error.textContent = "That password is not correct.";
+      if (passwordInput) {
+        passwordInput.value = "";
+        passwordInput.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .executive-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    background: rgba(40, 37, 33, 0.88);
+    backdrop-filter: blur(8px);
+  }
+
+  .executive-gate[hidden] {
+    display: none;
+  }
+
+  .executive-gate-card {
+    width: min(100%, 520px);
+    padding: clamp(2rem, 6vw, 3.5rem);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--paper);
+    box-shadow: var(--shadow);
+  }
+
+  .executive-gate-card h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .executive-gate-card form,
+  .executive-gate-card label {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .executive-gate-card form {
+    margin-top: 1.5rem;
+  }
+
+  .executive-gate-card input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font: inherit;
+  }
+
+  .executive-gate-card .button {
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .executive-gate-error {
+    min-height: 1.65em;
+    margin-bottom: 0;
+    color: #8f2525;
+    font-weight: 700;
+  }
+</style>
