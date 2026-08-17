@@ -1,5 +1,5 @@
 export function platformUrl(path) {
-  const base = "/sagp_website";
+  const base = import.meta.env.BASE_URL.replace(/\/+$/, "");
   const clean = String(path).replace(/^\//, "");
   return `${base}/${clean}`;
 }

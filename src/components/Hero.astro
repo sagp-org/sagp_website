@@ -1,5 +1,9 @@
+---
+import { sitePath } from "../lib/site-path.js";
+---
+
 <section class="home-hero">
-  <img src={`${import.meta.env.BASE_URL}/assets/images/parthenon_night.jpg`} alt="The Parthenon at night" />
+  <img src={sitePath("/assets/images/parthenon_night.jpg")} alt="The Parthenon at night" />
   <div class="home-hero-overlay">
     <h1>Society for Ancient Greek Philosophy</h1>
     <p><em>A worldwide scholarly conversation since 1953.</em></p>

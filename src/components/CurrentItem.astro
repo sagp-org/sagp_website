@@ -1,5 +1,6 @@
 ---
 import { loadCurrentItem } from "../lib/content/index.js";
+import { sitePath } from "../lib/site-path.js";
 
 const current = loadCurrentItem();
 
@@ -48,9 +49,6 @@ const eventHref = isEvent && item.type === "annual_conference"
 
 const callHref = "/calls/apa-panels-2026/";
 
-function sitePath(value) {
-  return `${import.meta.env.BASE_URL}/${String(value).replace(/^\/+/, "")}`;
-}
 ---
 
 {current && (
@@ -102,7 +100,7 @@ function sitePath(value) {
         <p>
           <a
             class="button"
-            href={`${import.meta.env.BASE_URL}${isCall ? callHref : eventHref}`}
+            href={sitePath(isCall ? callHref : eventHref)}
           >
             {isCall ? "View the call for papers" : "View details"}
           </a>

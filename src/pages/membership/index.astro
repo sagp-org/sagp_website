@@ -1,6 +1,7 @@
 ---
 import PageHero from "../../components/PageHero.astro";
 import SAGPLayout from "../../layouts/SAGPLayout.astro";
+import { sitePath } from "../../lib/site-path.js";
 ---
 
 <SAGPLayout title="Membership | Society for Ancient Greek Philosophy">
@@ -105,7 +106,7 @@ import SAGPLayout from "../../layouts/SAGPLayout.astro";
 
     <p>
       <a
-        href={`${import.meta.env.BASE_URL}/documents/SAGP-Membership-Form-2026.docx`}
+        href={sitePath("/documents/SAGP-Membership-Form-2026.docx")}
         download
       >
         Download the SAGP Membership Form →

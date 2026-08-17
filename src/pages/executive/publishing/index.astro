@@ -1,6 +1,7 @@
 ---
 import SAGPLayout from "../../../layouts/SAGPLayout.astro";
 import PageHero from "../../../components/PageHero.astro";
+import { sitePath } from "../../../lib/site-path.js";
 ---
 
 <SAGPLayout title="Publishing Workspace | SAGP Executive Administration">
@@ -79,7 +80,7 @@ import PageHero from "../../../components/PageHero.astro";
         been finalized.
       </p>
       <p>
-        <a class="button" href={`${import.meta.env.BASE_URL}/executive/new-event/`}>
+        <a class="button" href={sitePath("/executive/new-event/")}>
           Create Event →
         </a>
       </p>
@@ -91,7 +92,7 @@ import PageHero from "../../../components/PageHero.astro";
         Create a new call from finalized source material.
       </p>
       <p>
-        <a class="button" href={`${import.meta.env.BASE_URL}/executive/new-call/`}>
+        <a class="button" href={sitePath("/executive/new-call/")}>
           Create Call →
         </a>
       </p>
@@ -103,7 +104,7 @@ import PageHero from "../../../components/PageHero.astro";
 
 <script>
   function platformUrl(path) {
-    const base = "/sagp_website";
+    const base = import.meta.env.BASE_URL.replace(/\/+$/, "");
     const cleanPath = String(path).replace(/^\//, "");
     return `${base}/${cleanPath}`;
   }
@@ -153,13 +154,13 @@ import PageHero from "../../../components/PageHero.astro";
       openEventButton.addEventListener("click", () => {
         if (!eventSelect.value) return;
         const id = encodeURIComponent(eventSelect.value);
-        window.location.href = `${import.meta.env.BASE_URL}/executive/update-event/?id=${id}`;
+        window.location.href = `${platformUrl("/executive/update-event/")}?id=${id}`;
       });
 
       openCallButton.addEventListener("click", () => {
         if (!callSelect.value) return;
         const id = encodeURIComponent(callSelect.value);
-        window.location.href = `${import.meta.env.BASE_URL}/executive/update-call/?id=${id}`;
+        window.location.href = `${platformUrl("/executive/update-call/")}?id=${id}`;
       });
     })
     .catch((error) => {

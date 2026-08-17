@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import { sitePath } from "../lib/site-path.js";
 ---
 
 <section class="section membership-band">
@@ -17,7 +18,7 @@ import Icon from "./Icon.astro";
     </p>
 
     <p>
-      <a class="button" href={`${import.meta.env.BASE_URL}/membership/`}>
+      <a class="button" href={sitePath("/membership/")}>
         Learn about membership
       </a>
     </p>

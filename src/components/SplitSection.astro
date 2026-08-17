@@ -1,3 +1,7 @@
+---
+import { sitePath } from "../lib/site-path.js";
+---
+
 <section class="section split-section">
   <div class="split-text">
     <p class="kicker">Who We Are</p>
@@ -10,10 +14,10 @@
       The Society especially encourages junior and mid-career scholars and seeks to sustain
       a welcoming, diverse, and intellectually generous community.
     </p>
-    <p><a href={`${import.meta.env.BASE_URL}/who-we-are/`}>Read more about the Society</a></p>
+    <p><a href={sitePath("/who-we-are/")}>Read more about the Society</a></p>
   </div>
 
   <figure class="split-image">
-    <img src={`${import.meta.env.BASE_URL}/assets/images/delphi_treasury.jpg`} alt="Temple of Apollo at Delphi" />
+    <img src={sitePath("/assets/images/delphi_treasury.jpg")} alt="Temple of Apollo at Delphi" />
   </figure>
 </section>

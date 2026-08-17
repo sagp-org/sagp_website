@@ -1,6 +1,7 @@
 ---
 import PageHero from "../../components/PageHero.astro";
 import SAGPLayout from "../../layouts/SAGPLayout.astro";
+import { sitePath } from "../../lib/site-path.js";
 ---
 
 <SAGPLayout title="Events | Society for Ancient Greek Philosophy">
@@ -22,7 +23,7 @@ import SAGPLayout from "../../layouts/SAGPLayout.astro";
         The Society’s annual conference gathers scholars for moderated sessions
         devoted to original research in Ancient Greek philosophy.
       </p>
-      <p><a href={`${import.meta.env.BASE_URL}/events/annual-conference/`}>Learn about the Annual Conference</a></p>
+      <p><a href={sitePath("/events/annual-conference/")}>Learn about the Annual Conference</a></p>
     </article>
 
     <article class="card">
@@ -31,7 +32,7 @@ import SAGPLayout from "../../layouts/SAGPLayout.astro";
         Each year, SAGP honors a scholar whose work has made very substantial
         contributions to the field.
       </p>
-      <p><a href={`${import.meta.env.BASE_URL}/events/distinguished-lectureship/`}>Explore the Lectureship</a></p>
+      <p><a href={sitePath("/events/distinguished-lectureship/")}>Explore the Lectureship</a></p>
     </article>
 
     <article class="card">
@@ -41,7 +42,7 @@ import SAGPLayout from "../../layouts/SAGPLayout.astro";
         mid-career scholars, a setting for presenting developing work and
         receiving constructive feedback.
       </p>
-      <p><a href={`${import.meta.env.BASE_URL}/events/works-in-progress/`}>View the series</a></p>
+      <p><a href={sitePath("/events/works-in-progress/")}>View the series</a></p>
     </article>
   </div>
 </section>

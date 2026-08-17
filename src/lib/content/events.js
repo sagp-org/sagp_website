@@ -22,7 +22,7 @@ export function loadEvents(type) {
 
   return fs
     .readdirSync(dir)
-    .filter((file) => file.endsWith(".yaml"))
+    .filter((file) => file.endsWith(".yaml") && !file.endsWith(".draft.yaml"))
     .map((file) => {
       const data = yaml.load(fs.readFileSync(path.join(dir, file), "utf8"));
       return data.event;

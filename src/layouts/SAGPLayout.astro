@@ -4,7 +4,7 @@ import Icon from "../components/Icon.astro";
 import ExecutiveGate from "../components/ExecutiveGate.astro";
 
 const { title = "Society for Ancient Greek Philosophy" } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/+$/, "");
 const isExecutive = Astro.url.pathname.startsWith(`${base}/executive/`);
 ---
 

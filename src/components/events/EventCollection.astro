@@ -1,4 +1,6 @@
 ---
+import { sitePath } from "../../lib/site-path.js";
+
 const { events, basePath, label = "event" } = Astro.props;
 
 function firstPresentation(event) {
@@ -51,7 +53,7 @@ function pageYear(event) {
       )}
 
       <p>
-        <a href={`${import.meta.env.BASE_URL}${basePath}/${pageYear(event)}/`}>
+        <a href={sitePath(`${basePath}/${pageYear(event)}/`)}>
           View the {pageYear(event)} {label} →
         </a>
       </p>

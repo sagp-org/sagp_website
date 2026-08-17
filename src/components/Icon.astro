@@ -1,6 +1,6 @@
 ---
 const { name, class: className = "" } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/+$/, "");
 
 const icons = {
   column: "column.svg",
