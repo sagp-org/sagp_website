@@ -19,3 +19,9 @@ export {
 export {
   loadGovernance,
 } from "./governance.js";
+
+export {
+  loadMemorial,
+  loadMemorials,
+  loadFeaturedMemorial,
+} from "./memorials.js";

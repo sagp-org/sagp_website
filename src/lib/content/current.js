@@ -1,5 +1,6 @@
 import { loadUpcomingEvents, loadLastEvent } from "./events.js";
 import { loadActiveCalls } from "./calls.js";
+import { loadFeaturedMemorial } from "./memorials.js";
 
 function normalizeDate(value) {
   if (value instanceof Date) return value.toISOString().slice(0, 10);
@@ -16,6 +17,16 @@ function firstFutureDeadline(call) {
 }
 
 export function loadCurrentItem() {
+  const featuredMemorial = loadFeaturedMemorial();
+
+  if (featuredMemorial) {
+    return {
+      kind: "memorial",
+      label: "In Memoriam",
+      item: featuredMemorial,
+    };
+  }
+
   const activeCall = loadActiveCalls()
     .sort((a, b) => firstFutureDeadline(a).localeCompare(firstFutureDeadline(b)))[0];
 

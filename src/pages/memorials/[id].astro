@@ -1,0 +1,130 @@
+---
+import { marked } from "marked";
+
+import SAGPLayout from "../../layouts/SAGPLayout.astro";
+import { loadMemorials } from "../../lib/content/index.js";
+
+export function getStaticPaths() {
+  return loadMemorials().map((memorial) => ({
+    params: { id: memorial.id },
+    props: { memorial },
+  }));
+}
+
+const { memorial } = Astro.props;
+const html = marked.parse(memorial.body);
+const imageUrl = `${import.meta.env.BASE_URL}${memorial.image.replace(/^\//, "")}`;
+---
+
+<SAGPLayout title={`${memorial.title} | SAGP`}>
+  <header class="memorial-header">
+    <div class="memorial-header-inner">
+      <img src={imageUrl} alt={memorial.image_alt} />
+
+      <div>
+        <p class="kicker">In Memoriam</p>
+        <h1>{memorial.person.name}</h1>
+        <p class="life-dates">
+          {memorial.person.full_name} ({memorial.person.years})
+        </p>
+        <ul class="positions">
+          {memorial.positions.map((position) => <li>{position}</li>)}
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="section memorial-body">
+    <article class="prose">
+      <Fragment set:html={html} />
+    </article>
+
+    <footer class="attribution">
+      {memorial.attribution.map((line) => <div>{line}</div>)}
+    </footer>
+  </section>
+</SAGPLayout>
+
+<style>
+  .memorial-header {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .memorial-header-inner {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 64px 32px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 58px;
+    align-items: center;
+  }
+
+  .memorial-header img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+  }
+
+  .memorial-header h1 {
+    margin: 0 0 12px;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    line-height: 1;
+  }
+
+  .life-dates {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 1.2rem;
+  }
+
+  .positions {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+  }
+
+  .positions li + li {
+    margin-top: 8px;
+  }
+
+  .memorial-body {
+    max-width: 850px;
+  }
+
+  .prose {
+    font-size: 1.13rem;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 1.5em;
+  }
+
+  .attribution {
+    margin-top: 42px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    font-style: italic;
+  }
+
+  @media (max-width: 720px) {
+    .memorial-header-inner {
+      grid-template-columns: 1fr;
+      gap: 34px;
+      padding: 40px 24px;
+    }
+
+    .memorial-header img {
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .memorial-header h1 {
+      font-size: 2.8rem;
+    }
+  }
+</style>

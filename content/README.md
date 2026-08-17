@@ -39,6 +39,8 @@ content/
 
     calls/
 
+    memorials/
+
     governance/
 
     people/
@@ -118,6 +120,17 @@ effective dates rather than scheduled occurrences.
 
 ---
 
+# Memorials
+
+Memorials preserve Society-approved remembrances of important members of the
+SAGP and philosophical communities.
+
+A memorial may temporarily have `status: featured`, giving it priority in the
+homepage feature area. Changing its status removes it from that position
+without removing its permanent remembrance page.
+
+---
+
 # Editing Rule
 
 If changing factual content requires editing an Astro page, stop and ask:
@@ -157,4 +170,3 @@ Automatic Publication
 The AI should generate and maintain canonical knowledge objects.
 
 The website should derive its presentation from those objects.
-
