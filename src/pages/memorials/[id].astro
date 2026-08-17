@@ -13,7 +13,7 @@ export function getStaticPaths() {
 
 const { memorial } = Astro.props;
 const html = marked.parse(memorial.body);
-const imageUrl = `${import.meta.env.BASE_URL}${memorial.image.replace(/^\//, "")}`;
+const imageUrl = `${import.meta.env.BASE_URL}/${memorial.image.replace(/^\/+/, "")}`;
 ---
 
 <SAGPLayout title={`${memorial.title} | SAGP`}>

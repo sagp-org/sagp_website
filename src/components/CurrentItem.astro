@@ -47,13 +47,17 @@ const eventHref = isEvent && item.type === "annual_conference"
     : "";
 
 const callHref = "/calls/apa-panels-2026/";
+
+function sitePath(value) {
+  return `${import.meta.env.BASE_URL}/${String(value).replace(/^\/+/, "")}`;
+}
 ---
 
 {current && (
   isMemorial ? (
     <section class="section next-event memorial-feature">
       <div class="memorial-feature-portrait">
-        <img src={`${import.meta.env.BASE_URL}${item.image.replace(/^\//, "")}`} alt={item.image_alt} />
+        <img src={sitePath(item.image)} alt={item.image_alt} />
       </div>
 
       <div>
@@ -62,7 +66,7 @@ const callHref = "/calls/apa-panels-2026/";
         <p class="muted">{item.person.full_name} ({item.person.years})</p>
         <p>{item.summary}</p>
         <p>
-          <a class="button" href={`${import.meta.env.BASE_URL}memorials/${item.id}/`}>
+          <a class="button" href={sitePath(`/memorials/${item.id}/`)}>
             Read the remembrance
           </a>
         </p>
