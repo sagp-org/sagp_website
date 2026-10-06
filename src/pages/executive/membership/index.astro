@@ -46,6 +46,45 @@ import PageHero from "../../../components/PageHero.astro";
   </div>
 </section>
 
+<section class="section current-members-section">
+  <article class="card">
+    <div class="directory-heading">
+      <div>
+        <p class="eyebrow">Membership directory</p>
+        <h2>Current Paid Members</h2>
+        <p class="muted" id="current-member-summary">Loading current paid members...</p>
+      </div>
+      <label class="current-member-filter">
+        Filter current members
+        <input
+          id="current-member-search"
+          type="search"
+          placeholder="Name, email, institution, region..."
+          disabled
+        />
+      </label>
+    </div>
+
+    <div class="member-table-wrap">
+      <table class="member-directory-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Institution</th>
+            <th>Region</th>
+            <th>Expiration</th>
+            <th><span class="visually-hidden">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody id="current-member-table">
+          <tr><td colspan="6">Loading member records...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+</section>
+
 <section class="section create-member-section">
   <article class="card">
     <div class="workflow-heading">
@@ -257,6 +296,60 @@ import PageHero from "../../../components/PageHero.astro";
     return member.primary_email || member.secondary_email || "";
   }
 
+  function isCurrentPaidMember(member) {
+    return member.derived_membership_status === "Current Member";
+  }
+
+  function appendCell(row, value) {
+    const cell = document.createElement("td");
+    cell.textContent = value || "—";
+    row.appendChild(cell);
+    return cell;
+  }
+
+  function renderCurrentMembers(members) {
+    const tbody = document.querySelector("#current-member-table");
+    const summary = document.querySelector("#current-member-summary");
+    tbody.replaceChildren();
+
+    if (!members.length) {
+      const row = document.createElement("tr");
+      const cell = appendCell(row, "No current paid members match this filter.");
+      cell.colSpan = 6;
+      tbody.appendChild(row);
+      summary.textContent = "No matching current paid members.";
+      return;
+    }
+
+    const total = memberRecords.filter(isCurrentPaidMember).length;
+    summary.textContent = members.length === total
+      ? `${fmt.format(total)} current paid members.`
+      : `Showing ${fmt.format(members.length)} of ${fmt.format(total)} current paid members.`;
+
+    for (const member of members) {
+      const row = document.createElement("tr");
+      appendCell(row, member.display_name || "(No name)");
+      appendCell(row, memberEmail(member));
+      appendCell(row, member.institution);
+      appendCell(row, member.region);
+      appendCell(row, member.membership_expiration_year || member.last_paid_year);
+
+      const actionCell = document.createElement("td");
+      const button = document.createElement("button");
+      button.className = "directory-action";
+      button.type = "button";
+      button.textContent = "View record";
+      button.setAttribute("aria-label", `View record for ${member.display_name || "this member"}`);
+      button.addEventListener("click", () => {
+        renderMemberDetail(member);
+        document.querySelector(".member-detail-card").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      actionCell.appendChild(button);
+      row.appendChild(actionCell);
+      tbody.appendChild(row);
+    }
+  }
+
   function renderMemberResults(members) {
     const container = document.querySelector("#member-results");
 
@@ -424,8 +517,22 @@ import PageHero from "../../../components/PageHero.astro";
 
     const search = document.querySelector("#member-search");
     const results = document.querySelector("#member-results");
+    const currentMemberSearch = document.querySelector("#current-member-search");
+    const currentMembers = memberRecords.filter(isCurrentPaidMember);
 
     results.textContent = `${memberRecords.length.toLocaleString()} member records loaded. Type to search.`;
+    currentMemberSearch.disabled = false;
+    renderCurrentMembers(currentMembers);
+
+    currentMemberSearch.addEventListener("input", () => {
+      const terms = currentMemberSearch.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      const matches = terms.length
+        ? currentMembers.filter((member) =>
+            terms.every((term) => member.search_text.includes(term))
+          )
+        : currentMembers;
+      renderCurrentMembers(matches);
+    });
 
     search.addEventListener("input", () => {
       const query = search.value.trim().toLowerCase();
@@ -514,6 +621,11 @@ import PageHero from "../../../components/PageHero.astro";
       renderStatusTable(dashboard.membership_status_counts);
       loadMemberRecords().catch((error) => {
         document.querySelector("#member-results").textContent = error.message;
+        document.querySelector("#current-member-summary").textContent = error.message;
+        const row = document.createElement("tr");
+        const cell = appendCell(row, "Current paid members could not be loaded.");
+        cell.colSpan = 6;
+        document.querySelector("#current-member-table").replaceChildren(row);
       });
     })
     .catch((error) => {
@@ -531,6 +643,89 @@ import PageHero from "../../../components/PageHero.astro";
 .create-member-section .card {
   max-width: 1050px;
   margin-inline: auto;
+}
+
+.current-members-section .card {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.directory-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.directory-heading h2,
+.directory-heading p {
+  margin-top: 0;
+}
+
+.current-member-filter {
+  display: grid;
+  flex: 0 1 360px;
+  gap: 0.4rem;
+  font-weight: 650;
+}
+
+.current-member-filter input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.member-table-wrap {
+  max-height: 38rem;
+  overflow: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.member-directory-table th,
+.member-directory-table td {
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+.member-directory-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fffaf0;
+}
+
+.member-directory-table tbody tr:hover {
+  background: #fffaf0;
+}
+
+.directory-action {
+  border: 0;
+  background: transparent;
+  color: var(--color-link, #744610);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.directory-action:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .workflow-heading h2,
@@ -625,6 +820,16 @@ th {
 
   .wide-field {
     grid-column: auto;
+  }
+
+  .directory-heading {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .current-member-filter {
+    flex-basis: auto;
   }
 
 }
