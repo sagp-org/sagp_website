@@ -1,0 +1,24 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import yaml from "js-yaml";
+
+import PageHero from "../../../../components/PageHero.astro";
+import EventRenderer from "../../../../components/events/EventRenderer.astro";
+import SAGPLayout from "../../../../layouts/SAGPLayout.astro";
+
+const file = path.resolve("content/events/annual_conference/2026.yaml");
+const data = yaml.load(fs.readFileSync(file, "utf8"));
+const event = data.event;
+---
+
+<SAGPLayout title={`${event.title} | SAGP`}>
+  <PageHero
+    kicker={event.hero.kicker}
+    title={event.hero.title}
+    subtitle={event.hero.subtitle}
+    image={event.hero.image}
+  />
+
+  <EventRenderer event={event} />
+</SAGPLayout>

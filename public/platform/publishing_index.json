@@ -2,6 +2,44 @@
   "events": [
     {
       "kind": "event",
+      "id": "annual_conference/2026",
+      "event_id": "annual-conference-2026",
+      "type": "annual_conference",
+      "year": "2026",
+      "title": "SAGP Annual Conference 2026",
+      "subtitle": "Empedocles, Plato, Aristotle, and Hellenistic and Roman philosophy.",
+      "status": "upcoming",
+      "description": "The Society for Ancient Greek Philosophy’s 2026 Annual Conference takes place on Zoom on November 14–15, with four sessions on Empedocles and the Derveni Papyrus, Plato on tyranny, deliberation and contingency in Aristotle’s philosophy, and Hellenistic and Roman philosophy.",
+      "date": "2026-11-14",
+      "dates": {
+        "start": "2026-11-14",
+        "end": "2026-11-15",
+        "timezone": "PST",
+        "timezone_iana": "America/Los_Angeles"
+      },
+      "location": {
+        "mode": "virtual",
+        "venue": "Zoom",
+        "city": "",
+        "region": "",
+        "country": "",
+        "url": ""
+      },
+      "attendance": {
+        "instructions": "Attendees must be dues-paying members of SAGP in good standing. To register, please email SAGPcontact@gmail.com.",
+        "contact_email": "SAGPcontact@gmail.com"
+      },
+      "hero": {
+        "kicker": "Annual Conference 2026",
+        "title": "SAGP Annual Conference 2026",
+        "subtitle": "November 14–15, 2026 · via Zoom · All times listed in Pacific Standard Time.",
+        "image": "/assets/images/parthenon_night.jpg"
+      },
+      "detail": "The Society for Ancient Greek Philosophy’s 2026 Annual Conference takes place on Zoom on November 14–15, with four sessions on Empedocles and the Derveni Papyrus, Plato on tyranny, deliberation and contingency in Aristotle’s philosophy, and Hellenistic and Roman philosophy.",
+      "source_yaml": "content/events/annual_conference/2026.yaml"
+    },
+    {
+      "kind": "event",
       "id": "annual_conference/2025",
       "event_id": "annual-conference-2025",
       "type": "annual_conference",

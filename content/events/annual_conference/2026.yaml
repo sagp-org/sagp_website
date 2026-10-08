@@ -1,0 +1,141 @@
+# Source: Colin Smith, SAGP 2026 Annual Conference (1).pdf, received 2026-10-08.
+# Colin Smith’s accompanying email confirms Mitsis’s presentation and full institution names.
+event:
+  id: annual-conference-2026
+  title: SAGP Annual Conference 2026
+  subtitle: Empedocles, Plato, Aristotle, and Hellenistic and Roman philosophy.
+  type: annual_conference
+  status: upcoming
+  description: >-
+    The Society for Ancient Greek Philosophy’s 2026 Annual Conference takes place on Zoom on
+    November 14–15, with four sessions on Empedocles and the Derveni Papyrus, Plato on tyranny,
+    deliberation and contingency in Aristotle’s philosophy, and Hellenistic and Roman philosophy.
+  attendance:
+    instructions: >-
+      Attendees must be dues-paying members of SAGP in good standing. To register, please email
+      SAGPcontact@gmail.com.
+    contact_email: SAGPcontact@gmail.com
+  dates:
+    start: '2026-11-14'
+    end: '2026-11-15'
+    timezone: PST
+    timezone_iana: America/Los_Angeles
+  location:
+    mode: virtual
+    venue: Zoom
+    city: null
+    region: null
+    country: null
+    url: null
+  hero:
+    kicker: Annual Conference 2026
+    title: SAGP Annual Conference 2026
+    subtitle: November 14–15, 2026 · via Zoom · All times listed in Pacific Standard Time.
+    image: /assets/images/parthenon_night.jpg
+  sessions:
+    - id: empedocles-and-the-derveni-papyrus
+      title: Empedocles and the Derveni Papyrus
+      date: '2026-11-14'
+      start_time: '07:00'
+      end_time: null
+      timezone: PST
+      timezone_iana: America/Los_Angeles
+      moderator:
+        name: Benjamin Harriman
+        institution: University of Edinburgh
+      presentations:
+        - id: philosophical-afterlife-of-a-cosmogonic-motif
+          title: >-
+            From the Derveni Papyrus through Parmenides and Beyond: The Philosophical Afterlife of a
+            Cosmogonic Motif
+          type: paper
+          presenters:
+            - name: Chiara Ferella
+              institution: Ruhr-Universität Bochum / Johannes Gutenberg-Universität Mainz
+        - id: the-new-empedocles
+          title: The New Empedocles
+          type: paper
+          presenters:
+            - name: Simon Trépanier
+              institution: University of Edinburgh
+    - id: plato-on-tyranny
+      title: Plato on Tyranny
+      date: '2026-11-14'
+      start_time: '10:00'
+      end_time: null
+      timezone: PST
+      timezone_iana: America/Los_Angeles
+      moderator:
+        name: Rusty Jones
+        institution: University of Oklahoma
+      presentations:
+        - id: the-tyrants-regret
+          title: The Tyrant’s Regret
+          type: paper
+          presenters:
+            - name: Eric Solis
+              institution: University of Alabama
+        - id: plato-on-shamelessness-democracy-and-capitulating-to-tyranny
+          title: Plato on Shamelessness, Democracy, and Capitulating to Tyranny
+          type: paper
+          presenters:
+            - name: Andrew Culbreth
+              institution: Boston College
+    - id: deliberation-and-contingency-in-aristotles-philosophy
+      title: Deliberation and Contingency in Aristotle’s Philosophy
+      date: '2026-11-15'
+      start_time: '07:00'
+      end_time: null
+      timezone: PST
+      timezone_iana: America/Los_Angeles
+      moderator:
+        name: Klaus Corcilius
+        institution: University of Tübingen
+      presentations:
+        - id: productive-deliberations-in-aristotle
+          title: Productive Deliberations in Aristotle
+          type: paper
+          presenters:
+            - name: Simona Aimar
+              institution: University College London
+        - id: aristotles-practical-deliberation-particularism-and-silencing
+          title: Aristotle’s Practical Deliberation, Particularism and Silencing
+          type: paper
+          presenters:
+            - name: Sylvia Berryman
+              institution: University of British Columbia
+    - id: hellenistic-and-roman-philosophy
+      title: Hellenistic and Roman Philosophy
+      date: '2026-11-15'
+      start_time: '11:00'
+      end_time: null
+      timezone: PST
+      timezone_iana: America/Los_Angeles
+      moderator:
+        name: Phillip Mitsis
+        institution: New York University
+      presentations:
+        - id: matters-of-mind
+          title: 'Matters of Mind: Epicurus on Soul, Animals, and τὸ παρ’ ἡμᾶς'
+          type: paper
+          presenters:
+            - name: Phillip Mitsis
+              institution: New York University
+        - id: epicurus-on-the-soul
+          title: Epicurus on the Soul
+          type: paper
+          presenters:
+            - name: Attila Németh
+              institution: Hungarian Academy of Sciences
+        - id: epicurus-on-animals
+          title: Epicurus on Animals
+          type: paper
+          presenters:
+            - name: Pamela Zinn
+              institution: Texas Tech University
+        - id: leveraging-underdetermination
+          title: Leveraging underdetermination from luck to what depends on us
+          type: paper
+          presenters:
+            - name: Solmeng-Jonas Hirschi
+              institution: University of Vienna
