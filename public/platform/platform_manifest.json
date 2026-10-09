@@ -18,35 +18,35 @@
       "object_type": "audience",
       "object_id": "aud_6127894af4ed",
       "title": "Expired before 2026",
-      "detail": "996 recipients",
+      "detail": "989 recipients",
       "url": "/platform/knowledge_objects/audiences/aud_6127894af4ed.json"
     },
     {
       "object_type": "audience",
       "object_id": "aud_6606aa3249ca",
       "title": "Current paid members",
-      "detail": "201 recipients",
+      "detail": "221 recipients",
       "url": "/platform/knowledge_objects/audiences/aud_6606aa3249ca.json"
     },
     {
       "object_type": "audience",
       "object_id": "aud_d394738d4260",
       "title": "Executive and Board Members",
-      "detail": "19 recipients",
+      "detail": "18 recipients",
       "url": "/platform/knowledge_objects/audiences/aud_d394738d4260.json"
     },
     {
       "object_type": "audience",
       "object_id": "aud_e10b61551934",
       "title": "All members",
-      "detail": "1,737 recipients",
+      "detail": "1,741 recipients",
       "url": "/platform/knowledge_objects/audiences/aud_e10b61551934.json"
     },
     {
       "object_type": "audience",
       "object_id": "aud_eb4fa879bb4a",
       "title": "Expired members",
-      "detail": "886 recipients",
+      "detail": "879 recipients",
       "url": "/platform/knowledge_objects/audiences/aud_eb4fa879bb4a.json"
     }
   ],

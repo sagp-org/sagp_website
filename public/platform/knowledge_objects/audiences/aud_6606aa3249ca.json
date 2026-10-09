@@ -16,6 +16,16 @@
       "eligibility_notes": "last_paid_year=2025; region=; institution=CUA"
     },
     {
+      "person_id": "SAGP000014",
+      "name": "William Gruen",
+      "email": "wgg11@scarletmail.rutgers.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2031; region=USA Eastern; institution=Rutgers University"
+    },
+    {
       "person_id": "SAGP000021",
       "name": "John Lenz",
       "email": "jlenz@drew.edu",
@@ -396,6 +406,16 @@
       "eligibility_notes": "last_paid_year=2026; region=; institution="
     },
     {
+      "person_id": "SAGP000438",
+      "name": "Mark A Lee",
+      "email": "mal56@georgetown.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2031; region=USA Eastern; institution=Georgetown University"
+    },
+    {
       "person_id": "SAGP000439",
       "name": "James Lesher",
       "email": "jlesher@email.unc.edu",
@@ -433,7 +453,7 @@
       "tags": [
         "preset:Current paid members"
       ],
-      "eligibility_notes": "last_paid_year=2030; region=; institution="
+      "eligibility_notes": "last_paid_year=2031; region=USA Eastern; institution=University of North Carolina at Wilmington"
     },
     {
       "person_id": "SAGP000491",
@@ -524,6 +544,16 @@
         "preset:Current paid members"
       ],
       "eligibility_notes": "last_paid_year=2025; region=; institution=Kansas University"
+    },
+    {
+      "person_id": "SAGP000534",
+      "name": "Elizabeth Jelinek",
+      "email": "elizabeth.jelinek@cnu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2041; region=; institution=Christopher Newport University"
     },
     {
       "person_id": "SAGP000537",
@@ -654,6 +684,16 @@
         "preset:Current paid members"
       ],
       "eligibility_notes": "last_paid_year=2026; region=; institution="
+    },
+    {
+      "person_id": "SAGP000642",
+      "name": "Lawrence Jost",
+      "email": "jostlj@ucmail.uc.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2046; region=US Central; institution=University of Cincinnati"
     },
     {
       "person_id": "SAGP000643",
@@ -794,6 +834,16 @@
         "preset:Current paid members"
       ],
       "eligibility_notes": "last_paid_year=2026; region=; institution="
+    },
+    {
+      "person_id": "SAGP000737",
+      "name": "Owen Goldin",
+      "email": "owen.goldin@marquette.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=USA Central; institution=Marquette University"
     },
     {
       "person_id": "SAGP000755",
@@ -994,6 +1044,16 @@
         "preset:Current paid members"
       ],
       "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP000858",
+      "name": "Tom Tuozzo",
+      "email": "ttuozzo@ku.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=USA Central; institution=University of Kansas"
     },
     {
       "person_id": "SAGP000860",
@@ -1236,6 +1296,16 @@
       "eligibility_notes": "last_paid_year=2025; region=; institution="
     },
     {
+      "person_id": "SAGP000991",
+      "name": "Robin Weiss",
+      "email": "robin.weiss125@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=Taiwan; institution=University of Taiwan"
+    },
+    {
       "person_id": "SAGP000995",
       "name": "Wynne John P.F.",
       "email": "john.wynne@utah.edu",
@@ -1294,6 +1364,26 @@
         "preset:Current paid members"
       ],
       "eligibility_notes": "last_paid_year=2030; region=; institution="
+    },
+    {
+      "person_id": "SAGP001035",
+      "name": "Patricio Fernández",
+      "email": "pfernandez@utexas.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2031; region=USA Central; institution=University of Texas Austin"
+    },
+    {
+      "person_id": "SAGP001041",
+      "name": "Kerong Gao",
+      "email": "keronggao@umail.ucsb.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=USA Western; institution=University of California Santa Barbara"
     },
     {
       "person_id": "SAGP001050",
@@ -1436,6 +1526,16 @@
       "eligibility_notes": "last_paid_year=2027; region=; institution="
     },
     {
+      "person_id": "SAGP001132",
+      "name": "Isabelle Chouinard",
+      "email": "chouinard.isabelle@uqam.ca",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2031; region=Canada Montréal; institution=Université du Québec à Montréal"
+    },
+    {
       "person_id": "SAGP001139",
       "name": "Arti Dhand",
       "email": "arti.dhand@utoronto.ca",
@@ -1484,6 +1584,16 @@
         "preset:Current paid members"
       ],
       "eligibility_notes": "last_paid_year=2026; region=; institution="
+    },
+    {
+      "person_id": "SAGP001178",
+      "name": "Cecilia Li",
+      "email": "zli289@uwo.ca",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=Canada Ontario; institution=Huron University at Western University in Ontario"
     },
     {
       "person_id": "SAGP001181",
@@ -1796,6 +1906,16 @@
       "eligibility_notes": "last_paid_year=2025; region=; institution="
     },
     {
+      "person_id": "SAGP001370",
+      "name": "Stephen Artner",
+      "email": "artner@bc.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=USA Eastern; institution=Boston College"
+    },
+    {
       "person_id": "SAGP001375",
       "name": "Balla Chloe",
       "email": "chloeballa@uoc.gr",
@@ -1946,6 +2066,16 @@
       "eligibility_notes": "last_paid_year=2027; region=; institution="
     },
     {
+      "person_id": "SAGP001604",
+      "name": "Daniel Maher",
+      "email": "dmaher@assumption.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2031; region=USA Eastern; institution=Assumption University"
+    },
+    {
       "person_id": "SAGP001615",
       "name": "Marije Martijn",
       "email": "m.martijn@ph.vu.nl",
@@ -1954,6 +2084,16 @@
         "preset:Current paid members"
       ],
       "eligibility_notes": "last_paid_year=2026; region=; institution="
+    },
+    {
+      "person_id": "SAGP001620",
+      "name": "Catherine McKeen",
+      "email": "cmckeen@bennington.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2031; region=USA Eastern; institution=Bennington College"
     },
     {
       "person_id": "SAGP001653",
@@ -2006,6 +2146,16 @@
       "eligibility_notes": "last_paid_year=2025; region=; institution="
     },
     {
+      "person_id": "SAGP001767",
+      "name": "Philip Sutherland SJ",
+      "email": "sutherland.philip@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=USA Central; institution=Marquette University"
+    },
+    {
       "person_id": "SAGP001797",
       "name": "Marius Wegrzyn",
       "email": "mariuszwegrzyn@wp.pl",
@@ -2014,9 +2164,59 @@
         "preset:Current paid members"
       ],
       "eligibility_notes": "last_paid_year=2025; region=; institution="
+    },
+    {
+      "person_id": "SAGP001819",
+      "name": "Max DuBoff",
+      "email": "duboff.max@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=; institution=Fairfield University"
+    },
+    {
+      "person_id": "SAGP001820",
+      "name": "Josiah Ducharme",
+      "email": "josiah@palmettofamily.org",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2027; region=Eastern; institution="
+    },
+    {
+      "person_id": "SAGP001821",
+      "name": "Alex Lee",
+      "email": "lee7ag@jmu.edu",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2029; region=; institution=James Madison University"
+    },
+    {
+      "person_id": "SAGP001822",
+      "name": "David Reed",
+      "email": "dlr7.2353@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2031; region=; institution="
+    },
+    {
+      "person_id": "SAGP001823",
+      "name": "Lydia Skoufalou",
+      "email": "lydsko2022@gmail.com",
+      "membership_status": "Current Member",
+      "tags": [
+        "preset:Current paid members"
+      ],
+      "eligibility_notes": "last_paid_year=2029; region=Greece; institution=Aristotle University of Thessaloniki"
     }
   ],
   "audience_id": "aud_6606aa3249ca",
-  "generated_at": "2026-07-08T17:17:38.915060+00:00",
+  "generated_at": "2026-10-09T20:57:03.663673+00:00",
   "source_engine": "membership"
 }

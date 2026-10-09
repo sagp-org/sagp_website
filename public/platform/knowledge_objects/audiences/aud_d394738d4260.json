@@ -56,16 +56,6 @@
       "eligibility_notes": "last_paid_year=; region=; institution="
     },
     {
-      "person_id": "SAGP000534",
-      "name": "Elizabeth Jelinek",
-      "email": "betsyjelinek@gmail.com",
-      "membership_status": "Executive and Donors",
-      "tags": [
-        "preset:Executive and Board Members"
-      ],
-      "eligibility_notes": "last_paid_year=; region=; institution="
-    },
-    {
       "person_id": "SAGP000548",
       "name": "Morel PierreMarie",
       "email": "pierremarie.morel@gmail.com",
@@ -197,6 +187,6 @@
     }
   ],
   "audience_id": "aud_d394738d4260",
-  "generated_at": "2026-07-08T17:17:38.917041+00:00",
+  "generated_at": "2026-10-09T20:57:03.675644+00:00",
   "source_engine": "membership"
 }

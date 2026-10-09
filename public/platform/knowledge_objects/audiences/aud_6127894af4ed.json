@@ -77,16 +77,6 @@
       "eligibility_notes": "last_paid_year=2017; region=; institution="
     },
     {
-      "person_id": "SAGP000014",
-      "name": "Gruen William",
-      "email": "wgg11@scarletmail.rutgers.edu",
-      "membership_status": "Past Member",
-      "tags": [
-        "preset:Expired before 2026"
-      ],
-      "eligibility_notes": "last_paid_year=2024; region=; institution=Rutgers"
-    },
-    {
       "person_id": "SAGP000015",
       "name": "Christopher Hauser",
       "email": "christopher.m.hauser@gmail.com",
@@ -2577,16 +2567,6 @@
       "eligibility_notes": "last_paid_year=2011; region=; institution="
     },
     {
-      "person_id": "SAGP000438",
-      "name": "Mark A Lee",
-      "email": "mal56@georgetown.edu",
-      "membership_status": "Past Member",
-      "tags": [
-        "preset:Expired before 2026"
-      ],
-      "eligibility_notes": "last_paid_year=2024; region=; institution="
-    },
-    {
       "person_id": "SAGP000440",
       "name": "Glenn Lesses",
       "email": "lessesg@cofc.edu",
@@ -4517,16 +4497,6 @@
       "eligibility_notes": "last_paid_year=2017; region=; institution="
     },
     {
-      "person_id": "SAGP000737",
-      "name": "Owen Goldin",
-      "email": "owen.goldin@marquette.edu",
-      "membership_status": "Past Member",
-      "tags": [
-        "preset:Expired before 2026"
-      ],
-      "eligibility_notes": "last_paid_year=2024; region=; institution=Marquette University"
-    },
-    {
       "person_id": "SAGP000738",
       "name": "Paula Gottlieb",
       "email": "plgottli@wisc.edu",
@@ -6077,16 +6047,6 @@
       "eligibility_notes": "last_paid_year=2024; region=; institution="
     },
     {
-      "person_id": "SAGP000991",
-      "name": "Robin Weiss",
-      "email": "robin.weiss@aucegypt.edu",
-      "membership_status": "Past Member",
-      "tags": [
-        "preset:Expired before 2026"
-      ],
-      "eligibility_notes": "last_paid_year=2021; region=; institution="
-    },
-    {
       "person_id": "SAGP000992",
       "name": "Wen Xu",
       "email": "Wen.Xu@colorado.edu",
@@ -6317,16 +6277,6 @@
       "eligibility_notes": "last_paid_year=2016; region=; institution="
     },
     {
-      "person_id": "SAGP001035",
-      "name": "Fernandez Patricio A",
-      "email": "pfernandez@utexas.edu",
-      "membership_status": "Past Member",
-      "tags": [
-        "preset:Expired before 2026"
-      ],
-      "eligibility_notes": "last_paid_year=2021; region=; institution=UCSB"
-    },
-    {
       "person_id": "SAGP001036",
       "name": "Giovanni Ferrari",
       "email": "gferrari@berkeley.edu",
@@ -6375,16 +6325,6 @@
         "preset:Expired before 2026"
       ],
       "eligibility_notes": "last_paid_year=2024; region=; institution="
-    },
-    {
-      "person_id": "SAGP001041",
-      "name": "Gao Kerung",
-      "email": "keronggao@ucsb.edu",
-      "membership_status": "Past Member",
-      "tags": [
-        "preset:Expired before 2026"
-      ],
-      "eligibility_notes": "last_paid_year=2018; region=; institution=UCSB"
     },
     {
       "person_id": "SAGP001042",
@@ -9237,16 +9177,6 @@
       "eligibility_notes": "last_paid_year=2011; region=; institution="
     },
     {
-      "person_id": "SAGP001604",
-      "name": "Daniel Maher",
-      "email": "dmaher@assumption.edu",
-      "membership_status": "Past Member",
-      "tags": [
-        "preset:Expired before 2026"
-      ],
-      "eligibility_notes": "last_paid_year=2013; region=; institution="
-    },
-    {
       "person_id": "SAGP001608",
       "name": "Mangini Flora",
       "email": "flora.manga@gmail.com",
@@ -9968,6 +9898,6 @@
     }
   ],
   "audience_id": "aud_6127894af4ed",
-  "generated_at": "2026-07-08T17:17:38.928681+00:00",
+  "generated_at": "2026-10-09T20:57:03.723120+00:00",
   "source_engine": "membership"
 }
