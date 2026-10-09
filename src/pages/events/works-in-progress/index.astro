@@ -1,6 +1,9 @@
 ---
 import PageHero from "../../../components/PageHero.astro";
 import SAGPLayout from "../../../layouts/SAGPLayout.astro";
+import CallLink from "../../../components/calls/CallLink.astro";
+import { loadCalls } from "../../../lib/content/index.js";
+const call = loadCalls().find((call) => call.id === "wip_spring_2027");
 ---
 
 <SAGPLayout title="Works in Progress | SAGP">
@@ -74,10 +77,9 @@ import SAGPLayout from "../../../layouts/SAGPLayout.astro";
 
   <div>
     <p>
-      The SAGP Works in Progress Series has been moved to spring. The deadline
-      for submitting abstracts for the next series will be in January 2027.
-      More information will follow as plans take shape.
+      {call.summary}
     </p>
+    <CallLink call={call} />
   </div>
 </section>
 

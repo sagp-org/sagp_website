@@ -87,7 +87,7 @@ function formatDate(value) {
       ))}
       .
       <br /><br />
-      Maximum length: {call.submission.attachment.max_words} words, including footnotes and bibliography.
+      {call.submission.attachment.length_text || `Maximum length: ${call.submission.attachment.max_words} words, including footnotes and bibliography.`}
       <br /><br />
       {call.submission.attachment.note}
     </div>

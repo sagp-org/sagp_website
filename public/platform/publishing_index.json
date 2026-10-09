@@ -334,6 +334,27 @@
         }
       ],
       "source_yaml": "content/calls/apa_panels_2026.yaml"
+    },
+    {
+      "kind": "call",
+      "id": "wip_spring_2027",
+      "title": "Call for Abstracts: Work-In-Progress Series, Spring 2027",
+      "status": "active",
+      "summary": "Since 2020, SAGP has been hosting a Work-In-Progress (WIP) series on Zoom. Scholars at all levels can propose a paper or panel session. The theme is open to any aspect of ancient Greek and Roman philosophy broadly conceived, including comparative papers. SAGP will host WIP sessions on Zoom in Spring 2027, mostly on Fridays or Saturdays throughout February, March, and April. We encourage dues-paying members to submit paper or panel abstracts for blind review. Results of the abstract review and the WIP schedule are expected by early January 2027.",
+      "deadline": "2026-11-23",
+      "hero": {
+        "kicker": "Call for Abstracts",
+        "title": "Work-In-Progress Series, Spring 2027",
+        "subtitle": "Propose a paper or panel on ancient Greek and Roman philosophy."
+      },
+      "deadlines": [
+        {
+          "label": "Paper and panel abstracts",
+          "date": "2026-11-23",
+          "note": "Monday, November 23."
+        }
+      ],
+      "source_yaml": "content/calls/wip_spring_2027.yaml"
     }
   ]
 }

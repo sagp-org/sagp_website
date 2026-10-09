@@ -7,6 +7,9 @@ call:
   title:
   type:
   status:
+  # Optional: false keeps an active call out of the homepage feature box.
+  homepage_feature:
+  url:
 
   summary:
 
@@ -34,6 +37,8 @@ call:
       formats:
       blind_review:
       max_words:
+      # Optional replacement for paper-length wording (e.g. an abstract word range).
+      length_text:
       min_words_note:
 
   related:

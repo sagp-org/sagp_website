@@ -5,11 +5,19 @@ import CurrentItem from "../components/CurrentItem.astro";
 import ActivityCards from "../components/ActivityCards.astro";
 import SplitSection from "../components/SplitSection.astro";
 import MembershipCTA from "../components/MembershipCTA.astro";
+import CallLink from "../components/calls/CallLink.astro";
+import { loadActiveCalls } from "../lib/content/index.js";
+const additionalCalls = loadActiveCalls().filter((call) => call.homepage_feature === false && call.url);
 ---
 
 <SAGPLayout title="Society for Ancient Greek Philosophy">
   <Hero />
   <CurrentItem />
+  {additionalCalls.length > 0 && (
+    <section class="section" aria-label="Calls for submissions" style="padding-top: 0; padding-bottom: 0;">
+      {additionalCalls.map((call) => <CallLink call={call} />)}
+    </section>
+  )}
   <ActivityCards />
   <SplitSection />
   <MembershipCTA />

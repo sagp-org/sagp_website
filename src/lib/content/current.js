@@ -28,6 +28,7 @@ export function loadCurrentItem() {
   }
 
   const activeCall = loadActiveCalls()
+    .filter((call) => call.homepage_feature !== false)
     .sort((a, b) => firstFutureDeadline(a).localeCompare(firstFutureDeadline(b)))[0];
 
   if (activeCall) {

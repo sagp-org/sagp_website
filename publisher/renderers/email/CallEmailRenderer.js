@@ -54,8 +54,8 @@ Please include:
 ${call.submission.instructions.map((i) => `- ${i}`).join("\n")}
 
 Attachment:
-Blind-review paper in ${call.submission.attachment.formats.map((f) => `.${f}`).join(", ")} format.
-Maximum length: ${call.submission.attachment.max_words} words.
+Blind-review document in ${call.submission.attachment.formats.map((f) => `.${f}`).join(", ")} format.
+${call.submission.attachment.length_text || `Maximum length: ${call.submission.attachment.max_words} words.`}
 
 ${call.submission.attachment.note}
 
@@ -125,7 +125,7 @@ export function renderCallHtml(call) {
           Attachments should be prepared for blind review and submitted as
           ${call.submission.attachment.formats.map((f) => `.${escapeHtml(f)}`).join(", ")}.
           <br><br>
-          Maximum length: <strong>${escapeHtml(call.submission.attachment.max_words)} words</strong>, including footnotes and bibliography.
+          ${call.submission.attachment.length_text ? escapeHtml(call.submission.attachment.length_text) : `Maximum length: <strong>${escapeHtml(call.submission.attachment.max_words)} words</strong>, including footnotes and bibliography.`}
           <br><br>
           ${escapeHtml(call.submission.attachment.note)}
         </div>

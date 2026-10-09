@@ -1,0 +1,12 @@
+---
+import { sitePath } from "../../lib/site-path.js";
+const { call } = Astro.props;
+const deadline = new Date(`${call.deadlines[0].date}T12:00:00Z`).toLocaleDateString("en-US", {
+  weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "UTC",
+});
+---
+
+<p class="callout">
+  <a href={sitePath(call.url)}>{call.title} →</a><br />
+  Submit by {deadline}.
+</p>

@@ -1,0 +1,50 @@
+call:
+  id: wip_spring_2027
+  type: call_for_abstracts
+  status: active
+  homepage_feature: false
+  url: /calls/wip-spring-2027/
+  title: 'Call for Abstracts: Work-In-Progress Series, Spring 2027'
+  hero:
+    kicker: Call for Abstracts
+    title: Work-In-Progress Series, Spring 2027
+    subtitle: Propose a paper or panel on ancient Greek and Roman philosophy.
+  summary: >-
+    Since 2020, SAGP has been hosting a Work-In-Progress (WIP) series on Zoom.
+    Scholars at all levels can propose a paper or panel session. The theme is
+    open to any aspect of ancient Greek and Roman philosophy broadly conceived,
+    including comparative papers. SAGP will host WIP sessions on Zoom in Spring
+    2027, mostly on Fridays or Saturdays throughout February, March, and April.
+    We encourage dues-paying members to submit paper or panel abstracts for
+    blind review. Results of the abstract review and the WIP schedule are
+    expected by early January 2027.
+  deadlines:
+    - label: Paper and panel abstracts
+      date: '2026-11-23'
+      note: Monday, November 23.
+  eligibility:
+    - Scholars at all levels may propose a paper or panel.
+    - All presenters and session attendees must be paid-up members of SAGP in good standing.
+    - Dues are currently $20 per year. For membership questions, contact SAGPcontact@gmail.com.
+  submission:
+    contact:
+      name: SAGPcontact@gmail.com
+      email: SAGPcontact@gmail.com
+    instructions:
+      - 'Use your email as a cover sheet and include:'
+      - Your name, or the names of all panel participants.
+      - Institutional affiliation(s) as you would like them to appear.
+      - The paper title, or the panel title and titles of all papers.
+      - When you last paid SAGP dues, if known.
+      - Date and time preferences for Fridays and Saturdays in February, March, or April 2027.
+    attachment:
+      blind_review: true
+      formats: [docx, doc]
+      length_text: 'Abstract length: 100–300 words for each paper.'
+      note: >-
+        Attach a separate document containing the paper title, or the panel
+        title plus all paper titles, and the abstract(s). Exclude all personal
+        information for blind review. Please use .DOCX or .DOC, not .pdf,
+        if at all possible.
+  related:
+    event_series: [Works in Progress]
