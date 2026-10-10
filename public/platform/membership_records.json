@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T12:20:45.430563",
+  "generated_at": "2026-10-10T12:24:18.700277",
   "source_database": "sagp_member_manager/output/sagp_members.db",
   "member_count": 1816,
   "members": [
@@ -6735,17 +6735,17 @@
       "city": "London",
       "state_province": "ON",
       "country": "CA",
-      "region": "Canada Ontario",
+      "region": "Canada",
       "membership_status": "Current Member",
       "original_membership_code": "01",
       "member_since": "",
       "last_paid_year": "2027",
       "active": "1",
-      "notes": "",
-      "updated_at": "2026-10-09T16:56:58.588258-04:00",
+      "notes": "Region label normalized 2026-10-10 from Canada Ontario to Canada.",
+      "updated_at": "2026-10-10 16:24:18",
       "membership_expiration_year": "2027",
       "derived_membership_status": "Current Member",
-      "search_text": "cecilia li cecilia li huron university at western university in ontario zli289@uwo.ca cecilia.z.li289@gmail.com canada ontario current member current member 2027 2027"
+      "search_text": "cecilia li cecilia li huron university at western university in ontario zli289@uwo.ca cecilia.z.li289@gmail.com canada current member current member 2027 2027"
     },
     {
       "person_id": "SAGP001016",
@@ -19263,17 +19263,17 @@
       "city": "Montreal",
       "state_province": "",
       "country": "",
-      "region": "Canada Montréal",
+      "region": "Canada",
       "membership_status": "Current Member",
       "original_membership_code": "01",
       "member_since": "",
       "last_paid_year": "2031",
       "active": "1",
-      "notes": "",
-      "updated_at": "2026-10-09T16:56:58.539120",
+      "notes": "Region label normalized 2026-10-10 from Canada Montréal to Canada.",
+      "updated_at": "2026-10-10 16:24:18",
       "membership_expiration_year": "2031",
       "derived_membership_status": "Current Member",
-      "search_text": "isabelle chouinard isabelle chouinard université du québec à montréal chouinard.isabelle@uqam.ca  canada montréal current member current member 2031 2031"
+      "search_text": "isabelle chouinard isabelle chouinard université du québec à montréal chouinard.isabelle@uqam.ca  canada current member current member 2031 2031"
     },
     {
       "person_id": "SAGP001294",
@@ -23319,17 +23319,17 @@
       "city": "",
       "state_province": "",
       "country": "",
-      "region": "Eastern",
+      "region": "USA Eastern",
       "membership_status": "Current Member",
       "original_membership_code": "",
       "member_since": "",
       "last_paid_year": "2027",
       "active": "1",
-      "notes": "",
-      "updated_at": "2026-10-09T16:56:58.614929-04:00",
+      "notes": "\nRegion label normalized 2026-10-10 from Eastern to USA Eastern.",
+      "updated_at": "2026-10-10 16:24:18",
       "membership_expiration_year": "2027",
       "derived_membership_status": "Current Member",
-      "search_text": "josiah ducharme josiah ducharme  josiah@palmettofamily.org  eastern current member current member 2027 2027"
+      "search_text": "josiah ducharme josiah ducharme  josiah@palmettofamily.org  usa eastern current member current member 2027 2027"
     },
     {
       "person_id": "SAGP000219",
@@ -25743,17 +25743,17 @@
       "city": "Cincinnati",
       "state_province": "",
       "country": "US",
-      "region": "US Central",
+      "region": "USA Central",
       "membership_status": "Current Member",
       "original_membership_code": "01",
       "member_since": "",
       "last_paid_year": "2046",
       "active": "1",
-      "notes": "",
-      "updated_at": "2026-10-09T16:56:58.557181",
+      "notes": "Region label normalized 2026-10-10 from US Central to USA Central.",
+      "updated_at": "2026-10-10 16:24:18",
       "membership_expiration_year": "2046",
       "derived_membership_status": "Current Member",
-      "search_text": "lawrence jost lawrence jost university of cincinnati jostlj@ucmail.uc.edu  us central current member current member 2046 2046"
+      "search_text": "lawrence jost lawrence jost university of cincinnati jostlj@ucmail.uc.edu  usa central current member current member 2046 2046"
     },
     {
       "person_id": "SAGP000139",
@@ -27231,17 +27231,17 @@
       "city": "",
       "state_province": "",
       "country": "",
-      "region": "Greece",
+      "region": "Europe",
       "membership_status": "Current Member",
       "original_membership_code": "",
       "member_since": "",
       "last_paid_year": "2029",
       "active": "1",
-      "notes": "",
-      "updated_at": "2026-10-09T16:56:58.654477-04:00",
+      "notes": "\nRegion label normalized 2026-10-10 from Greece to Europe.",
+      "updated_at": "2026-10-10 16:24:18",
       "membership_expiration_year": "2029",
       "derived_membership_status": "Current Member",
-      "search_text": "lydia skoufalou lydia skoufalou aristotle university of thessaloniki lydsko2022@gmail.com  greece current member current member 2029 2029"
+      "search_text": "lydia skoufalou lydia skoufalou aristotle university of thessaloniki lydsko2022@gmail.com  europe current member current member 2029 2029"
     },
     {
       "person_id": "SAGP000943",
@@ -36423,17 +36423,17 @@
       "city": "Albuquerque",
       "state_province": "NM",
       "country": "US",
-      "region": "Taiwan",
+      "region": "East and Southeast Asia",
       "membership_status": "Current Member",
       "original_membership_code": "21",
       "member_since": "",
       "last_paid_year": "2027",
       "active": "1",
-      "notes": "",
-      "updated_at": "2026-10-09T16:56:58.584828",
+      "notes": "Region label normalized 2026-10-10 from Taiwan to East and Southeast Asia.",
+      "updated_at": "2026-10-10 16:24:18",
       "membership_expiration_year": "2027",
       "derived_membership_status": "Current Member",
-      "search_text": "robin weiss robin weiss university of taiwan robin.weiss125@gmail.com  taiwan current member current member 2027 2027"
+      "search_text": "robin weiss robin weiss university of taiwan robin.weiss125@gmail.com  east and southeast asia current member current member 2027 2027"
     },
     {
       "person_id": "SAGP001210",
