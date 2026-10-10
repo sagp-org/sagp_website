@@ -300,6 +300,26 @@ import PageHero from "../../../components/PageHero.astro";
     return member.active === "1" && member.derived_membership_status === "Current Member";
   }
 
+  const memberNameCollator = new Intl.Collator(undefined, {
+    numeric: true,
+    sensitivity: "base",
+  });
+
+  function compareMembersBySurname(a, b) {
+    const fields = [
+      [a.last_name || a.display_name, b.last_name || b.display_name],
+      [a.first_name, b.first_name],
+      [a.display_name, b.display_name],
+      [a.person_id, b.person_id],
+    ];
+
+    for (const [aValue, bValue] of fields) {
+      const comparison = memberNameCollator.compare(aValue || "", bValue || "");
+      if (comparison !== 0) return comparison;
+    }
+    return 0;
+  }
+
   function appendCell(row, value) {
     const cell = document.createElement("td");
     cell.textContent = value || "—";
@@ -518,7 +538,9 @@ import PageHero from "../../../components/PageHero.astro";
     const search = document.querySelector("#member-search");
     const results = document.querySelector("#member-results");
     const currentMemberSearch = document.querySelector("#current-member-search");
-    const currentMembers = memberRecords.filter(isCurrentPaidMember);
+    const currentMembers = memberRecords
+      .filter(isCurrentPaidMember)
+      .sort(compareMembersBySurname);
 
     results.textContent = `${memberRecords.length.toLocaleString()} member records loaded. Type to search.`;
     currentMemberSearch.disabled = false;
