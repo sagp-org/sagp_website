@@ -297,7 +297,7 @@ import PageHero from "../../../components/PageHero.astro";
   }
 
   function isCurrentPaidMember(member) {
-    return member.derived_membership_status === "Current Member";
+    return member.active === "1" && member.derived_membership_status === "Current Member";
   }
 
   function appendCell(row, value) {
