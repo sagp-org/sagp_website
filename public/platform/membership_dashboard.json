@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-10T12:31:29.042642",
+  "generated_at": "2026-10-10T12:38:30.537072",
   "source_database": "sagp_member_manager/output/sagp_members.db",
   "current_year": 2026,
   "summary": {
     "total_members": 1816,
-    "members_with_email": 1741,
+    "members_with_email": 1742,
     "current_paid_members": 220,
     "expired_members": 925,
     "paid_or_renewed_this_year": 36,
